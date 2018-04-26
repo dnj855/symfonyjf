@@ -6,6 +6,9 @@
     mot de passe
 {% endblock %}
 
+{% block body_nav %}
+{% endblock %}
+
 {% block fos_user_content %}
     <form action="{{ path('fos_user_resetting_send_email') }}" method="POST" class="fos_user_resetting_request">
         <div class="form-group">
