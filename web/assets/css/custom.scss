@@ -1,0 +1,44 @@
+@import "color-definition.scss";
+
+$font-family-sans-serif: "HK Grotesk", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+$spacer: 1rem;
+$spacers: (
+        0: 0,
+        1: ($spacer * .25),
+        2: ($spacer * .5),
+        3: $spacer,
+        4: ($spacer * 1.5),
+        5: ($spacer * 3),
+        6: ($spacer * 7)
+);
+
+$white: #fff !default;
+$gray-100: #f8f9fa !default;
+$gray-200: #e9ecef !default;
+$gray-300: #dee2e6 !default;
+$gray-400: #ced4da !default;
+$gray-500: #adb5bd !default;
+$gray-600: #868e96 !default;
+$gray-700: #495057 !default;
+$gray-800: #343a40 !default;
+$gray-900: #212529 !default;
+$black: #000 !default;
+
+$dropdown-bg: $dark !important;
+
+$alert-padding-x: 1rem !important;
+
+$dropdown-link-color: $gray-200 !default;
+$dropdown-link-hover-color: darken($gray-900, 5%) !default;
+$dropdown-link-hover-bg: $gray-100 !default;
+
+$dropdown-link-disabled-color: $gray-600 !default;
+
+$card-bg: rgba($secondary, 0.2);
+
+$input-bg: $light !important;
+$input-color: $primary !important;
+$input-border-color: $primary !important;
+
+@import "../../../vendor/twbs/bootstrap/scss/bootstrap.scss";

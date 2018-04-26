@@ -1,0 +1,17 @@
+{% extends '::layout.html.twig' %}
+
+        {% block title %}Fichier gnou{% endblock %}
+
+        {% block header_padding %}
+<div class="py-4">
+    {% endblock %}
+
+    {% block body_title %}fichier gnou{% endblock %}
+
+    {% block body %}
+{% block body_nav %}
+    {% include('ServiceJFChallengeFGBundle::body_nav.html.twig') %}
+    {% endblock %}
+    {% block body_content %}
+    {% endblock %}
+{% endblock %}

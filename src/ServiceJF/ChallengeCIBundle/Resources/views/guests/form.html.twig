@@ -1,0 +1,37 @@
+{{ form_start(form) }}
+
+{{ form_errors(form) }}
+
+{{ form_row(form.name) }}
+
+<div class="form-row">
+    <div class="col-12 col-md-6">
+        {{ form_row(form.host) }}
+    </div>
+    <div class="col-12 col-md-6">
+        {{ form_row(form.setter) }}
+    </div>
+</div>
+
+
+<div class="form-row">
+    <div class="col-12 col-md-6">
+        {{ form_row(form.studio) }}
+    </div>
+    <div class="col-12 col-md-6">
+        <div class="form-group mb-0">
+            {{ form_label(form.live) }}
+            {{ form_errors(form.live) }}
+            {{ form_widget(form.live) }}
+        </div>
+        {{ form_row(form.mandatoryRecorded) }}
+    </div>
+</div>
+
+{{ form_row(form.date, { 'attr' : { 'class' : 'datepicker form-control' }}) }}
+
+{{ form_widget(form.submit, { 'label' : 'submitButton.submit' }) }}
+
+{{ form_rest(form) }}
+
+{{ form_end(form) }}

@@ -1,0 +1,16 @@
+{% extends 'ServiceJFAdminBundle::layout.html.twig' %}
+
+{% block body_subtitle %}
+    dead list - créer une personnalité
+{% endblock %}
+
+{% block body_content %}
+    <div class="container my-4">
+        Personnalité créée. Tu peux fermer cette page si elle ne le fait pas automatiquement.
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('assets/js/dlCreatePersonality.js') }}"></script>
+{% endblock %}

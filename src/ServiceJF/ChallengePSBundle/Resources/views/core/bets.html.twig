@@ -1,0 +1,59 @@
+{% extends 'ServiceJFChallengePSBundle::layout.html.twig' %}
+
+{% block body_content %}
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-12">
+                <div class="card card-body mb-4">
+                    <p class="text-center my-0 py-2">Ici, tu peux entrer toutes ces certitudes que tu as pour l'avenir
+                        et que tu veux noter noir sur
+                        blanc. On verra bien plus tard si tu avais raison !</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 col-md-6" id="newBet">
+                {{ form(form) }}
+            </div>
+            <div class="col-12 col-md-6" id="viewBets">
+                {% if bets is empty %}
+                    <div class="card card-body">
+                        <h3 class="text-primary text-center my-2">Aucun pari encore saisi</h3>
+                    </div>
+                {% else %}
+                    {% for bet in bets %}
+                        <div class="row pb-4">
+                            <div class="col-12">
+                                <div class="d-flex justify-content-around align-items-end">
+                                    <div class="mr-auto panel-vote">
+                                        {{ bet.bet|nl2br }}
+                                    </div>
+                                </div>
+                                <hr class="border-primary my-0">
+                                <div class="text-right">
+                                    <small>
+                                        <span class="border border-top-0 border-right-0 border-bottom-0 border-primary pl-1">
+                                {{ bet.date|date('d/m/y') }}
+                                        </span>
+                                        <span class="border border-top-0 border-right-0 border-bottom-0 border-primary pl-1">
+                            {{ bet.better.surname }} {{ bet.better.name }}
+                                </span>
+                                        <span class="border border-top-0 border-right-0 border-bottom-0 border-primary pl-1">
+                                            {% if bet.correct is null %}
+                                                Pas vérifié
+                                            {% elseif bet.correct == 1 %}
+                                                Correct !
+                                            {% else %}
+                                                Faux !
+                                            {% endif %}
+                                </span>
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

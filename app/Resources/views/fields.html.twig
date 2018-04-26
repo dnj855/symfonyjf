@@ -1,0 +1,91 @@
+{% block form_row %}
+    <div class="form-group mb-2">
+        {{ form_label(form) }}
+        {{ form_widget(form, {'attr': attr}) }}
+        {{ form_errors(form) }}
+    </div>
+{% endblock form_row %}
+
+{% block form_widget_simple %}
+    {% set type = type|default('text') %}
+    <input type="{{ type }}" {{ block('widget_attributes') }} {% if value is not empty %}value="{{ value }}" {% endif %}
+           class="form-control form-control-sm{% if errors|length > 0 %} is-invalid{% endif %}"/>
+{% endblock form_widget_simple %}
+
+    {% block form_errors %}
+        {% spaceless %}
+            {% if compound %}
+                {% if errors|length > 0 %}
+                    <div class="alert alert-warning alert-dismissible fade show">
+                        {% for error in errors %}
+                            {{ error.message }}
+                        {% endfor %}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                {% endif %}
+            {% else %}
+                {% if errors|length > 0 %}
+                    <div class="invalid-feedback">
+                        <ul class="list-unstyled mb-0">
+                            {% for error in errors %}
+                                <li>{{ error.message }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+            {% endif %}
+        {% endspaceless %}
+    {% endblock form_errors %}
+
+{%- block choice_widget_collapsed -%}
+    {%- if required and placeholder is none and not placeholder_in_choices and not multiple and (attr.size is not defined or attr.size <= 1) -%}
+        {% set required = false %}
+    {%- endif -%}
+    <select {{ block('widget_attributes') }}{% if multiple %} multiple="multiple"{% endif %} class="form-control">
+        {%- if placeholder is not none -%}
+            <option value=""{% if required and value is empty %} selected="selected"{% endif %}>{{ placeholder != '' ? (translation_domain is same as(false) ? placeholder : placeholder|trans({}, translation_domain)) }}</option>
+        {%- endif -%}
+        {%- if preferred_choices|length > 0 -%}
+            {% set options = preferred_choices %}
+            {{- block('choice_widget_options') -}}
+            {%- if choices|length > 0 and separator is not none -%}
+                <option disabled="disabled">{{ separator }}</option>
+            {%- endif -%}
+        {%- endif -%}
+        {%- set options = choices -%}
+        {{- block('choice_widget_options') -}}
+    </select>
+{%- endblock choice_widget_collapsed -%}
+
+{%- block submit_widget -%}
+    {%- set type = type|default('submit') -%}
+    {%- if label is not same as(false) and label is empty -%}
+        {%- if label_format is not empty -%}
+            {% set label = label_format|replace({
+            '%name%': name,
+            '%id%': id,
+            }) %}
+        {%- else -%}
+            {% set label = name|humanize %}
+        {%- endif -%}
+    {%- endif -%}
+    <button type="{{ type|default('button') }}" {{ block('button_attributes') }} class="btn btn-primary text-light"><i class="fa fa-check" aria-hidden="true"></i> {{ translation_domain is same as(false) ? label : label|trans({}, translation_domain) }}</button>
+
+{%- endblock submit_widget -%}
+
+{%- block choice_widget_expanded -%}
+    {%- for child in form %}
+        <div class="form-check form-check-inline">
+        <label class="form-check-label">
+            {{ form_widget(child) }} &nbsp; {{- form_label(child, null, {translation_domain: choice_translation_domain}) -}}
+        </label>
+        </div>
+        {% endfor -%}
+
+{%- endblock choice_widget_expanded -%}
+
+{%- block textarea_widget -%}
+    <textarea {{ block('widget_attributes') }} class="form-control">{{ value }}</textarea>
+{%- endblock textarea_widget -%}

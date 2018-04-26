@@ -1,0 +1,27 @@
+servicejf_challengedl_homepage:
+    path:     /
+    defaults: { _controller: ServiceJFChallengeDLBundle:Core:main }
+
+servicejf_challengedl_about:
+    path:    /about
+    defaults: { _controller: ServiceJFChallengeDLBundle:Core:about }
+
+servicejf_challengedl_newPlayer:
+    path:    /newBet
+    defaults: { _controller: ServiceJFChallengeDLBundle:Bets:new }
+
+servicejf_challengedl_setBet:
+    path:    /setBet
+    defaults: { _controller: ServiceJFChallengeDLBundle:Bets:edit }
+
+servicejf_challengedl_validBet:
+    path:    /validBet
+    defaults: { _controller: ServiceJFChallengeDLBundle:Bets:valid }
+
+servicejf_challengedl_viewBets:
+    path:    /bets
+    defaults: { _controller: ServiceJFChallengeDLBundle:Core:view }
+
+servicejf_challengedl_faq:
+    path:    /faq
+    defaults: { _controller: ServiceJFChallengeDLBundle:Core:faq }

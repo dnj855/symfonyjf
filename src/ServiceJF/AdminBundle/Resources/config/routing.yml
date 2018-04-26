@@ -1,0 +1,101 @@
+servicejf_admin_home:
+    path: /
+    defaults:
+        _controller: ServiceJFAdminBundle:Admin:index
+
+servicejf_admin_user_create:
+    path: /user/create
+    defaults:
+        _controller: ServiceJFAdminBundle:User:create
+
+servicejf_admin_user_edit:
+    path: /user/edit/{id}
+    requirements:
+        id: \d*
+    defaults:
+        _controller: ServiceJFAdminBundle:User:edit
+
+servicejf_admin_user_edit_password:
+    path: /user/edit/password/{id}
+    requirements:
+        id: \d*
+    defaults:
+        _controller: ServiceJFAdminBundle:User:editPassword
+
+servicejf_admin_user_disable:
+    path: /user/disable/{id}
+    requirements:
+        id: \d*
+    defaults:
+        _controller: ServiceJFAdminBundle:User:disable
+
+servicejf_admin_season_create:
+    path:     /season
+    defaults:
+        _controller: ServiceJFAdminBundle:Season:create
+
+servicejf_admin_punchline_disable:
+    path: /fg/disable/{id}
+    requirements:
+        id: \d*
+    defaults:
+        _controller: ServiceJFAdminBundle:Fg:disable
+
+servicejf_admin_punchline_setBest:
+    path: /fg/setBest
+    defaults:
+        _controller: ServiceJFAdminBundle:Fg:setBest
+
+servicejf_admin_ci_modifyguests:
+    path:    /ci/guest/{id}
+    defaults: { _controller: ServiceJFAdminBundle:Ci:modify}
+    requirements:
+        id: \d*
+
+servicejf_admin_ci_setpoints:
+    path:    /ci/setpoints/{season}
+    defaults: { _controller: ServiceJFAdminBundle:Ci:points }
+    requirements:
+        season: \d*
+
+servicejf_admin_dl_curateBet:
+    path:    /dl/bets/curate/{setBet}
+    defaults: { _controller: ServiceJFAdminBundle:Dl:curate }
+    requirements:
+        better: \d*
+
+servicejf_admin_dl_curateBets:
+    path:    /dl
+    defaults: { _controller: ServiceJFAdminBundle:Dl:curation }
+
+servicejf_admin_dl_createPersonality:
+    path:    /dl/personality/new
+    defaults: { _controller: ServiceJFAdminBundle:Dl:newPersonality }
+
+servicejf_admin_dl_managePersonality:
+    path:    /dl/personality/{personality}
+    defaults: { _controller: ServiceJFAdminBundle:Dl:managePersonality }
+    requirements:
+        better: \d*
+
+servicejf_admin_ps:
+    path:    /ps
+    defaults: { _controller: ServiceJFAdminBundle:Ps:adminPanel }
+
+servicejf_admin_ps_trueBet:
+    path:    /ps/{bet}/true
+    defaults: { _controller: ServiceJFAdminBundle:Ps:trueBet }
+    requirements:
+        bet: \d*
+
+servicejf_admin_ps_falseBet:
+    path:    /ps/{bet}/false
+    defaults: { _controller: ServiceJFAdminBundle:Ps:falseBet }
+    requirements:
+        bet: \d*
+
+servicejf_admin_ps_disableBet:
+    path:    /ps/{bet}/disable
+    defaults: { _controller: ServiceJFAdminBundle:Ps:disableBet }
+    requirements:
+        bet: \d*

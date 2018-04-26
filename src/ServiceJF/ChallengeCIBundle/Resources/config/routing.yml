@@ -1,0 +1,21 @@
+servicejf_challengeci_allguests:
+    path:     /guests
+    defaults: { _controller: ServiceJFChallengeCIBundle:Guests:all }
+
+servicejf_challengeci_homepage:
+    path:    /
+    defaults: { _controller: ServiceJFChallengeCIBundle:Results:general }
+
+servicejf_challengeci_seasonChange:
+    path:    /seasonChange
+    defaults: { _controller: ServiceJFChallengeCIBundle:Core:chooseSeason }
+
+servicejf_challengeci_newGuest:
+    path:    /new
+    defaults: { _controller: ServiceJFChallengeCIBundle:Guests:new }
+
+servicejf_challengeci_results:
+    path:    /results/{user}
+    defaults: { _controller: ServiceJFChallengeCIBundle:Results:user }
+    requirements:
+        user: \d*

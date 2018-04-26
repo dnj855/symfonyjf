@@ -1,0 +1,15 @@
+label:
+    passwordEdit: 'Nouveau mot de passe :'
+    firstName: 'Prénom :'
+    lastName: 'Nom :'
+    id: 'Identifiant :'
+    manager: Cadre
+    css: Soirées sport
+    nocss: Retirer les soirées sport
+    email: E-mail :
+    service: Service :
+    password: 'Mot de passe :'
+
+submitButton:
+    modify: Modifier
+    create: Créer

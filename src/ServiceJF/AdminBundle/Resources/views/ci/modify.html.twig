@@ -1,0 +1,42 @@
+{% extends 'ServiceJFAdminBundle::layout.html.twig' %}
+
+{% block body_subtitle %}
+Modifier {{ guest.name }}
+{% endblock %}
+
+{% block css %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('assets/css/jquery-ui.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/jquery-ui.structure.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/jquery-ui.theme.min.css') }}">
+{% endblock %}
+
+{% block body_nav %}
+{% include('ServiceJFChallengeCIBundle::body_nav.html.twig') %}
+{% endblock %}
+
+{% block body_content %}
+    <div class="container">
+        <div class="row pt-4">
+            <div class="col-12 col-md-8 offset-md-4">
+                {% include('ServiceJFChallengeCIBundle:guests:form.html.twig') %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('assets/js/external/jquery/jquery.js') }}"></script>
+    <script src="{{ asset('assets/js/jquery-ui.min.js') }}"></script>
+    <script src="{{ asset('assets/js/datepicker-fr.js') }}"></script>
+    <script>
+        $(document).ready(function () {
+            $('.datepicker').datepicker({
+                dateFormat: 'dd/m/yy',
+                firstDay: 1
+            });
+            $.datepicker($.datepicker.regional["fr"]);
+        });
+    </script>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends 'ServiceJFUserBundle::layout.html.twig' %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block body_subtitle %}
+    mot de passe
+{% endblock %}
+
+{% block fos_user_content %}
+    <form action="{{ path('fos_user_resetting_send_email') }}" method="POST" class="fos_user_resetting_request">
+        <div class="form-group">
+            <label for="username">{{ 'resetting.request.username'|trans }}</label>
+            <input type="text" id="username" name="username" required="required" class="form-control" />
+        </div>
+        <div class="d-flex flex-row-reverse">
+            <input type="submit" value="{{ 'resetting.request.submit'|trans }}" class="btn btn-primary text-light" />
+        </div>
+    </form>
+{% endblock %}

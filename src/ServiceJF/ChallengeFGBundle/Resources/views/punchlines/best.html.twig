@@ -1,0 +1,32 @@
+{% extends 'ServiceJFChallengeFGBundle::layout.html.twig' %}
+
+{% block body_subtitle %}
+    les meilleures
+{% endblock %}
+
+{% block body_content %}
+    <div class="container">
+        <div class="row pt-4">
+            <div class="col-12 col-md-8 offset-md-4">
+                {% for punchline in punchlines %}
+                    <div class="mb-4">
+                        <h4 class="punchline-month">{{ punchline.month|localizeddate('long', 'none', null, null, 'MMMM y')|title }}</h4>
+                        {{ punchline.punchline.punchline|nl2br }}
+                        <hr class="border-primary my-0">
+                        <div class="text-right">
+                            <small>
+                                {% transchoice punchline.punchlineVotes %}punchline.punchlineVotes{% endtranschoice %}
+                                ({{ ((punchline.punchlineVotes / punchline.totalVotes)*100)|round(2, 'common') }}%)
+                                <span class="border border-top-0 border-right-0 border-bottom-0 border-primary pl-1">
+                            {{ punchline.punchline.poster.surname }} {{ punchline.punchline.poster.name }}
+                                </span>
+                            </small>
+
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Service j&f: - Se connecter</title>
+    <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/design.css') }}">
+    <script src="https://use.fontawesome.com/1c4de8f6a7.js"></script>
+
+</head>
+<body>
+<div id="header">
+    <div class="container">
+        <div class="row py-3 py-md-6 text-md-left text-center align-items-center">
+            <div class="col-md-9 col-sm-12">
+                <h1 class="text-light">service j&f:</h1>
+                <h2>{% block body_subtitle %}se connecter{% endblock %}</h2>
+            </div>
+            <div class="col-md-3 col-sm-12">
+                {% for key, messages in app.session.flashbag.all() %}
+                    {% for message in messages %}
+                        <div class="alert alert-{{ key }} alert-dismissible fade show">
+                            {{ message|trans({}, 'FOSUserBundle') }}
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true" class="ml-auto">&times;</span>
+                            </button>
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% block body %}
+{% endblock %}
+<div id="footer">
+    <div class="container">
+        <div class="row py-1 align-items-center mt-4">
+            <div class="col-md-11 col-sm-12">
+            </div>
+            <div class="col-1 d-none d-md-block">
+                <img height="30px" src="{{ asset('assets/img/logosmall.png') }}" alt="logosmall"/>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"
+        integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"
+        integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+        crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+{% extends 'ServiceJFAdminBundle::layout.html.twig' %}
+
+{% block body_subtitle %}
+    gestion des participants
+{% endblock %}
+
+{% block body_content %}
+    <div class="container">
+        <div class="row py-4">
+            <div class="col-md-6 col-sm-12">
+                <h4 class="text-primary">Utilisateurs actifs</h4>
+                <ul class="list-unstyled">
+                    {% for user in enabledUsers %}
+                        <li class="mb-3">
+                            <div class="d-flex justify-content-auto align-content-end">
+                                <div class="d-flex flex-column mr-2 justify-content-center">
+                                    <a href="{{ path('servicejf_admin_user_disable', { 'id' : user.id }) }}"><i
+                                                class="fas fa-user-times" aria-hidden="true" aria-label="delete"></i></a>
+                                </div>
+                                <div class="d-flex flex-column mr-2">
+                                    <a href="{{ path('servicejf_admin_user_edit', { 'id' :  user.id }) }}"><i
+                                                class="fas fa-edit" aria-hidden="true" aria-label="edit"></i></a>
+                                    <a href="{{ path('servicejf_admin_user_edit_password', { 'id' : user.id}) }}"><i
+                                                class="fas fa-key" aria-hidden="true" aria-label="delete"></i> </a>
+                                </div>
+                                <div class="d-flex flex-column">
+                                    <h5 class="admin-user-name mb-0 border border-secondary border-top-0 border-left-0 border-right-0">
+                                        {{ user.surname }} {{ user.name }}
+                                    </h5>
+                                    {{ user.email }} / {{ user.service.name }}
+                                </div>
+                            </div>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            {% if disabledUsers %}
+                <div class="col-md-6 col-sm-12">
+                    <h4 class="text-primary">Utilisateurs inactifs</h4>
+                    <ul class="list-unstyled">
+                        {% for user in disabledUsers %}
+                            <li class="mb-3">
+                                <div class="d-flex justify-content-auto align-content-end">
+                                    <div class="d-flex flex-column mr-2">
+                                        <a href="{{ path('servicejf_admin_user_edit', { 'id' :  user.id }) }}"><i
+                                                    class="fas fa-edit" aria-hidden="true"
+                                                    aria-label="edit"></i></a>
+                                        <a href="{{ path('servicejf_admin_user_disable', { 'id' : user.id }) }}"><i
+                                                    class="fa fa-history" aria-hidden="true"
+                                                    aria-label="delete"></i></a>
+                                    </div>
+                                    <div class="d-flex flex-column">
+                                        <h5 class="admin-user-name mb-0 border border-secondary border-top-0 border-left-0 border-right-0">
+                                            {{ user.surname }} {{ user.name }}
+                                        </h5>
+                                        {{ user.email }} / {{ user.service.name }}
+                                    </div>
+                                </div>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+
+{% endblock %}

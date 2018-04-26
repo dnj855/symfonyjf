@@ -1,0 +1,45 @@
+servicejf_homepage:
+    path:     /
+    defaults: { _controller: ServiceJFCoreBundle:Core:index }
+
+servicejf_fgRedirect1:
+    path:    /fichier-gnou
+    defaults: { _controller: ServiceJFCoreBundle:Core:fgRedirect }
+
+servicejf_fgRedirect2:
+    path:    /fichier-gonu
+    defaults: { _controller: ServiceJFCoreBundle:Core:fgRedirect }
+
+servicejf_fgRedirect3:
+    path:    /fichiergnou
+    defaults: { _controller: ServiceJFCoreBundle:Core:fgRedirect }
+
+servicejf_fgRedirect4:
+    path:    /fichiergonu
+    defaults: { _controller: ServiceJFCoreBundle:Core:fgRedirect }
+
+servicejf_fgRedirect5:
+    path:    /fichier-gno
+    defaults: { _controller: ServiceJFCoreBundle:Core:fgRedirect }
+
+servicejf_fgRedirect6:
+    path:    /fichiergno
+    defaults: { _controller: ServiceJFCoreBundle:Core:fgRedirect }
+
+servicejf_ciRedirect1:
+    path:    /challenge-invite
+    defaults: { _controller: ServiceJFCoreBundle:Core:ciRedirect }
+
+servicejf_ciRedirect2:
+    path:    /challenge-invit
+    defaults: { _controller: ServiceJFCoreBundle:Core:ciRedirect }
+
+
+servicejf_ciRedirect3:
+    path:    /challenge-inivite
+    defaults: { _controller: ServiceJFCoreBundle:Core:ciRedirect }
+
+
+servicejf_ciRedirect4:
+    path:    /invite
+    defaults: { _controller: ServiceJFCoreBundle:Core:ciRedirect }

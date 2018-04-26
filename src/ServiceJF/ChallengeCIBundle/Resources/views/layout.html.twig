@@ -1,0 +1,50 @@
+{% extends '::layout.html.twig' %}
+
+{% block title %}
+{{ parent() }}challenge invité
+{% endblock %}
+
+        {% block header_padding %}
+<div class="py-4">
+    {% endblock %}
+
+    {% block body_title %}challenge invité{% endblock %}
+
+    {% block body %}
+    {% block body_nav %}
+        {% include('ServiceJFChallengeCIBundle::body_nav.html.twig') %}
+    {% endblock %}
+    <div class="container">
+        <div class="row pt-4">
+            <div class="col-12 col-md-4">
+            {% block body_season %}
+                <div class="row mb-4">
+                    <div class="col-12">
+                        <div class="card border-0 fg-panel py-2 px-2">
+                            <div class="d-flex justify-content-center">
+                                <span>Saison {{ season.dateBegin|date('Y') }}-{{ season.dateEnd|date('Y') }}</span>
+                                <a href="#seasonChoice" data-toggle="collapse" class="text-light ml-2"><i
+                                            class="far fa-edit"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="collapse" id="seasonChoice">
+                    <div class="row mb-4">
+                        <div class="col-12">
+                            <div class="card border-0 index-panel py-2 mb-0 text-center">
+                                {{ render(controller('ServiceJFChallengeCIBundle:Core:chooseSeason')) }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endblock %}
+            </div>
+            <div class="col-12 col-md-8">
+    {% block body_content %}
+    {% endblock %}
+            </div>
+        </div>
+        </div>
+
+{% endblock %}

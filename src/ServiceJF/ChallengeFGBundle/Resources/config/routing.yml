@@ -1,0 +1,26 @@
+servicejf_challengefg_homepage:
+    path:     /{year}/{month}
+    requirements:
+        year: 2016|2017|2018|2019
+        month: 0\d{1}|10|11|12
+    defaults:
+        _controller: ServiceJFChallengeFGBundle:Main:index
+        year: '%current_year%'
+        month: '%current_month%'
+
+servicejf_challengefg_write:
+    path: /write
+    defaults:
+        _controller: ServiceJFChallengeFGBundle:Main:post
+
+servicejf_challengefg_vote:
+    path: /vote/{id}
+    requirements:
+        id: \d*
+    defaults:
+        _controller: ServiceJFChallengeFGBundle:Main:vote
+
+servicejf_challengefg_best:
+    path: /best
+    defaults:
+        _controller: ServiceJFChallengeFGBundle:Main:best

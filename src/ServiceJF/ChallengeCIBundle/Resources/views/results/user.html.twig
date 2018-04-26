@@ -1,0 +1,120 @@
+{% extends 'ServiceJFChallengeCIBundle::layout.html.twig' %}
+
+{% block body_subtitle %}
+    résultats
+{% endblock %}
+
+{% block body_content %}
+    <div class="border border-primary border-left-0 border-top-0 border-right-0 d-flex align-items-baseline justify-content-between"
+         xmlns="http://www.w3.org/1999/html">
+        <h4 class="ci-user mb-0">
+            {{ points.user.surname }} {{ points.user.name }}
+        </h4>
+        <h4 class="mb-0">
+            <small>{{ points.totalPoints }} points</small>
+        </h4>
+    </div>
+    <div class="mt-3 d-flex justify-content-around align-items-center">
+        <div class="text-center">
+            <h6>Direct studio : {{ points.liveStudio }}<br/>
+                <small>{{ (points.liveStudio / points.total * 300)|round }} points</small>
+            </h6>
+        </div>
+        <div class="text-center">
+            <h6>Direct téléphone : {{ points.livePhone }}<br/>
+                <small>{{ (points.livePhone / points.total * 200)|round(0, 'common') }} points</small>
+            </h6>
+        </div>
+    </div>
+    <div class="mt-3 d-flex justify-content-around align-items-center">
+        <div class="text-center">
+            <h6>PAD studio : {{ points.mandatoryRecordedStudio + points.nonMandatoryRecordedStudio }}
+                {% if points.mandatoryRecordedStudio > 0 %}
+            <br/>
+                <small>dont {{ points.mandatoryRecordedStudio }} obligatoire</small>
+                {% endif %}<br/>
+                <small>{{ ((points.mandatoryRecordedStudio / points.total * 300) + (points.nonMandatoryRecordedStudio / points.total * 100))|round }}
+                    points
+                </small>
+            </h6>
+        </div>
+        <div class="text-center">
+            <h6>PAD téléphone : {{ points.recordedPhone }}<br/>
+                <small>{{ (points.recordedPhone / points.total * 100)|round(0, 'common') }} points</small>
+            </h6>
+        </div>
+        <div class="text-center">
+            <h6>Directs studios calés : {{ points.totalLiveStudioSet }}<br/>
+                <small>{{ (points.totalLiveStudioSet / points.totalSet * 100)|round(0, 'common') }} points</small>
+            </h6>
+        </div>
+    </div>
+    <div class="mt-3 card index-panel border-0">
+        <div class="card-body">
+            <h5 class="ci-user border-right-0 border-top-0 border-left-0 border border-primary">
+                Invités :
+            </h5>
+            {% for guest in hostGuests %}
+                <div class="d-flex justify-content-start align-items-baseline mb-1">
+                    <i class="fas fa-circle" style="color:{{ guest.color }}"></i>
+                    <span class="ml-2">{{ guest.name }}</span>
+                    <span class="border border-primary border-bottom-0 border-top-0 border-right-0 ml-2 pl-2">
+                    <small>{{ guest.date|date('d/m/Y') }}</small>
+                </span>
+                    <span class="d-none d-md-block border border-primary border-bottom-0 border-top-0 border-right-0 ml-2 pl-2">
+                        {% if guest.live %}
+                            {% if guest.studio %}
+                                Direct studio
+                            {% else %}
+                                Direct téléphone
+                            {% endif %}
+                        {% else %}
+                            {% if guest.studio %}
+                                PAD studio
+                            {% else %}
+                                PAD téléphone
+                            {% endif %}
+                            {% if guest.mandatoryRecorded %}
+                                (obligatoire)
+                            {% endif %}
+                        {% endif %}
+                </span>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <div class="mt-3 card index-panel border-0">
+        <div class="card-body">
+            <h5 class="ci-user border-right-0 border-top-0 border-left-0 border border-primary">
+                Invités calés :
+            </h5>
+            {% for guest in setGuests %}
+                <div class="d-flex justify-content-start align-items-baseline mb-1">
+                    <i class="fas fa-circle" style="color:{{ guest.color }}"></i>
+                    <span class="ml-2">{{ guest.name }}</span>
+                    <span class="border border-primary border-bottom-0 border-top-0 border-right-0 ml-2 pl-2">
+                    <small>{{ guest.date|date('d/m/Y') }}</small>
+                </span>
+                    <span class="d-none d-md-block border border-primary border-bottom-0 border-top-0 border-right-0 ml-2 pl-2">
+        {% if guest.live %}
+            {% if guest.studio %}
+                Direct studio
+            {% else %}
+                Direct téléphone
+            {% endif %}
+        {% else %}
+            {% if guest.studio %}
+                PAD studio
+            {% else %}
+                PAD téléphone
+            {% endif %}
+            {% if guest.mandatoryRecorded %}
+                (obligatoire)
+            {% endif %}
+        {% endif %}
+                </span>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

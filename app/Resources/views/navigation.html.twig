@@ -1,0 +1,92 @@
+{% if app.user %}
+    <div id="top-navigation">
+        <div class="container">
+            <div class="row">
+                <nav class="navbar navbar-dark navbar-expand-lg" role="navigation">
+                    <a href='{{ path('servicejf_homepage') }}' class="navbar-brand text-primary">Service j&f:</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse"
+                            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <div class="navbar-nav mr-auto">
+                            <div class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"
+                                   aria-haspopup="true" aria-expanded="false">Invité</a>
+                                <div class="dropdown-menu">
+                                    {% if is_granted('ROLE_CI') %}
+                                        <a href="{{ path('servicejf_challengeci_newGuest') }}"
+                                           class="rounded dropdown-item">Saisir un invité</a>
+                                    {% endif %}
+                                    <a href="{{ path('servicejf_challengeci_homepage') }}"
+                                       class="rounded dropdown-item">Consulter les
+                                        résultats</a>
+                                    <a href="{{ path('servicejf_challengeci_allguests') }}"
+                                       class="rounded dropdown-item">Tous les invités</a>
+                                </div>
+                            </div>
+                            <div class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" data-toggle="dropdown">Soirées sport</a>
+                                <div class="dropdown-menu">
+                                    {% if is_granted('ROLE_CSS') %}
+                                        <a href="#" class="disabled-link rounded dropdown-item">Saisir une soirée
+                                            sport</a>
+                                    {% endif %}
+                                    <a href="#" class="disabled-link rounded dropdown-item">Consulter les résultats
+                                        provisoires</a>
+                                </div>
+                            </div>
+                            <div class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Fichier gnou</a>
+                                <div class="dropdown-menu">
+                                    <a href="{{ path('servicejf_challengefg_best') }}" class="rounded dropdown-item">Les
+                                        meilleures punchlines</a>
+                                    <a href="{{ path('servicejf_challengefg_homepage') }}"
+                                       class="rounded dropdown-item">Toutes les punchlines</a>
+                                    <a href="{{ path('servicejf_challengefg_write') }}" class="rounded dropdown-item">Poster
+                                        une punchline</a>
+                                </div>
+                            </div>
+                            <div class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" data-toggle="dropdown">Dead list</a>
+                                <div class="dropdown-menu">
+                                    <a href="{{ path('servicejf_challengedl_homepage') }}"
+                                       class="rounded dropdown-item">{{ dlFrontEnd }}</a>
+                                    <a href="{{ path('servicejf_challengedl_faq') }}" class="rounded dropdown-item">Comment
+                                        ça fonctionne ?</a>
+                                </div>
+                            </div>
+                            <div class="nav-item">
+                                <a class="nav-link" href="{{ path('servicejf_challengeps_homepage') }}">Paris sûrs</a>
+                            </div>
+                        </div>
+                        <div class="navbar-nav">
+                            <div class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"
+                                   aria-haspopup="true" aria-expanded="false">Mon compte
+                                    {% if curateBets is not empty %}
+                                        <i class="fas fa-exclamation-circle"></i>
+                                    {% endif %}</a>
+                                <div class="dropdown-menu-right dropdown-menu">
+                                    <a class="rounded dropdown-item" href="{{ path('fos_user_profile_edit') }}">Modifier
+                                    </a>
+                                    {% if is_granted('ROLE_ADMIN') %}
+                                        <a class="rounded dropdown-item" href="{{ path('servicejf_admin_home') }}">
+                                            Administration
+                                            {% if curateBets is not empty %}
+                                                <i class="fas fa-exclamation-circle"></i>
+                                            {% endif %}
+                                        </a>
+                                    {% endif %}
+                                    <a class="rounded dropdown-item" href="{{ path('fos_user_security_logout') }}">Se
+                                        déconnecter</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+{% endif %}

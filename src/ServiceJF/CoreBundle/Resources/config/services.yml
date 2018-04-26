@@ -1,0 +1,4 @@
+services:
+#    service_jf_core.example:
+#        class: ServiceJF\CoreBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

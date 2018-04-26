@@ -1,0 +1,106 @@
+{% extends 'ServiceJFChallengeFGBundle::layout.html.twig' %}
+
+{% block body_subtitle %}
+    {{ date|localizeddate('long', 'none', NULL, NULL, 'MMMM') }} {{ date|date('Y') }}
+{% endblock %}
+
+{% block body_content %}
+    <div class="container">
+        {% if punchlines is empty %}
+            <div class="row pt-4">
+                <div class="col-12 col-md-8 offset-md-4">
+                    <div class="card border-0 index-panel px-2 py-2 mb-4">
+                        <h3 class="mb-0">Il n'y a pas encore de punchline postée ce mois-ci.</h3>
+                    </div>
+                </div>
+            </div>
+        {% else %}
+            <div class="row pt-4">
+                <div class="col-12 col-md-4 text-right mb-4">
+                    {% if nextMonth is empty %}
+                    <div class="row">
+                        <div class="col-12 col-md-4 offset-md-4">
+                            <div class="card border-0 fg-panel text-center px-2 py-2 py-md-4">
+                                {% transchoice votes %}votes{% endtranschoice %}
+                            </div>
+                        </div>
+                    </div>
+                    {% endif %}
+                </div>
+                <div class="col-12 col-md-8 text-left">
+                    {% for punchline in punchlines %}
+                        <div class="row pb-4">
+                            <div class="col-12">
+                                <div class="d-flex justify-content-around align-items-end">
+                                    <div class="mr-auto panel-vote">
+                                        {{ punchline.punchline|nl2br }}
+                                    </div>
+                                    <div class="text-right">
+                                        {% if votesAllowed is not empty %}
+                                        <button type="button"
+                                                class="btn-sm btn btn-vote btn-primary text-light px-1 py-1"
+                                                data-toggle="popover" data-placement="top" data-content="<a class='vote_punchline' href={{ path('servicejf_challengefg_vote', { 'id' : punchline.id}) }}>Confirmer</a>">
+                                            <i class="fas fa-check" aria-hidden="true"></i>
+                                        </button>
+                                        {% endif %}
+                                        {% if is_granted('ROLE_ADMIN') %}
+                                            <a href="{{ path('servicejf_admin_punchline_disable', { 'id' : punchline.id }) }}"
+                                               class="btn-sm btn btn-vote btn-primary text-light px-1 py-1">
+                                                <i class="far fa-trash-alt" aria-hidden="true"></i>
+                                            </a>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <hr class="border-primary my-0">
+                                <div class="text-right">
+                                    <small>
+                                        {% transchoice punchline.votes|length %}punchline.votes{% endtranschoice %}
+                                        <span class="border border-top-0 border-right-0 border-bottom-0 border-primary pl-1">
+                                {{ punchline.postDate|date('d/m/y') }}
+                                        </span> <span
+                                                class="border border-top-0 border-right-0 border-bottom-0 border-primary pl-1">
+                            {{ punchline.poster.surname }} {{ punchline.poster.name }}
+                                </span>
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+        {% endif %}
+        <div class="row">
+            <div class="col-2 offset-md-4">
+                <a class="btn btn-primary text-light"
+                   href="{{ path('servicejf_challengefg_homepage', {'year' : previousMonth|date('Y') , 'month': previousMonth|date('m')}) }}">
+                    <div class="d-flex align-items-center">
+                        <i class="fa fa-chevron-left mr-2"></i>{{ previousMonth|localizeddate('long', 'none', NULL, NULL, 'MMMM') }}
+                    </div>
+                </a>
+            </div>
+            {% if nextMonth is not empty %}
+                <div class="col-2 offset-md-4 offset-7 text-right">
+                    <a class="btn btn-primary text-light"
+                       href="{{ path('servicejf_challengefg_homepage', {'year' : nextMonth|date('Y') , 'month': nextMonth|date('m')}) }}">
+                        <div class="d-flex align-items-center">
+                            {{ nextMonth|localizeddate('long', 'none', NULL, NULL, 'MMMM') }} <i
+                                    class="fa fa-chevron-right ml-2"></i>
+                        </div>
+                    </a>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        $(function () {
+            $('[data-toggle="popover"]').popover({
+                html:true
+            })
+        })
+    </script>
+{% endblock %}

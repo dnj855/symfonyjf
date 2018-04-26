@@ -1,0 +1,110 @@
+{{ form_start(form) }}
+<div class="row align-items-center justify-content-between mb-3">
+    {{ form_errors(form) }}
+    <div class="col-md-11 col-10">
+        {{ form_widget(form.bet1, { 'id': 'bet1' }) }}
+        {{ form_errors(form.bet1) }}
+    </div>
+    <div class="col-md-1 col-2 p-1">
+        <label for="joker1">{{ form_widget(form.joker[0], { 'id' : 'joker1'}) }} joker</label>
+    </div>
+</div>
+<div class="row align-items-center justify-content-between mb-3">
+    <div class="col-md-11 col-10">
+        {{ form_widget(form.bet2, { 'id': 'bet2' }) }}
+        {{ form_errors(form.bet2) }}
+    </div>
+    <div class="col-md-1 col-2 p-1">
+        <label for="joker2">{{ form_widget(form.joker[1], { 'id' : 'joker2'}) }} joker</label>
+    </div>
+</div>
+<div class="row align-items-center justify-content-between mb-3">
+    <div class="col-md-11 col-10">
+        {{ form_widget(form.bet3, { 'id': 'bet3' }) }}
+        {{ form_errors(form.bet3) }}
+    </div>
+    <div class="col-md-1 col-2 p-1">
+        <label for="joker3">{{ form_widget(form.joker[2], { 'id' : 'joker3'}) }} joker</label>
+    </div>
+</div>
+<div class="row align-items-center justify-content-between mb-3">
+    <div class="col-md-11 col-10">
+        {{ form_widget(form.bet4, { 'id': 'bet4' }) }}
+        {{ form_errors(form.bet4) }}
+    </div>
+    <div class="col-md-1 col-2 p-1">
+        <label for="joker4">{{ form_widget(form.joker[3], { 'id' : 'joker4'}) }} joker</label>
+    </div>
+</div>
+<div class="row align-items-center justify-content-between mb-3">
+    <div class="col-md-11 col-10">
+        {{ form_widget(form.bet5, { 'id': 'bet5' }) }}
+        {{ form_errors(form.bet5) }}
+    </div>
+    <div class="col-md-1 col-2 p-1">
+        <label for="joker5">{{ form_widget(form.joker[4], { 'id' : 'joker5'}) }} joker</label>
+    </div>
+</div>
+<div class="row align-items-center justify-content-between mb-3">
+    <div class="col-md-11 col-10">
+        {{ form_widget(form.bet6, { 'id': 'bet6' }) }}
+        {{ form_errors(form.bet6) }}
+    </div>
+    <div class="col-md-1 col-2 p-1">
+        <label for="joker6">{{ form_widget(form.joker[5], { 'id' : 'joker6'}) }} joker</label>
+    </div>
+</div>
+<div class="row align-items-center justify-content-between mb-3">
+    <div class="col-md-11 col-10">
+        {{ form_widget(form.bet7, { 'id': 'bet7' }) }}
+        {{ form_errors(form.bet7) }}
+    </div>
+    <div class="col-md-1 col-2 p-1">
+        <label for="joker7">{{ form_widget(form.joker[6], { 'id' : 'joker7'}) }} joker</label>
+    </div>
+</div>
+<div class="row align-items-center justify-content-between mb-3">
+    <div class="col-md-11 col-10">
+        {{ form_widget(form.bet8, { 'id': 'bet8' }) }}
+        {{ form_errors(form.bet8) }}
+    </div>
+    <div class="col-md-1 col-2 p-1">
+        <label for="joker8">{{ form_widget(form.joker[7], { 'id' : 'joker8'}) }} joker</label>
+    </div>
+</div>
+<div class="row align-items-center justify-content-between mb-3">
+    <div class="col-md-11 col-10">
+        {{ form_widget(form.bet9, { 'id': 'bet9' }) }}
+        {{ form_errors(form.bet9) }}
+    </div>
+    <div class="col-md-1 col-2 p-1">
+        <label for="joker9">{{ form_widget(form.joker[8], { 'id' : 'joker9'}) }} joker</label>
+    </div>
+</div>
+<div class="row align-items-center justify-content-between mb-3">
+    <div class="col-md-11 col-10">
+        {{ form_widget(form.bet10, { 'id': 'bet10' }) }}
+        {{ form_errors(form.bet10) }}
+    </div>
+    <div class="col-md-1 col-2 p-1">
+        <label for="joker10">{{ form_widget(form.joker[9], { 'id' : 'joker10'}) }} joker</label>
+
+    </div>
+</div>
+<div id="submitButtons" class="row justify-content-between align-items-top">
+    <div class="col">
+        {{ form_widget(form.save, {'id' : 'save'}) }}
+    </div>
+    <div id="helpers" class="text-center col">
+        <small>
+            <ul class="list-unstyled">
+                <li id="betHelp"></li>
+                <li id="jokerHelp"></li>
+            </ul>
+        </small>
+    </div>
+    <div class="col">
+        {{ form_widget(form.saveDraft, {'id' : 'saveDraft'}) }}
+    </div>
+</div>
+{{ form_rest(form) }}

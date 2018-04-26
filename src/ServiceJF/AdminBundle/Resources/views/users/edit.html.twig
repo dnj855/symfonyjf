@@ -1,0 +1,43 @@
+{% extends 'ServiceJFAdminBundle::layout.html.twig' %}
+
+{% block body_subtitle %}
+    modifier {{ user.surname }} {{ user.name }}
+{% endblock %}
+
+{% block body_content %}
+    <div class="container">
+        <div class="row pt-4">
+            <div class="col-sm-12 col-md-8 offset-md-4">
+                {{ form_start(form) }}
+                {{ form_row(form.surname, { 'label' : 'label.firstName'}) }}
+                {{ form_row(form.name, { 'label' : 'label.lastName'}) }}
+                {{ form_row(form.username, { 'label' : 'label.id'}) }}
+                {{ form_row(form.email, { 'label' : 'label.email'}) }}
+                {{ form_row(form.service, { 'label' : 'label.service'}) }}
+                <div class="text-right">
+                    <div class="form-check form-check-inline">
+                        <label class="form-check-label">
+                            {{ form_widget(form.manager, { 'attr' : { 'class' : 'form-check-input'}}) }} {{ 'label.manager'|trans }}
+                        </label>
+                    {% for role in user.roles %}
+                        {% if role == 'ROLE_USER' %}
+                                <label class="form-check-label ml-2">
+                                    <input type="checkbox" class="form-check-input" name="ROLE_CSS"> {{ 'label.css'|trans }}
+                                </label>
+                        {% elseif role == 'ROLE_CSS' %}
+                            <label class="form-check-label ml-2">
+                                <input type="checkbox" class="form-check-input" name="UNSET_ROLE_CSS"> {{ 'label.nocss'|trans }}
+                            </label>
+                        {% endif %}
+                    {% endfor %}
+                    </div>
+                </div>
+
+                <div class="d-flex flex-row-reverse">
+                    {{ form_rest(form) }}
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

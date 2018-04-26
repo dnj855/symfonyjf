@@ -1,0 +1,29 @@
+{% extends 'ServiceJFMigrationBundle::layout.html.twig' %}
+
+{% block body_subtitle %}
+    1re connexion
+{% endblock %}
+
+{% block body %}
+    <div id="body">
+        <div class="container">
+            <div class="row pt-4 pb-2">
+                <div class="col-sm-12 col-md-6 offset-md-6">
+
+                    <form method="post">
+                        <div class="form-group">
+                            <label for="username">Nom d'utilisateur :</label>
+                            <input type="text" id="username" name="username" class="form-control" required>
+                            <small class="form-text text-secondary" aria-describedby="username">L'identifiant que tu
+                                utilisais dans l'ancien site.
+                            </small>
+                        </div>
+                        <div class="d-flex flex-row-reverse">
+                            <input type="submit" class="btn btn-primary text-light" value="Valider">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

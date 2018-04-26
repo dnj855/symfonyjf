@@ -1,0 +1,49 @@
+{% extends 'ServiceJFAdminBundle::layout.html.twig' %}
+
+{% block body_subtitle %}
+    les paris sûrs
+{% endblock %}
+
+{% block body_content %}
+    <div class="container">
+        <div class="row mt-4">
+            <div class="col-12 col-md-8 offset-md-2">
+                {% if bets is empty %}
+                    <div class="card card-body">
+                        <h3 class="text-center text-primary py-2">Aucun pari encore saisi</h3>
+                    </div>
+                {% else %}
+                    {% for bet in bets %}
+                        <div class="row pb-4">
+                            <div class="col-12">
+                                <div class="d-flex justify-content-around align-items-end">
+                                    <div class="mr-auto ps-panel-vote">
+                                        {{ bet.bet|nl2br }}
+                                    </div>
+                                    <div class="text-right">
+                                        <a class="btn-sm btn btn-vote btn-primary text-light px-1 py-1
+{% if bet.correct == false and bet.correct is not null %} ps-disabled{% endif %}"
+                                           href="{{ path('servicejf_admin_ps_trueBet', { 'bet' : bet.id}) }}">
+                                            <i class="fas fa-check" aria-hidden="true"></i>
+                                        </a>
+                                        <a href="{{ path('servicejf_admin_ps_falseBet', { 'bet' : bet.id}) }}"
+                                           class="btn-sm btn btn-vote btn-primary text-light px-1 py-1
+{% if bet.correct == true %} ps-disabled{% endif %}">
+                                            <i class="fas fa-times" aria-hidden="true"></i>
+                                        </a>
+                                        <a href="{{ path('servicejf_admin_ps_disableBet', { 'bet' : bet.id}) }}"
+                                           class="btn-sm btn btn-vote btn-primary text-light px-1 py-1">
+                                            <i class="far fa-trash-alt" aria-hidden="true"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <hr class="border-primary my-0">
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

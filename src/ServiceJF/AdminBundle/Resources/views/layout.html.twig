@@ -1,0 +1,22 @@
+{% extends '::layout.html.twig' %}
+
+{% block title %}
+    {{ parent() }}administration
+{% endblock %}
+
+{% block header_padding %}
+<div class="py-4">
+    {% endblock %}
+
+    {% block body_title %}
+        administration
+    {% endblock %}
+
+    {% block body %}
+    {% block body_nav %}
+        {{ render(controller('ServiceJFAdminBundle:Admin:nav')) }}
+    {% endblock %}
+    {% block body_content %}
+    {% endblock %}
+
+{% endblock %}

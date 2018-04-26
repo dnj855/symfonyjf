@@ -1,0 +1,69 @@
+{% extends 'ServiceJFAdminBundle::layout.html.twig' %}
+
+{% block body_subtitle %}
+    dead list
+{% endblock %}
+
+{% block body_content %}
+    <div class="container">
+        <div class="row mt-4">
+            <div class="col-12">
+                <div class="card card-body mb-4">
+                    Petit rappel : vérifie dès cet écran que toutes les personnalités nécessaires sont bien créées.
+                </div>
+            </div>
+            <div class="col-6">
+                {% for bet in bets %}
+                    <div class="mb-4">
+                        <div class="dl-title border border-left-0 border-right-0 border-top-0 border-primary pb-1">
+                            <div class="d-flex justify-content-between">
+                                <span>{{ bet.better.surname }} {{ bet.better.name }}</span>
+                                <a href="{{ path('servicejf_admin_dl_curateBet', { 'setBet' : bet.id }) }}"><i
+                                            class="fas fa-pencil-alt"></i></a>
+                            </div>
+                        </div>
+                        <ul class="list-unstyled mt-1">
+                            <li>{{ bet.setBet.bet1 }}</li>
+                            <li>{{ bet.setBet.bet2 }}</li>
+                            <li>{{ bet.setBet.bet3 }}</li>
+                            <li>{{ bet.setBet.bet4 }}</li>
+                            <li>{{ bet.setBet.bet5 }}</li>
+                            <li>{{ bet.setBet.bet6 }}</li>
+                            <li>{{ bet.setBet.bet7 }}</li>
+                            <li>{{ bet.setBet.bet8 }}</li>
+                            <li>{{ bet.setBet.bet9 }}</li>
+                            <li>{{ bet.setBet.bet10 }}</li>
+                        </ul>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="col-6">
+                <div class="dl-title border border-left-0 border-right-0 border-top-0 border-primary pb-1">
+                    <div class="d-flex justify-content-between">
+                        <span>Liste des personnalités déja créées</span>
+                        <a href="{{ path('servicejf_admin_dl_createPersonality') }}" target="_blank"><i
+                                    class="fas fa-plus"></i></a>
+                    </div>
+                </div>
+                <div class="mt-1">
+                    {% if personalities is empty %}
+                        Aucune encore créée
+                    {% else %}
+                        <ul class="list-unstyled">
+                            {% for personality in personalities %}
+                                <li>
+                                    {{ personality.surname }} {{ personality.name }}{% if personality.dead != true %}
+                                        <small>
+                                            <a href="{{ path('servicejf_admin_dl_managePersonality', { 'personality' : personality.id}) }}">
+                                                <i class="fas fa-times"></i>
+                                            </a></small>
+                                    {% endif %}
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,6 @@
+label.punchline: Ta punchline :
+label.postDate: Date à laquelle elle a été prononcée :
+button.submit: Poster
+punchline.votes: "%count% vote|]1,+Inf]%count% votes"
+votes: "%count% vote restant|]1,+Inf]%count% votes restants"
+punchline.punchlineVotes: "%count% vote|]1,+Inf]%count% votes"

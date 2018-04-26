@@ -1,0 +1,28 @@
+{% extends 'ServiceJFAdminBundle::layout.html.twig' %}
+
+{% block body_subtitle %}
+    fichier gnou
+{% endblock %}
+
+{% block body_nav %}
+    {% include('ServiceJFChallengeFGBundle::body_nav.html.twig') %}
+{% endblock %}
+
+{% block body_content %}
+    <div class="container">
+        <div class="row pt-4">
+            <div class="col-12 col-md-8 offset-md-4">
+                <h3 class="sub-title">Désactiver cette punchline ?</h3>
+                <div class="index-panel card border-0 mt-1 mb-3 py-3 px-3">
+                    {{ punchline.punchline|nl2br }}
+                </div>
+                <form method="post">
+                    <button type="submit" class="btn btn-primary text-light"><i class="fa fa-check"></i> Oui</button>
+                    <a href="{{ app.request.headers.get('referer') }}"
+                            class="btn btn-primary text-light"><i class="fa fa-times"></i> Non
+                    </a>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

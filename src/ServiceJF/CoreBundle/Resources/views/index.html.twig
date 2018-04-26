@@ -1,0 +1,146 @@
+{% extends "::layout.html.twig" %}
+
+{% block title %}
+    Bienvenue
+{% endblock %}
+
+{% block body_title %}
+    Bienvenue !
+{% endblock %}
+
+{% block body_subtitle %}
+    Le service j&f: vous accueille
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row align-items-end justify-content-center mt-4">
+            <div class="card-deck">
+                <div class="card border-0 index-panel">
+                    <div class="ribbon-new"><span>Nouveau !</span></div>
+                    <div class="card-body px-3">
+                        <div class="text-center mb-2"><i class="fas fa-tree fa-2x" aria-hidden="true"></i></div>
+                        <div class="text-center text-md-left">
+                            <h3>Challenge de la dead list</h3>
+                            <p>
+                                D'après toi, pour qui cela sent-il le sapin cette année ?
+                            </p>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <ul class="list-unstyled mb-0">
+                            <li><a href="{{ path('servicejf_challengedl_homepage') }}">{{ dlFrontEnd }}</a></li>
+                            <li><a href="{{ path('servicejf_challengedl_faq') }}">Comment ça marche ?</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card border-0 index-panel">
+                    <div class="ribbon-new"><span>Nouveau !</span></div>
+                    <div class="card-body px-3">
+                        <div class="text-center mb-2"><i class="far fa-calendar-check fa-2x" aria-hidden="true"></i></div>
+                        <div class="text-center text-md-left">
+                            <h3>Challenge des paris sûrs</h3>
+                            <p>
+                                Toi aussi, tu es sûr que "Macron, c'est une bulle" ?
+                            </p>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <ul class="list-unstyled mb-0">
+                            <li><a href="{{ path('servicejf_challengeps_homepage') }}">Accéder aux paris</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row align-items-end justify-content-center mt-4">
+            <div class="card-deck">
+                <div class="card border-0 index-panel">
+                    <div class="card-body px-3">
+                        <div class="text-center mb-2"><i class="fas fa-question fa-2x" aria-hidden="true"></i></div>
+                        <div class="text-center text-md-left">
+                            <h3>Challenge de l'invité</h3>
+                            <p>
+                                Et dire que c'est par là que tout a commencé.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <ul class="list-unstyled mb-0">
+                            {% if is_granted('ROLE_CI') %}
+                                <li><a href="{{ path('servicejf_challengeci_newGuest') }}">Saisir les invités</a></li>
+                            {% endif %}
+                            <li><a href="{{ path('servicejf_challengeci_homepage') }}">Consulter les résultats</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card border-0 index-panel">
+                    <div class="card-body px-3">
+                        <div class="text-center mb-2"><i class="far fa-comments fa-2x" aria-hidden="true"></i></div>
+                        <div class="text-center text-md-left">
+                            <h3>Challenge du fichier gnou</h3>
+                            <p>
+                                Notre best-seller : recensez toutes les punchlines entendues sur la plateforme.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <ul class="list-unstyled mb-0">
+                            <li><a href="{{ path('servicejf_challengefg_homepage') }}">Toutes
+                                    les punchlines</a></li>
+                            <li><a href="{{ path('servicejf_challengefg_best') }}">Les meilleures punchlines</a></li>
+                            <li><a href="{{ path('servicejf_challengefg_write') }}">Poster une punchline</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card border-0 index-panel">
+                    <div class="card-body px-3">
+                        <div class="ribbon-warning"><span>A venir</span></div>
+                        <div class="text-center mb-2"><i class="far fa-futbol fa-2x" aria-hidden="true"></i></div>
+                        <div class="text-center text-md-left">
+                            <h3>Challenge des soirées sport</h3>
+                            <p>
+                                Qui battra Elodie Gazzola pour cette nouvelle saison ?
+                            </p>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <ul class="list-unstyled mb-0">
+                            {% if is_granted('ROLE_CSS') %}
+                                <li><a href="#" class="disabled-link">Saisir les résultats</a></li>
+                            {% endif %}
+                            <li><a href="#" class="disabled-link">Consulter les résultats</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {#<div class="row justify-content-around mt-4">
+            <div class="card-deck">
+                <div class="card border-0 index-panel">
+                    <div class="ribbon"><span>A venir</span></div>
+                    <div class="card-body px-3">
+                        <div class="text-center mb-2"><i class="fas fa-archive fa-2x" aria-hidden="true"></i></div>
+                        <div class="text-center text-md-left">
+                            <h3>Anciens challenges</h3>
+                        </div>
+                    </div>
+                    <div class="card-footer">
+                        <ul class="list-unstyled mb-0">
+                            <li>
+                                <a href="cph.php?action=home">Le challenge phénoménal handball</a>
+                            </li>
+                            <li>
+                                <a href="cp.php?action=home">Le challenge de la présidentielle</a>
+                            </li>
+                            <li>
+                                <a href="fg_bv.php">Fichier gnou : le grand vote</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>#}
+    </div>
+{% endblock %}

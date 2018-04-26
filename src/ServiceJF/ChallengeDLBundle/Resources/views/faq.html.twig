@@ -1,0 +1,32 @@
+{% extends 'ServiceJFChallengeDLBundle::layout.html.twig' %}
+
+{% block body_subtitle %}
+    comment ça marche
+{% endblock %}
+
+    {% block body_content %}
+        <div class="container">
+            <div class="row">
+                <div class="col-12 col-md-8 offset-md-2">
+                    <h3 class="dl-title">1. Principe général</h3>
+                    <p>Dans la dead list, <strong>tu dois parier sur les personnalités qui, d'après toi, vont décéder
+                            dans l'année.</strong> Tu gagnes des points en fonction de la probabilité de la personnalité
+                        à décéder. En clair, plus tu prends de risques, plus tu as des chances de marquer beaucoup de
+                        points et de t'imposer !</p>
+                    <h3 class="dl-title pt-2">2. Comment jouer ?</h3>
+                    <p>Concrètement, tu as jusqu'au {{ endBet|localizeddate('medium', 'none') }} pour déposer dans
+                        l'interface prévue à cet effet les noms des 10 personnalités sur lesquelles tu paries. <strong>Tu
+                            disposes également d'un joker</strong> : pour l'une des personnalités (c'est toi qui choisis
+                        laquelle), tu peux doubler les points que tu gagneras en cas de décès de celle-ci.</p>
+                    <h3 class="dl-title pt-2">3. Décompte des points</h3>
+                    <p>Lorsqu'une personnalité décède, si tu as parié sur elle, tu gagnes la différence entre 100 et son
+                        âge. Explications : si une personnalité décède à l'âge de 91 ans, tu marqueras 9 points. En
+                        revanche, si elle décède à l'âge de 45 ans, tu marqueras 55 points. <strong>Tu l'as compris, il
+                            ne sert donc à rien de parier sur la mort de quelqu'un de plus de 100 ans.</strong> A celà
+                        s'ajoute ton joker qui, comme expliqué ci-dessus, te permet de doubler les points marqués pour
+                        une personnalité. Pour la faire en courte, si tu paries sur la mort de quelqu'un de très jeune
+                        et qu'en plus tu as mis ton joker dessus, tu peux tuer le game d'entrée !</p>
+                </div>
+            </div>
+        </div>
+    {% endblock %}

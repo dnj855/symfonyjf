@@ -1,0 +1,42 @@
+service_jf_challenge_dl:
+    resource: "@ServiceJFChallengeDLBundle/Resources/config/routing.yml"
+    prefix:   /dl
+
+service_jf_challenge_ps:
+    resource: "@ServiceJFChallengePSBundle/Resources/config/routing.yml"
+    prefix:   /ps
+
+service_jf_challenge_ci:
+    resource: "@ServiceJFChallengeCIBundle/Resources/config/routing.yml"
+    prefix:   /ci
+
+service_jf_migration:
+    resource: "@ServiceJFMigrationBundle/Resources/config/routing.yml"
+    prefix:   /migration
+
+service_jf_challenge_fg:
+    resource: "@ServiceJFChallengeFGBundle/Resources/config/routing.yml"
+    prefix:   /fg
+
+service_jf_admin:
+    resource: "@ServiceJFAdminBundle/Resources/config/routing.yml"
+    prefix:   /admin
+
+service_jf_core:
+    resource: "@ServiceJFCoreBundle/Resources/config/routing.yml"
+    prefix:   /
+
+fos_user_security:
+    resource: "@FOSUserBundle/Resources/config/routing/security.xml"
+
+fos_user_profile:
+    resource: "@FOSUserBundle/Resources/config/routing/profile.xml"
+    prefix: /profile
+
+fos_user_resetting:
+    resource: "@FOSUserBundle/Resources/config/routing/resetting.xml"
+    prefix: /resetting
+
+fos_user_change_password:
+    resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
+    prefix: /profile

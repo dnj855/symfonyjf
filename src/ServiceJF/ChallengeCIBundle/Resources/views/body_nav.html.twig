@@ -1,0 +1,17 @@
+<div class="sub-nav">
+    <div class="container">
+        <ul class="nav justify-content-end">
+            {% if is_granted('ROLE_CI') %}
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('servicejf_challengeci_newGuest') }}">Saisir un invité</a>
+            </li>
+            {% endif %}
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('servicejf_challengeci_homepage') }}">Voir les résultats</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('servicejf_challengeci_allguests') }}">Tous les invités</a>
+            </li>
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,13 @@
+servicejf_migration_step1:
+    path:    /
+    defaults: { _controller: ServiceJFMigrationBundle:Migration:FirstStep }
+
+servicejf_migration_step2:
+    path:    /{username}
+    defaults: { _controller: ServiceJFMigrationBundle:Migration:SecondStep }
+
+servicejf_migration_setAdmin:
+    path:    /setadmin/{username}
+    defaults: { _controller: ServiceJFMigrationBundle:Migration:SetAdmin}
+    requirements:
+       username: clhuillier|clangroth

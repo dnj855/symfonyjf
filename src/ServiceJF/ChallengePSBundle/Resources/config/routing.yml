@@ -1,0 +1,3 @@
+servicejf_challengeps_homepage:
+    path:     /
+    defaults: { _controller: ServiceJFChallengePSBundle:Core:bets }

@@ -1,0 +1,32 @@
+{% extends 'ServiceJFAdminBundle::layout.html.twig' %}
+
+{% block body_subtitle %}
+    dead list - {{ setBet.better.surname }} {{ setBet.better.name }}
+{% endblock %}
+
+{% block body_content %}
+    <div class="container">
+        <div class="row mt-4">
+            <div class="col-6 card card-body">
+                <div class="dl-title border border-primary border-top-0 border-right-0 border-left-0 mb-4">
+                    La liste des paris
+                </div>
+                <ul class="list-unstyled">
+                    <li>{{ setBet.bet1 }}</li>
+                    <li>{{ setBet.bet2 }}</li>
+                    <li>{{ setBet.bet3 }}</li>
+                    <li>{{ setBet.bet4 }}</li>
+                    <li>{{ setBet.bet5 }}</li>
+                    <li>{{ setBet.bet6 }}</li>
+                    <li>{{ setBet.bet7 }}</li>
+                    <li>{{ setBet.bet8 }}</li>
+                    <li>{{ setBet.bet9 }}</li>
+                    <li>{{ setBet.bet10 }}</li>
+                </ul>
+            </div>
+            <div class="col-6">
+                {{ form(form) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

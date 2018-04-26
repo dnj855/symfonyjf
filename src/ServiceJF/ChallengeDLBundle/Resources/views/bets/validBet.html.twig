@@ -1,0 +1,18 @@
+{% extends 'ServiceJFChallengeDLBundle::layout.html.twig' %}
+
+{% block body_subtitle %}voir ses paris{% endblock %}
+
+{% block body_content %}
+    <div class="col-12 dl-title mb-4 text-center border-primary border border-top-0 border-right-0 border-left-0">
+            Tes paris ont été enregistrés le {{ date|date('d/m à H:m') }} et sont en cours de validation par les administrateurs.<br/>
+        Tu pourras très bientôt consulter ceux des autres concurrents.
+    </div>
+    <div class="col-md-8 col-12 offset-md-2">
+        {% include 'ServiceJFChallengeDLBundle:bets:form.html.twig' %}
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('assets/js/dlNewAndSetbet.js') }}"></script>
+{% endblock%}

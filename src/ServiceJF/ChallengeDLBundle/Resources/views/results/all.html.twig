@@ -1,0 +1,55 @@
+{% extends ('ServiceJFChallengeDLBundle::layout.html.twig') %}
+
+{% block body_subtitle %}
+    les résultats
+{% endblock %}
+
+{% block body %}
+    <div class="container mt-4">
+        <div class="col-12 card card-body" id="ranking">
+            {% if points == 0 %}
+                <h3 class="dl-title py-1 my-0">Aucune personnalité n'est encore décédée, pas de classement général à
+                    proposer.</h3>
+            {% else %}
+                <h3 class="dl-title border border-primary border-top-0 border-left-0 border-right-0">
+                    Classement général
+                </h3>
+                {% for key, player in ranking %}
+                    <div class="d-flex justify-content-between">
+                        <span id="name">{{ key+1 }}. {{ player.better.surname }} {{ player.better.name }}</span>
+                        <span id="points">{{ player.points }} points</span>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div class="mt-3 card-deck" id="players">
+            {% for player in players %}
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="dl-title mb-0">
+                            {{ player.better.surname }} {{ player.better.name }}
+                        </h3>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-inline">
+                            {% for bet in player.bets %}
+                                <li class="list-inline-item{% if bet.joker == 1 %} dl-joker{% endif %}">
+                                    <span{% if bet.personality.dead == 1 %} class="dl-dead"{% endif %}>{{ bet.personality.surname }} {{ bet.personality.name }}</span>
+                                    {% if bet.personality.dead == 1 %}
+                                        <span class="small">
+                                        {% if bet.joker == 1 %}
+                                            ({{ (100 - bet.personality.age)*2 }} points)
+                                        {% else %}
+                                            ({{ 100 - bet.personality.age }} points)
+                                        {% endif %}
+                                        </span>
+                                    {% endif %}
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

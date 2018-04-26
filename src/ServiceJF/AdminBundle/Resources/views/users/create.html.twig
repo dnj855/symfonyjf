@@ -1,0 +1,33 @@
+{% extends 'ServiceJFAdminBundle::layout.html.twig' %}
+
+{% block body_subtitle %}
+    ajouter un participant
+{% endblock %}
+
+{% block body_content %}
+    <div class="container">
+        <div class="row pt-4">
+            <div class="col-sm-12 col-md-8 offset-md-4">
+                {{ form_start(form) }}
+                {{ form_row(form.surname) }}
+                {{ form_row(form.name) }}
+                {{ form_row(form.username) }}
+                {{ form_row(form.plainPassword) }}
+                {{ form_row(form.email) }}
+                {{ form_row(form.service) }}
+                {{ form_row(form.roles) }}
+                <div class="text-right">
+                    <div class="form-check">
+                        <label class="form-check-label">
+                            {{ form_widget(form.manager, { 'attr' : { 'class' : 'form-check-input'}}) }} Cadre
+                        </label>
+                    </div>
+                </div>
+
+                <div class="d-flex flex-row-reverse">
+                    {{ form_end(form) }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

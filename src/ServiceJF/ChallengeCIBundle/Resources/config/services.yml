@@ -1,0 +1,5 @@
+services:
+    servicejf_challengeci.update_points:
+        class: ServiceJF\ChallengeCIBundle\Ranking\UpdatePoints
+        arguments:
+            - '@doctrine.orm.entity_manager'

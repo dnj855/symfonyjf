@@ -1,0 +1,15 @@
+label:
+    studio: En studio ?
+    live: En direct ?
+    name: Nom de l'invité :
+    mandatory: PAD obligatoire ?
+    date: Date de l'interview :
+    setter: Calé par :
+    host: Interviewé par :
+
+yes: Oui
+no: Non
+
+submitButton:
+    submit: Enregistrer
+    modify: Modifier

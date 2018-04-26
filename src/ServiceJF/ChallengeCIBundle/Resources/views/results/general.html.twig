@@ -1,0 +1,26 @@
+{% extends "ServiceJFChallengeCIBundle::layout.html.twig" %}
+
+{% block body_subtitle %}
+    Class. général
+{% endblock %}
+
+{% block body_content %}
+    <div id="ranking">
+        <div class="border border-primary border-left-0 border-top-0 border-right-0">
+            <h4 class="ci-user mb-0">
+                Dernier invité saisi le {{ lastGuest.date|date("d/m/y") }}
+            </h4>
+        </div>
+        <div class="mt-3 card index-panel border-0">
+            <div class="card-body">
+                {% for rank in ranking %}
+                    <div>
+                        {{ loop.index }}. <a
+                                href="{{ path('servicejf_challengeci_results', { user : rank.user.id }) }}">{{ rank.user.surname }} {{ rank.user.name }}</a>
+                        : {{ rank.totalPoints }} points
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

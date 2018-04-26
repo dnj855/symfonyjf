@@ -1,0 +1,32 @@
+{% extends 'ServiceJFMigrationBundle::layout.html.twig' %}
+
+{% block body_subtitle %}
+    Remplir ses informations personnelles
+{% endblock %}
+
+{% block body %}
+    <div id="body">
+        <div class="container">
+            <div class="row pt-4 pb-2">
+                <div class="col-sm-12 col-md-6 offset-md-6">
+
+                    {{ form_start(form) }}
+                    {{ form_row(form.username) }}
+                    {{ form_row(form.plainPassword) }}
+                    <div class="form-group mb-2">
+                        {{ form_label(form.email) }}
+                        {{ form_widget(form.email) }}
+                        <small class="text-secondary form-help">Evidemment, nous n'en abuserons pas !</small>
+                        {{ form_errors(form.email) }}
+                    </div>
+                    <div class="d-flex flex-row-reverse">
+                        {{ form_widget(form.submit) }}
+                    </div>
+                    {{ form_rest(form) }}
+                    {{ form_end(form) }}
+
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
