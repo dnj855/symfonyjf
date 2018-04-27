@@ -12,7 +12,9 @@
 
 </head>
 <body>
+{% block top_nav %}
 {{ render(controller('ServiceJFCoreBundle:Core:navigation')) }}
+{% endblock %}
 <div id="header">
     <div class="container">
         {% block header_padding %}
@@ -20,7 +22,7 @@
             <div class="row py-3 text-md-left text-center align-items-center">
                 <div class="col-md-9 col-sm-12">
                     <h1 class="text-light">{% block body_title %}{% endblock %}</h1>
-                    <h2>{% block body_subtitle %}{% endblock %}</h2>
+                    <div class="h2 subtitle">{% block body_subtitle %}{% endblock %}</div>
                 </div>
                 <div class="col-md-3 col-sm-12">
                     {% for key, messages in app.session.flashbag.all() %}

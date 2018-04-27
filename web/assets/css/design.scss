@@ -66,6 +66,14 @@ body {
       line-height: 1.7rem;
     }
   }
+  
+  .subtitle {
+    font-size: 2em;
+    line-height: 1rem;
+    text-transform: uppercase;
+    background-color: $primary;
+    font-size-adjust: none;
+  }
 }
 
 #footer {

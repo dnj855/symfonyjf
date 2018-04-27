@@ -36,6 +36,8 @@ class CoreController extends Controller
     {
         if ($this->get('security.authorization_checker')->isGranted('ROLE_ADMIN')) {
             $waitingBets = $this->getDoctrine()->getRepository('ServiceJF\ChallengeDLBundle\Entity\GamePhase')->getNonCuratedBets();
+        } else {
+            $waitingBets = "";
         }
         $dlGamePhase = $this->get('servicejf_challengedl.gamePhase')->getGamePhase($this->getUser());
         $dlFrontEnd = $this->get('servicejf_challengedl.FrontEnd')

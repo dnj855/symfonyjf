@@ -45,6 +45,12 @@ body {
       #header h2 {
         font-size: 1.9em;
         line-height: 1.7rem; } }
+  #header .subtitle {
+    font-size: 2em;
+    line-height: 1rem;
+    text-transform: uppercase;
+    background-color: #80231f;
+    font-size-adjust: none; }
 
 #footer {
   background-color: #992a25; }
