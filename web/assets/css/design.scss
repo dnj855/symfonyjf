@@ -71,7 +71,8 @@ body {
     font-size: 2em;
     line-height: 1rem;
     text-transform: uppercase;
-    background-color: $primary;
+    background-color: $primary !important;
+    font-weight: bolder;
     font-size-adjust: none;
   }
 }
