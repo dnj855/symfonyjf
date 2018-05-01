@@ -45,7 +45,7 @@ class CoreController extends Controller
         $points = $this->get('servicejf_challengedl.pointsChecker')->checkPoints();
         $doctrine = $this->getDoctrine();
         $ranking = $doctrine->getRepository('ServiceJF\ChallengeDLBundle\Entity\GamePhase')->getRanking();
-        $players = $doctrine->getRepository('ServiceJF\ChallengeDLBundle\Entity\GamePhase')->findAll();
+        $players = $doctrine->getRepository('ServiceJF\ChallengeDLBundle\Entity\GamePhase')->findAllValidBets();
         return $this->render('ServiceJFChallengeDLBundle:results:all.html.twig', array(
             'points' => $points,
             'ranking' => $ranking,
