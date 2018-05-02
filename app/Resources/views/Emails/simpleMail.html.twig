@@ -1,0 +1,13 @@
+{% extends ':Emails:layout.html.twig' %}
+
+{% block title %}
+le service j&f: a un message
+{% endblock %}
+
+{% block subtitle %}
+bonjour {{ name }}
+{% endblock %}
+
+{% block content %}
+{{ content|nl2br }}
+{% endblock %}

@@ -34,11 +34,9 @@ servicejf_ciRedirect2:
     path:    /challenge-invit
     defaults: { _controller: ServiceJFCoreBundle:Core:ciRedirect }
 
-
 servicejf_ciRedirect3:
     path:    /challenge-inivite
     defaults: { _controller: ServiceJFCoreBundle:Core:ciRedirect }
-
 
 servicejf_ciRedirect4:
     path:    /invite

@@ -1,0 +1,19 @@
+{% extends ':Emails:layout.html.twig' %}
+
+{% block title %}
+    le service j&f: t'accueille
+{% endblock %}
+
+{% block subtitle %}
+    bienvenue {{ name }}
+{% endblock %}
+
+{% block content %}
+    <p>Tu peux maintenant découvrir les jeux et festivités que te réserve le portail exclusif du service j&f: !</p>
+    <p>Une seule adresse pour se connecter : <a href="http://www.servicejf.com">http://www.servicejf.com</a> !</p>
+    <p>Pour rappel, voici ton pseudo : <strong>{{ login }}</strong></p>
+    <p>En cas d'oubli de ton mot de passe, un formulaire se trouve disponible en page d'accueil pour le réinitialiser.</p>
+    <p></p>
+    <p>Maintenant, amuse-toi bien !</p>
+    <p align="right">Tes joyeux organisateurs</p>
+{% endblock %}

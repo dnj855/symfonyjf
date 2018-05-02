@@ -36,3 +36,16 @@ services:
         class: ServiceJF\ChallengeDLBundle\Ranking\UpdatePoints
         arguments:
             - '@doctrine.orm.entity_manager'
+
+    servicejf.mailer:
+        class: ServiceJF\CoreBundle\Mailer\Mailer
+        arguments:
+            - '@mailer'
+            - '@templating'
+
+    servicejf.doctrine_listener.new_user:
+        class: ServiceJF\CoreBundle\DoctrineListener\NewUserListener
+        arguments:
+            - '@servicejf.mailer'
+        tags:
+            - { name: doctrine.event_listener, event: postPersist }

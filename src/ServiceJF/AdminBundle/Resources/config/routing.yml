@@ -99,3 +99,7 @@ servicejf_admin_ps_disableBet:
     defaults: { _controller: ServiceJFAdminBundle:Ps:disableBet }
     requirements:
         bet: \d*
+
+servicejf_admin_mailer_newMail:
+    path:    /message/new
+    defaults: { _controller: ServiceJFAdminBundle:Mailer:newMail }
