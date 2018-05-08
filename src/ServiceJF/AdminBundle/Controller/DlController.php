@@ -66,6 +66,7 @@ class DlController extends Controller
                 ));
             $gamePhase->setCuratedBet(true);
             $em->flush($gamePhase);
+            $this->get('servicejf.mailer')->sendPsSetBetMail($gamePhase);
             $this->addFlash('success', 'Les paris ont été enregistrés.');
             return $this->redirectToRoute('servicejf_admin_dl_curateBets');
         }

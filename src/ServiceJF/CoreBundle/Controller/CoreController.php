@@ -57,4 +57,9 @@ class CoreController extends Controller
     {
         return $this->redirectToRoute('servicejf_challengeci_homepage');
     }
+
+    public function dlRedirectAction()
+    {
+        return $this->redirectToRoute('servicejf_challengedl_homepage');
+    }
 }

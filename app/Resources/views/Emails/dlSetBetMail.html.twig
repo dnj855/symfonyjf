@@ -1,0 +1,29 @@
+{% extends ':Emails:layout.html.twig' %}
+
+{% block title %}
+    challenge de la dead list
+{% endblock %}
+
+{% block subtitle %}
+    {{ user.surname }}, ta liste a été validée
+{% endblock %}
+
+{% block content %}
+    <p>Pour rappel, voici tes pronostics :</p>
+    <ul>
+        {% for bet in bets %}
+            <li>
+                {% if bet.personality.surname is not null %}
+                    {{ bet.personality.surname }}
+                {% endif %}
+                {{ bet.personality.name }}
+                {% if bet.joker == 1 %}
+                    <em>(joker)</em>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+    <p>Tu peux maintenant voir les dead lists des autres candidats. Elles sont toutes à cette adresse (avec le
+        classement du jeu également) : <a href="http://www.servicejf.com/dl">http://www.servicejf.com/dead-list</a></p>
+    <p align="right"><em>Tes joyeux organisateurs</em></p>
+{% endblock %}

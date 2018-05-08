@@ -41,3 +41,7 @@ servicejf_ciRedirect3:
 servicejf_ciRedirect4:
     path:    /invite
     defaults: { _controller: ServiceJFCoreBundle:Core:ciRedirect }
+
+servicejf_dlRedirect:
+    path:    /dead-list
+    defaults: { _controller: ServiceJFCoreBundle:Core:dlRedirect }
