@@ -65,7 +65,7 @@ class Mailer
         $this->mailer->send($message);
     }
 
-    public function sendPsSetBetMail(GamePhase $gamePhase)
+    public function sendDlSetBetMail(GamePhase $gamePhase)
     {
         $message = \Swift_Message::newInstance()
             ->setSubject('Ta dead list a été validée !')
