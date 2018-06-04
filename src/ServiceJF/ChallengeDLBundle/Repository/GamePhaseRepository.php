@@ -34,7 +34,7 @@ class GamePhaseRepository extends \Doctrine\ORM\EntityRepository
     public function findAllValidBets()
     {
         return $this->createQueryBuilder('g')
-            ->where('g.validBet = 1')
+            ->where('g.curatedBet = 1')
             ->getQuery()
             ->getResult();
     }

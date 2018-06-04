@@ -3425,7 +3425,7 @@ tbody.collapse.show {
   display: block;
   padding: 0.75rem 1.25rem;
   margin-bottom: -1px;
-  background-color: #fff;
+  background-color: #eac67a !important;
   border: 1px solid rgba(0, 0, 0, 0.125); }
   .list-group-item:first-child {
     border-top-left-radius: 0.25rem;
@@ -3438,7 +3438,7 @@ tbody.collapse.show {
     text-decoration: none; }
   .list-group-item.disabled, .list-group-item:disabled {
     color: #868e96;
-    background-color: #fff; }
+    background-color: #eac67a !important; }
   .list-group-item.active {
     z-index: 2;
     color: #fff;
@@ -3651,7 +3651,7 @@ button.close {
   display: flex;
   flex-direction: column;
   pointer-events: auto;
-  background-color: #fff;
+  background-color: #eac67a !important;
   background-clip: padding-box;
   border: 1px solid rgba(0, 0, 0, 0.2);
   border-radius: 0.3rem;

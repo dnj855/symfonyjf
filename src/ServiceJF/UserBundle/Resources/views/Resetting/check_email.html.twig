@@ -1,0 +1,16 @@
+{% extends 'ServiceJFUserBundle::layout.html.twig' %}
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% block body_subtitle %}
+    mot de passe
+{% endblock %}
+
+{% block top_nav %}
+{% endblock %}
+
+{% block fos_user_content %}
+    <p>
+        {{ 'resetting.check_email'|trans({'%tokenLifetime%': tokenLifetime})|nl2br }}
+    </p>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends ':Emails:layout.html.twig' %}
+
+{% block title %}
+    fichier gnou
+{% endblock %}
+
+{% block subtitle %}
+    {{ user }}, plus que quelques jours pour voter !
+{% endblock %}
+
+{% block content %}
+    <p>Dans {{ remainingTime|date("%d") }} jours, il sera trop tard pour voter pour le challenge du fichier gnou !</p>
+    <p>Il te reste encore {{ votes }} vote{% if votes > 1 %}s{% endif %} ! Alors
+        pour ne pas perdre de temps, rendez-vous sur <a
+                href="http://www.servicejf.com/fg">http://www.servicejf.com/fichier-gnou</a> pour remplir ton office !
+    </p>
+    <p><em>Et n'oublie pas, nous sommes là en cas de besoin et d'explications !</em></p>
+    <p align="right">Les joyeux organisateurs</p>
+{% endblock %}

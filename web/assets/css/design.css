@@ -293,4 +293,12 @@ label {
 .ps-panel-vote {
   width: 80%; }
 
+.cm18-title {
+  font-size: 20px;
+  font-family: "Brela", serif;
+  color: #80231f; }
+
+.hidden {
+  display: none; }
+
 /*# sourceMappingURL=design.css.map */

@@ -1,3 +1,6 @@
+rssatom:
+    resource: "@DebrilRssAtomBundle/Resources/config/routing.yml"
+
 service_jf_challenge_dl:
     resource: "@ServiceJFChallengeDLBundle/Resources/config/routing.yml"
     prefix:   /dl
@@ -40,3 +43,7 @@ fos_user_resetting:
 fos_user_change_password:
     resource: "@FOSUserBundle/Resources/config/routing/change_password.xml"
     prefix: /profile
+
+service_jf_challenge_cm18:
+    resource: "@ServiceJFChallengeCM18Bundle/Resources/config/routing.yml"
+    prefix:   /cm18
