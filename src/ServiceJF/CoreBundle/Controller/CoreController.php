@@ -8,10 +8,8 @@
 namespace ServiceJF\CoreBundle\Controller;
 
 
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 
 class CoreController extends Controller
@@ -23,8 +21,11 @@ class CoreController extends Controller
      */
     public function indexAction()
     {
+        if ($this->get('security.authorization_checker')->isGranted('ROLE_CM18_GUEST')) {
+            return $this->redirectToRoute('servicejf_cm18_homepage');
+        }
         $dlGamePhase = $this->get('servicejf_challengedl.gamePhase')->getGamePhase($this->getUser());
-        $dlFrontEnd = $this->get('servicejf_challengedl.FrontEnd')
+        $dlFrontEnd = $this->get('servicejf_challengedl.frontEnd')
             ->getHomeAndNavigation($dlGamePhase, $this->getParameter('dl_countdown'));
         return $this->render('ServiceJFCoreBundle::index.html.twig', array(
             'date' => New \DateTime(),
@@ -40,11 +41,13 @@ class CoreController extends Controller
             $waitingBets = "";
         }
         $dlGamePhase = $this->get('servicejf_challengedl.gamePhase')->getGamePhase($this->getUser());
-        $dlFrontEnd = $this->get('servicejf_challengedl.FrontEnd')
+        $dlFrontEnd = $this->get('servicejf_challengedl.frontEnd')
             ->getHomeAndNavigation($dlGamePhase, $this->getParameter('dl_countdown'));
+        $gamePhase = $this->get('servicejf_challengecm18.knockOutCalculator')->getGamePhase(new \DateTime());
         return $this->render('::navigation.html.twig', array(
             'curateBets' => $waitingBets,
-            'dlFrontEnd' => $dlFrontEnd
+            'dlFrontEnd' => $dlFrontEnd,
+            'knockOutGamePhase' => $gamePhase->getId()
         ));
     }
 

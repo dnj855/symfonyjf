@@ -1,0 +1,4 @@
+services:
+#    service_jf_challenge_cm18.example:
+#        class: ServiceJF\ChallengeCM18Bundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

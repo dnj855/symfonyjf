@@ -1,0 +1,57 @@
+servicejf_cm18_homepage:
+    path:     /
+    defaults: { _controller: ServiceJFChallengeCM18Bundle:Core:homepage }
+
+servicejf_cm18_poolDashboard:
+    path:    /pool/{pool}
+    defaults: { _controller: ServiceJFChallengeCM18Bundle:Core:poolDashboard }
+    requirements:
+        user: \d*
+
+servicejf_cm18_knockoutDashboard:
+    path:   /knockout/{gamePhase}
+    defaults: { _controller: ServiceJFChallengeCM18Bundle:Core:knockoutDashboard }
+    requirements:
+        gamePhase: \d*
+
+servicejf_cm18_setFinalWinner:
+    path:   /finalWinner
+    defaults: { _controller: ServiceJFChallengeCM18Bundle:Bet:finalWinner }
+
+servicejf_cm18_setPoolBet:
+    path:   /setPBet/{player}/{game}
+    defaults: { _controller: ServiceJFChallengeCM18Bundle:Bet:PoolGame }
+    requirements:
+        game: \d*
+        player: \d*
+    methods: [POST]
+
+servicejf_cm18_setKnockoutBet:
+    path:   /setKoBet/{player}/{game}
+    defaults: { _controller: ServiceJFChallengeCM18Bundle:Bet:KnockoutGame }
+    requirements:
+        game: \d*
+        player: \d*
+    methods: [POST]
+
+servicejf_cm18_ranking:
+    path:    /ranking
+    defaults: { _controller: ServiceJFChallengeCM18Bundle:Core:Ranking }
+
+servicejf_cm18_gamesDashboard:
+    path:    /games
+    defaults: { _controller: ServiceJFChallengeCM18Bundle:Core:GamesDashboard }
+
+servicejf_cm18_rankingDetails:
+    path:    /ranking/{player}
+    requirements:
+        player: \d*
+    defaults: { _controller: ServiceJFChallengeCM18Bundle:Core:RankingDetails }
+
+servicejf_cm18_nonRegisteredDashboard:
+    path:    /unregistered
+    defaults: { _controller: ServiceJFChallengeCM18Bundle:Core:Unregistered }
+
+servicejf_cm18_faq:
+    path:    /faq
+    defaults: { _controller: ServiceJFChallengeCM18Bundle:Core:Faq }

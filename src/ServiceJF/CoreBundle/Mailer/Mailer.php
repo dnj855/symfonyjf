@@ -11,6 +11,7 @@ namespace ServiceJF\CoreBundle\Mailer;
 use ServiceJF\ChallengeCM18Bundle\Entity\Player;
 use ServiceJF\ChallengeDLBundle\Entity\GamePhase;
 use ServiceJF\UserBundle\Entity\User;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 class Mailer
 {
@@ -18,10 +19,13 @@ class Mailer
 
     private $templating;
 
-    public function __construct(\Swift_Mailer $mailer, $templating)
+    private $container;
+
+    public function __construct(\Swift_Mailer $mailer, $templating, ContainerInterface $container)
     {
         $this->mailer = $mailer;
         $this->templating = $templating;
+        $this->container = $container;
     }
 
     public function sendSimpleMail(User $user, $content, $subject)
@@ -54,12 +58,20 @@ class Mailer
 
     public function sendNewCm18PlayerMail(User $user)
     {
+        $pointsFinalWinner = $this->container->getParameter('cm18_points_finalWinner');
+        $points1n2 = $this->container->getParameter('cm18_points_1n2');
+        $pointsPerfect = $this->container->getParameter('cm18_points_perfect');
+        $pointsKoWinner = $this->container->getParameter('cm18_points_koWinner');
         $message = \Swift_Message::newInstance()
             ->setSubject('Ton inscription au challenge du mondial 2018 est validée !')
             ->setFrom('contact@servicejf.com', 'Service J&F:')
             ->setTo($user->getEmail())
             ->setBody($this->templating->render('Emails/newCm18PlayerMail.html.twig', array(
-                'name' => $user->getSurname()
+                'name' => $user->getSurname(),
+                'points1n2' => $points1n2,
+                'pointsFinalWinner' => $pointsFinalWinner,
+                'pointsPerfect' => $pointsPerfect,
+                'pointsKoWinner' => $pointsKoWinner
             )), 'text/html');
 
         $this->mailer->send($message);
@@ -74,6 +86,24 @@ class Mailer
             ->setBody($this->templating->render('Emails/dlSetBetMail.html.twig', array(
                 'user' => $gamePhase->getBetter(),
                 'bets' => $gamePhase->getBets()
+            )), 'text/html');
+
+        $this->mailer->send($message);
+    }
+
+    public function sendFgReminderMail(User $user, $votes)
+    {
+        $now = new \DateTimeImmutable();
+        $endVotes = $now->modify('last day of this month');
+        $remainingTime = $now->diff($endVotes);
+        $message = \Swift_Message::newInstance()
+            ->setSubject('Plus que quelques jours pour voter !')
+            ->setFrom('contact@servicejf.com', 'Service J&F:')
+            ->setTo($user->getEmail())
+            ->setBody($this->templating->render('Emails/fgMonthlyReminder.html.twig', array(
+                'user' => $user->getSurname(),
+                'votes' => $votes,
+                'remainingTime' => $remainingTime
             )), 'text/html');
 
         $this->mailer->send($message);

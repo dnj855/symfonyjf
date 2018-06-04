@@ -1,0 +1,33 @@
+{% extends ':Emails:layout.html.twig' %}
+
+{% block title %}
+    challenge mondial 18
+{% endblock %}
+
+{% block subtitle %}
+    {{ name }}, place au jeu !
+{% endblock %}
+
+{% block content %}
+    <p>Ça y est, ton inscription au challenge du mondial 2018 est validée. Tu peux dès maintenant commencer à
+        pronostiquer sur les matchs à venir.</p>
+    <p>Pour cela, une seule adresse : <a href="http://www.servicejf.com/cm18">http://www.servicejf.com/cm18</a> !</p>
+    <p>Tu y trouveras toutes les infos nécessaires pour tes pronos (résultats des équipes, classements par poule,
+        etc.)</p>
+    <p><strong>Attention ! Il te faut encore sélectionner ton vainqueur final. Tu as jusqu'au coup d'envoi du premier
+            match du mondial pour le faire.</strong></p>
+    <p style="text-decoration: underline">Deux règles de base (tu ne pourras pas dire que tu ne savais pas) :</p>
+    <p>- tous les pronostics sont ouverts jusqu'au coup d'envoi de chaque match.</p>
+    <p>- lors des matchs à élimination directe, le score à pronostiquer est celui <strong>à l'issue du temps
+            réglementaire</strong>.</p>
+    <p style="text-decoration: underline">Rappel du décompte des points :</p>
+    <p>Le bon vainqueur final rapporte <strong>{{ pointsFinalWinner }} points bonus</strong>.</p>
+    <p>Pour chaque match, le bon vainqueur (1N2) rapporte <strong>{{ points1n2 }} points</strong>.</p>
+    <p>Pour chaque match, si tu as le bon score, tu remportes <strong>{{ pointsPerfect }} points</strong>.</p>
+    <p>Lors des matchs à élimination directe, en cas de match nul à l'issue du temps réglementaire ou des prolongations
+        et que tu l'avais pronostiqué, si tu as le bon vainqueur, tu gagnes <strong>{{ pointsKoWinner }} points</strong>.
+    </p>
+    <p>Voilà, tu as toutes les cartes en main, à toi de jouer maintenant !</p>
+    <p><em>Et n'oublie pas, nous sommes là en cas de besoin et d'explications !</em></p>
+    <p align="right">Les joyeux organisateurs</p>
+{% endblock %}

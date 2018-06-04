@@ -1,0 +1,82 @@
+{% extends 'ServiceJFChallengeCM18Bundle::layout.html.twig' %}
+
+{% block body_subtitle %}
+    phase de poules
+{% endblock %}
+
+{% block body_content %}
+    <div class="row mb-3">
+        <div class="col-2">
+            {% for pool in pools %}
+                <a class="btn btn-primary btn-block text-light{% if pool.id == activePool.id %} active{% endif %}
+{% if not loop.last %} mb-3{% endif %}"
+                   href={{ path('servicejf_cm18_poolDashboard', { 'pool' : pool.id }) }}>{{ pool.displayName }}</a>
+            {% endfor %}
+        </div>
+        <div class="col-10">
+            <div class="row">
+                <div class="col-12">
+                    <h3 class="text-primary">
+                        {{ activePool.displayName }}
+                    </h3>
+                    <table class="table table-responsive-md table-sm mt-2">
+                        <thead>
+                        <tr class="bg-secondary text-light">
+                            <th scope="col"></th>
+                            <th scope="col"></th>
+                            <th scope="col"><abbr title="Joués">MJ</abbr></th>
+                            <th scope="col"><abbr title="Gagnés">G</abbr></th>
+                            <th scope="col"><abbr title="Nuls">N</abbr></th>
+                            <th scope="col"><abbr title="Perdus">P</abbr></th>
+                            <th scope="col"><abbr title="Buts pour">BP</abbr></th>
+                            <th scope="col"><abbr title="Buts contre">BC</abbr></th>
+                            <th scope="col"><abbr title="Différence de buts">+/-</abbr></th>
+                            <th scope="col"><abbr title="Points">Pts</abbr></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for team in teams %}
+                            <tr class="bg-primary text-light">
+                                <td>{{ loop.index }}.</td>
+                                <td><span class="flag-icon flag-icon-{{ team.flag }}"></span> {{ team.name }}
+                                </td>
+                                <td>{{ team.playedGames }}</td>
+                                <td>{{ team.won }}</td>
+                                <td>{{ team.draw }}</td>
+                                <td>{{ team.lost }}</td>
+                                <td>{{ team.goalsFor }}</td>
+                                <td>{{ team.goalsAgainst }}</td>
+                                <td>{{ team.goalAverage }}</td>
+                                <td>{{ team.points }}</td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 col-md-8">
+                    {% for game in games %}
+                        <div{% if loop.last == false %} class="mb-2"{% endif %}>
+                            {{ render(controller('ServiceJFChallengeCM18Bundle:Bet:poolGame', { 'game' : game, 'player' : player })) }}
+                        </div>
+                    {% else %}
+                        <div class="card card-body text-primary border-primary">
+                            Aucun match encore renseigné dans cette poule.
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="col-12 col-md-4">
+                    <div class="card border-primary">
+                        <div class="card-header text-primary py-1">
+                            Les dernières infos du mondial
+                        </div>
+                        <div class="card-body pt-2 pb-0">
+                            {{ render(controller('ServiceJFChallengeCM18Bundle:Core:newsFeed')) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -28,6 +28,9 @@ class NewUserListener
         if (!$entity instanceof User) {
             return;
         }
+        if ($entity->hasRole('ROLE_CM18_GUEST')) {
+            return;
+        }
 
         $this->mailer->sendNewUserMail($entity);
     }

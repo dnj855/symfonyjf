@@ -7,7 +7,18 @@ imports:
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: fr
-    dl_countdown: 15-05-2018
+    dl_countdown: '15-05-2018 23:59:59'
+    cm18_betValue: 5
+    cm18_worldCupBegin: '2018-06-14 17:00:00'
+    cm18_endPoolPhase: '2018-06-29 00:00:00'
+    cm18_endRoundOf16: '2018-07-04 00:00:00'
+    cm18_endQuarterFinals: '2018-07-08 00:00:00'
+    cm18_endSemiFinals: '2018-07-12 00:00:00'
+    cm18_endLittleFinal: '2018-07-14 20:00:00'
+    cm18_points_1n2: 3
+    cm18_points_perfect: 2
+    cm18_points_finalWinner: 10
+    cm18_points_koWinner: 2
 
 framework:
     #esi: ~

@@ -1,0 +1,11 @@
+<div class="card card-body pb-1 pt-2 align-items-center justify-content-center border-primary">
+    <div class="row">
+        {{ form_start(form, { 'attr' : { 'class' : 'form-inline'}}) }}
+        <div class="d-flex align-items-baseline">
+            {{ form_row(form.finalBet, { 'attr' : { 'class' : 'ml-2 mr-2 form-control'}}) }}
+            {{ form_row(form.submit, { 'attr' : { 'class' : 'btn btn-primary text-light'}}) }}
+            {{ form_rest(form) }}
+            {{ form_end(form) }}
+        </div>
+    </div>
+</div>

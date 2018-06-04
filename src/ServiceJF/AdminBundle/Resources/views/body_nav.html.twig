@@ -42,6 +42,15 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{ path('servicejf_admin_ps') }}">Paris sûrs</a>
             </li>
+            <li class="nav-item dropdown">
+                <a class="dropdown-toggle nav-link" data-toggle="dropdown" href="#" role="button"
+                   aria-haspopup="true"
+                   aria-expanded="false">Mondial 2018</a>
+                <div class="dropdown-menu sub-nav-dropdown">
+                    <a class="dropdown-item" href="{{ path('servicejf_admin_cm18_addPlayers') }}">Ajouter un joueur</a>
+                    <a class="dropdown-item" href="{{ path('servicejf_admin_cm18_editGames') }}">Enregistrer un score</a>
+                </div>
+            </li>
         </ul>
     </div>
 </div>

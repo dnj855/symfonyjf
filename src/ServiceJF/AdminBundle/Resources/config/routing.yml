@@ -103,3 +103,39 @@ servicejf_admin_ps_disableBet:
 servicejf_admin_mailer_newMail:
     path:    /message/new
     defaults: { _controller: ServiceJFAdminBundle:Mailer:newMail }
+
+servicejf_admin_cm18_createPool:
+    path:    /cm18/pool/create
+    defaults: { _controller: ServiceJFAdminBundle:Cm18:createPool }
+
+servicejf_admin_cm18_createGamePhase:
+    path:    /cm18/gamePhase/create
+    defaults: { _controller: ServiceJFAdminBundle:Cm18:createGamePhase }
+
+servicejf_admin_cm18_createTeam:
+    path:    /cm18/team/create
+    defaults: { _controller: ServiceJFAdminBundle:Cm18:createTeam }
+
+servicejf_admin_cm18_createGame:
+    path:    /cm18/games/create
+    defaults: { _controller: ServiceJFAdminBundle:Cm18:createGame }
+
+servicejf_admin_cm18_addPlayers:
+    path:    /cm18/player/add
+    defaults: { _controller: ServiceJFAdminBundle:Cm18:addPlayers }
+
+servicejf_admin_cm18_addPlayer:
+    path:    /cm18/player/add/{user}
+    defaults: { _controller: ServiceJFAdminBundle:Cm18:addPlayer }
+    requirements:
+        user: \d*
+
+servicejf_admin_cm18_editGame:
+    path:    /cm18/games/edit/{game}
+    defaults: { _controller: ServiceJFAdminBundle:Cm18:editGame }
+    requirements:
+        user: \d*
+
+servicejf_admin_cm18_editGames:
+    path:    /cm18/games/edit
+    defaults: { _controller: ServiceJFAdminBundle:Cm18:editGames }

@@ -1,0 +1,43 @@
+{% extends 'ServiceJFChallengeCM18Bundle::layout.html.twig' %}
+
+{% block body_subtitle %}
+    {{ player.identity.surname }} {{ player.identity.name }}
+{% endblock %}
+
+{% block body_content %}
+    <div class="row mb-4">
+        <div class="col-2">
+            <a class="btn btn-primary btn-block text-light" href={{ path('servicejf_cm18_ranking') }}><i
+                        class="fas fa-chevron-left"></i> classement</a>
+        </div>
+        <div class="col-10">
+            <div class="d-flex justify-content-between border border-primary border-top-0 border-right-0 border-left-0">
+                <h4 class="cm18-title">{% transchoice player.perfect %}{0} 0 perfect|{1} 1 perfect|]1,Inf] %count% perfects{% endtranschoice %}</h4>
+                <h4 class="cm18-title">{% transchoice player.points %}{0} 0 point|{1} 1 point|]1,Inf] %count% points{% endtranschoice %}</h4>
+            </div>
+            <table class="table table-responsive-md table-sm mt-2">
+                <thead>
+                <tr class="bg-secondary text-light">
+                    <th></th>
+                    <th>Score</th>
+                    <th>Pronostic</th>
+                    <th>Résultat</th>
+                    <th>Perfect</th>
+                    <th>Points</th>
+                </tr>
+                </thead>
+                {% for game in games %}
+                    <tr class="bg-primary text-light">
+                        <td>{{ game.teamHome.name }} - {{ game.teamAway.name }}</td>
+                        <td>{{ game.scoreHome }} - {{ game.scoreAway }}</td>
+                        {{ render(controller('ServiceJFChallengeCM18Bundle:Core:betDetail', { 'game' : game, 'player' : player } )) }}
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td>Aucun pari enregistré par ce joueur.</td>
+                    </tr>
+                {% endfor %}
+            </table>
+        </div>
+    </div>
+{% endblock %}

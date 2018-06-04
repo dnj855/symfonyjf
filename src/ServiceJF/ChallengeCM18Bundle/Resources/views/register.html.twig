@@ -1,0 +1,25 @@
+{% extends 'ServiceJFChallengeCM18Bundle::layout.html.twig' %}
+
+{% block body_subtitle %}
+    inscription nécessaire
+{% endblock %}
+
+{% block body_nav %}
+{% endblock %}
+
+{% block body_content %}
+    <div class="row">
+        <div class="col-8 offset-4">
+            <h3 class="ci-user border-primary border border-left-0 border-right-0 border-top-0 mb-4">
+                Accès limité
+            </h3>
+            <p>
+                Pour pouvoir participer à ce challenge, une participation de {{ betValue }}€ est demandée. L'ensemble
+                des
+                gains sera bien évidemment reversé aux gagnants. Ainsi, il faut d'abord te rapprocher de Clément ou
+                Cédric
+                pour pouvoir valider ton inscription.
+            </p>
+        </div>
+    </div>
+{% endblock %}

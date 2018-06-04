@@ -1,0 +1,35 @@
+{% extends 'ServiceJFAdminBundle::layout.html.twig' %}
+
+{% block body_subtitle %}
+    mondial 2018
+{% endblock %}
+
+{% block body_content %}
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-4">
+                {% for pool in pools %}
+                    <div class="card mb-3">
+                        <div class="card-header text-primary">
+                            {{ pool.displayName }}
+                        </div>
+                        <div class="card-body">
+                            {% if pool.teams is empty %}
+                                Aucune équipe encore créée dans cette poule.
+                            {% else %}
+                                <ul class="list-unstyled mb-0">
+                                {% for team in pool.teams %}
+                                    <li>{{ team.name }}</li>
+                                {% endfor %}
+                                </ul>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="col-8">
+                {{ form(form) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,2 @@
+points: "[0,1]%count% point|[2,+Inf]%count% points"
+perfects: "[0,1]%count% perfect|[2,+Inf]%count% perfects"

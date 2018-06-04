@@ -1,0 +1,42 @@
+{% extends 'ServiceJFAdminBundle::layout.html.twig' %}
+
+{% block body_subtitle %}
+    mondial 2018
+{% endblock %}
+
+{% block body_content %}
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-8 offset-4">
+                {{ form_start(form) }}
+                <div class="mb-2 d-flex justify-content-center align-items-center">
+                    <div class="mr-2">
+                        {{ game.teamHome.name }}
+                    </div>
+                    <div class="col-7 mr-2">
+                        {{ form_widget(form.scoreHome) }}
+                    </div>
+                    {% if form.winner is defined %}
+                        <div>
+                            {{ form_widget(form.winner[0]) }}
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="mb-2 d-flex justify-content-center align-items-center">
+                    <div class="mr-2">{{ game.teamAway.name }}
+                    </div>
+                    <div class="col-7 mr-2">{{ form_widget(form.scoreAway) }}
+                    </div>
+                    {% if form.winner is defined %}
+                        <div>
+                            {{ form_widget(form.winner[1]) }}
+                        </div>
+                    {% endif %}</div>
+                <div align="right">
+                    {{ form_widget(form.submit, { 'label' : 'Enregistrer'}) }}
+                    {{ form_rest(form) }}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,47 @@
+{% extends 'ServiceJFChallengeCM18Bundle::layout.html.twig' %}
+
+{% block body_subtitle %}
+    {{ phase.name }}
+{% endblock %}
+
+{% block body_content %}
+    <div class="row">
+        <div class="col-2">
+            {% for gamePhase in gamePhases %}
+                <a class="btn btn-primary btn-block text-light{% if gamePhase.id == phase.id %} active{% endif %}
+{% if not loop.last %} mb-3{% endif %}"
+                   href={{ path('servicejf_cm18_knockoutDashboard', { 'gamePhase' : gamePhase.id }) }}>{{ gamePhase.name }}</a>
+            {% endfor %}
+        </div>
+        <div class="col-10">
+            <div class="row">
+                <div class="col-7">
+                    {% for game in games %}
+                        <div{% if loop.last == false %} class="mb-2"{% endif %}>
+                            {{ render(controller('ServiceJFChallengeCM18Bundle:Bet:knockoutGame', { 'game' : game, 'player' : player })) }}
+                        </div>
+                    {% else %}
+                        <h4 class="cm18-title" align="center">
+                            Cette phase de jeu n'a pas encore débuté. Reviens plus tard.
+                        </h4>
+                    {% endfor %}
+                </div>
+                <div class="col-5">
+                    <div class="card border-primary">
+                        <div class="card-header text-primary py-1">
+                            Les dernières infos du mondial
+                        </div>
+                        <div class="card-body pt-2 pb-0">
+                            {{ render(controller('ServiceJFChallengeCM18Bundle:Core:newsFeed')) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('assets/js/cm18KnockoutGames.js') }}"></script>
+{% endblock %}

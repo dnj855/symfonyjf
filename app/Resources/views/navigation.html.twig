@@ -13,6 +13,16 @@
                         <div class="navbar-nav mr-auto">
                             <div class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"
+                                   aria-haspopup="true" aria-expanded="false">Mondial 2018</a>
+                                <div class="dropdown-menu">
+                                    <a href="{{ path('servicejf_cm18_homepage') }}"
+                                       class="rounded dropdown-item">Jouer</a>
+                                    <a href="{{ path('servicejf_cm18_faq') }}"
+                                       class="rounded dropdown-item">Règlement</a>
+                                </div>
+                            </div>
+                            <div class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"
                                    aria-haspopup="true" aria-expanded="false">Invité</a>
                                 <div class="dropdown-menu">
                                     {% if is_granted('ROLE_CI') %}

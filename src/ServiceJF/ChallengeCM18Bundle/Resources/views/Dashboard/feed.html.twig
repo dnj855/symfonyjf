@@ -1,0 +1,12 @@
+{% if exception is defined %}
+    <div class="mb-2">
+        {{ exception }}
+    </div>
+{% else %}
+    {% for news in feed %}
+        <div{% if not loop.last %} class="mb-2"{% endif %}>
+            <a href="{{ news.link }}" target="_blank"><strong class="text-primary">{{ news.title }}</strong></a>
+            {{ news.description|raw }}
+        </div>
+    {% endfor %}
+{% endif %}

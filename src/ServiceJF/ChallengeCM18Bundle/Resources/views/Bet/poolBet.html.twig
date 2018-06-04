@@ -1,0 +1,38 @@
+<div class="card border-primary">
+    <div class="card-header text-primary my-0 py-1">
+        <div class="d-flex justify-content-between">
+            <span>{{ game.date|localizeddate('short', 'short') }}</span>
+            <span>{{ game.gamePhase.name }}</span>
+        </div>
+    </div>
+    <div class="card-body py-2 px-2">
+        {{ form_start(form) }}
+        <div class="row mb-2">
+            <div class="col-4 align-items-end pt-1" align="right">
+                <span class="flag-icon flag-icon-{{ game.teamHome.flag }}"></span>&nbsp;{{ game.teamHome.name }}
+                {% if betOdds.betsHome is not null %}
+                    <span class="badge badge-primary badge-pill text-light">{{ betOdds.betsHome|round(1) }}</span>
+                {% endif %}
+            </div>
+            <div class="col-2 align-items-end">
+                {{ form_widget(form.betHome) }}
+            </div>
+            <div class="col-2 align-items-end">
+                {{ form_widget(form.betAway) }}
+            </div>
+            <div class="col-4 align-items-end pt-1">
+                {% if betOdds.betsAway is not null %}
+                    <span class="badge badge-primary badge-pill text-light">{{ betOdds.betsAway|round(1) }}</span>
+                {% endif %}
+                {{ game.teamAway.name }}&nbsp;<span class="flag-icon flag-icon-{{ game.teamAway.flag }}"></span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 d-flex justify-content-center">
+                {{ form_widget(form.submit, { 'attr' : { 'class' : 'btn btn-sm btn-primary text-light' }}) }}
+            </div>
+        </div>
+        {{ form_rest(form) }}
+        {{ form_end(form) }}
+    </div>
+</div>

@@ -1,0 +1,93 @@
+{% extends '::layout.html.twig' %}
+
+{% block title %}
+    mondial 2018
+{% endblock %}
+
+{% block css %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('assets/css/flag-icon.min.css') }}">
+{% endblock %}
+
+
+       {% block top_nav %}
+           {% if is_granted('ROLE_CM18_GUEST') %}
+               <div id="top-navigation">
+                   <div class="container">
+                       <div class="row">
+                           <nav class="navbar navbar-dark navbar-expand-lg" role="navigation">
+                               <a class="navbar-brand text-primary">Service j&f:</a>
+                               <button class="navbar-toggler" type="button" data-toggle="collapse"
+                                       data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                                       aria-expanded="false" aria-label="Toggle navigation">
+                                   <span class="navbar-toggler-icon"></span>
+                               </button>
+                               <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                   <div class="navbar-nav mr-auto">
+                                   </div>
+                                   <div class="navbar-nav">
+                                       <div class="nav-item">
+                                           <a class="nav-link" href="{{ path('fos_user_security_logout') }}">Se
+                                               déconnecter</a>
+                                       </div>
+                                   </div>
+                               </div>
+                           </nav>
+                       </div>
+                   </div>
+               </div>
+           {% else %}
+               {{ render(controller('ServiceJFCoreBundle:Core:navigation')) }}
+           {% endif %}
+       {% endblock %}
+
+{% block header_padding %}
+<div class="py-md-4">
+    {% endblock %}
+
+    {% block body_title %}
+        mondial 2018
+    {% endblock %}
+
+    {% block body %}
+    {% block body_nav %}
+    {% if unregistered is not defined %}
+        {{ render(controller('ServiceJFChallengeCM18Bundle:Core:navigation')) }}
+        {% endif %}
+    {% endblock %}
+    <div class="container mt-4">
+        {% if dashboard is defined %}
+        <div class="row mb-4">
+            <div class="col">
+                <div class="card-deck">
+                    {{ render(controller('ServiceJFChallengeCM18Bundle:Bet:finalWinner')) }}
+                    <div class="card card-body pb-1 pt-2 border-primary">
+                        <div class="row d-flex justify-content-center align-items-center">
+                            <div class="col-12">
+                                <h5 class="text-primary" align="center">Récompenses :</h5>
+                            </div>
+                        </div>
+                        <div class="row d-flex justify-content-center align-items-center">
+                            <div class="col-md" align="center">
+                                1. <br/>
+                                <strong><span class="text-primary">{{ prizeMoney.first|round(2, 'ceil') }}€ + une AppleTV</span></strong>
+                            </div>
+                            <div class="col-md" align="center">
+                                2. <br/>
+                                <strong><span class="text-primary">{{ prizeMoney.second|round(2, 'ceil') }}€</span></strong>
+                            </div>
+                            <div class="col-md" align="center">
+                                3. <br/>
+                                <strong><span class="text-primary">{{ prizeMoney.third|round(2, 'ceil') }}€</span></strong>
+                            </div>
+                        </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+    {% block body_content %}
+    {% endblock %}
+</div>
+{% endblock %}

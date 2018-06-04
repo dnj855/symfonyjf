@@ -1,0 +1,24 @@
+<div class="sub-nav">
+    <div class="container">
+        <ul class="nav justify-content-end">
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('servicejf_cm18_gamesDashboard') }}">Tous les matchs</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('servicejf_cm18_poolDashboard', { 'pool' : 1 }) }}">Phase de
+                    poules</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link"
+                   href="{{ path('servicejf_cm18_knockoutDashboard', { 'gamePhase' : knockOutGamePhase }) }}">Matchs à
+                    élimination directe</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('servicejf_cm18_ranking') }}">Classement général</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ path('servicejf_cm18_faq') }}">Règlement</a>
+            </li>
+        </ul>
+    </div>
+</div>

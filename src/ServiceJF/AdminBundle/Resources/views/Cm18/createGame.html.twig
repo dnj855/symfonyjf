@@ -1,0 +1,41 @@
+{% extends 'ServiceJFAdminBundle::layout.html.twig' %}
+
+{% block body_subtitle %}
+    mondial 2018
+{% endblock %}
+
+{% block body_content %}
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-8 offset-4">
+                <div class="row">
+                    <div class="col-2">
+                        {{ form_start(form) }}
+                        {{ form_row(form.fifaNumber) }}
+                    </div>
+                    <div class="col-5">
+                        {{ form_row(form.teamHome) }}
+                    </div>
+                    <div class="col-5">
+                        {{ form_row(form.teamAway) }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-3">
+                        {{ form_row(form.gamePhase) }}
+                    </div>
+                    <div class="col-9">
+                        {{ form_row(form.date) }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 justify-content-end">
+                        {{ form_widget(form.submit, { 'label' : 'Créer' }) }}
+                    </div>
+                </div>
+                {{ form_rest(form) }}
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,110 @@
+<div class="card border-primary">
+    <div class="card-header text-primary my-0 py-1">
+        <div class="d-flex justify-content-between align-items-baseline">
+            <span>{{ game.date|localizeddate('short', 'short') }}</span>
+            <span>{{ game.gamePhase.name }}</span>
+        </div>
+    </div>
+    <div class="card-body py-2 px-2">
+        <div class="row mb-2">
+            <div class="col-5 align-items-center pt-1" align="right">
+                {% if game.teamHome is not null %}
+                    {% if game.scoreHome is not null and game.winner == 'home' %}
+                        <span class="text-primary"> <span
+                                    class="flag-icon flag-icon-{{ game.teamHome.flag }}"></span>&nbsp;{{ game.teamHome.name }}
+                        </span>
+                    {% else %}
+                        <span class="flag-icon flag-icon-{{ game.teamHome.flag }}"></span>&nbsp;{{ game.teamHome.name }}
+                    {% endif %}
+                {% else %}
+                    <small>(équipe à déterminer)</small>
+                {% endif %}
+            </div>
+            {% if game.scoreHome is not null %}
+                <div class="col-1 align-items-center pt-1" align="center">
+                    <strong>{{ game.scoreHome }}</strong>
+                </div>
+                <div class="col-1 align-items-center pt-1" align="center">
+                    <strong>{{ game.scoreAway }}</strong>
+                </div>
+            {% else %}
+                <div class="col-2 align-items-center pt-1" align="center">
+                    -
+                </div>
+            {% endif %}
+            <div class="col-5 align-items-center pt-1">
+                {% if game.teamAway is not null %}
+                    {% if game.scoreHome is not null and game.winner == 'away' %}
+                        <span class="text-primary">{{ game.teamAway.name }}&nbsp;<span
+                                    class="flag-icon flag-icon-{{ game.teamAway.flag }}"></span></span>
+                    {% else %}
+                        {{ game.teamAway.name }}&nbsp;<span class="flag-icon flag-icon-{{ game.teamAway.flag }}"></span>
+                    {% endif %}
+                {% else %}
+                    <small>(équipe à déterminer)</small>
+                {% endif %}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 d-flex justify-content-center">
+                {% if bet is defined %}
+                    <small>
+                        <em>
+                            {% if bet.betHome is not null %}
+                                Pour rappel, ton prono : {{ bet.betHome }} - {{ bet.betAway }}
+                                {% if bet.betHome == bet.betAway %}
+                                    {% if bet.winner == 'home' %}
+                                        ({{ game.teamHome.name }})
+                                    {% else %}
+                                        ({{ game.teamAway.name }})
+                                    {% endif %}
+                                {% endif %}
+                            {% else %}
+                                Tu n'as pas enregistré de prono pour cette partie.
+                            {% endif %}
+                        </em>
+                    </small>
+                    <div class="small ml-2"><a href="#" data-toggle="modal" data-target="#bets{{ game.id }}">Voir tous
+                            les pronos
+                            de ce match</a></div>
+                    <div class="modal fade" id="bets{{ game.id }}" tabindex="-1" role="dialog"
+                         aria-labelledby="bets{{ game.id }}Label" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="bets{{ game.id }}Label">{{ game.teamHome.name }}
+                                        - {{ game.teamAway.name }}</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <ul class="list-group list-group-flush">
+                                        {% for savedBet in game.bets %}
+                                            <li class="list-group-item">
+                                                <strong class="text-primary">{{ savedBet.player.identity.surname }} {{ savedBet.player.identity.name }}
+                                                    :</strong> {{ savedBet.betHome }} - {{ savedBet.betAway }}
+                                                {% if savedBet.betHome == savedBet.betAway %}
+                                                    {% if savedBet.winner == 'home' %}
+                                                        ({{ game.teamHome.name }})
+                                                    {% else %}
+                                                        ({{ game.teamAway.name }})
+                                                    {% endif %}
+                                                {% endif %}</li>
+                                        {% endfor %}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% elseif gamesDashboard is defined and now < game.date and game.teamHome is not null and game.teamAway is not null %}
+                    <a class="btn btn-primary btn-sm text-light"
+                       href="{{ path('servicejf_cm18_knockoutDashboard', { 'gamePhase' : game.gamePhase.id }) }}">
+                        Pronostiquer
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+
+    </div>
+</div>

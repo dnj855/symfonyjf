@@ -1,0 +1,160 @@
+{% extends 'ServiceJFChallengeCM18Bundle::layout.html.twig' %}
+
+{% block body_subtitle %}
+    règlement
+{% endblock %}
+
+{% block body_content %}
+    <div class="row">
+        <div class="col-12">
+            <dl class="row">
+                <dt class="col-1">
+                    <h4 class="ci-user mb-2">1.</h4>
+                </dt>
+                <dd class="col-11">
+                    <h4 class="ci-user mb-2">Présidence d'honneur</h4>
+                    <p class="mb-1">Les organisateurs du concours désignent Thomas Jeangeorge comme président d'honneur
+                        du
+                        concours.</p>
+                </dd>
+                <dt class="col-1">
+                    <h4 class="ci-user mb-2">2.</h4>
+                </dt>
+                <dd class="col-11">
+                    <h4 class="ci-user mb-2">Participation au concours</h4>
+                    <p class="mb-1">Peuvent participer au concours tous les salariés et collaborateurs occasionnels de
+                        France Bleu
+                        Lorraine Nord, ainsi que des personnalités invitées par les organisateurs. Les frais de
+                        participation sont de {{ betValue }}€, ils seront intégralement reversés aux vainqueurs selon
+                        les modalités définies aux articles 6 et 7 du présent règlement. Ces frais ne sont pas
+                        remboursables. La date limite d'inscription est fixée
+                        au {{ worldCupBegin|localizeddate('medium', 'short') }}.</p>
+                    <p class="mb-1">À compter de la validation de son inscription, chaque candidat dispose d'un accès
+                        personnalisé au
+                        concours sur le portail exclusif du service j&f: (<a href="http://www.servicejf.com/cm18">http://www.servicejf.com/cm18</a>).
+                        Il y trouvera tous les outils nécessaires pour réaliser ses pronostics.</p>
+                </dd>
+                <dt class="col-1">
+                    <h4 class="ci-user mb-2">3.</h4>
+                </dt>
+                <dd class="col-11">
+                    <h4 class="ci-user mb-2">Rencontres soumises à pronostics</h4>
+                    <p class="mb-1">Sont soumises aux pronostics les rencontres suivantes : les 48 matchs de poule, les
+                        8 huitièmes
+                        de finale, les 4 quarts de finale, les 2 demi-finales, la petite finale et la finale.</p>
+                </dd>
+                <dt class="col-1">
+                    <h4 class="ci-user mb-2">4.</h4>
+                </dt>
+                <dd class="col-11">
+                    <h4 class="ci-user mb-2">Principe de pronostics</h4>
+                    <p class="mb-1">Avant le début de la coupe du Monde FIFA 2018 (soit
+                        le {{ worldCupBegin|localizeddate('medium', 'short') }}), chaque participant pronostique le
+                        vainqueur final du tournoi.</p>
+                    <p class="mb-1">Pour les 48 matchs de poule, les participants doivent soumettre leur pronostic
+                        complet :
+                        vainqueur (ou nul) et score.</p>
+                    <p class="mb-1">Pour les 16 matchs des phases finales, les participants doivent soumettre le
+                        pronostic suivant :
+                        équipe qui se qualifie, score à l'issue du temps réglementaire ou à l'issue de la prolongation
+                        le cas échéant.</p>
+                    <p class="mb-1">Pour chaque rencontre, le pronostic doit être enregistré dans la plateforme de
+                        concours avant le
+                        coup d'envoi. Attention : aucun e-mail de rappel ne sera envoyé durant le concours !</p>
+                </dd>
+                <dt class="col-1">
+                    <h4 class="ci-user mb-2">5.</h4>
+                </dt>
+                <dd class="col-11">
+                    <h4 class="ci-user mb-2">Attribution des points</h4>
+                    <p class="mb-2">À la fin du concours,
+                        jusqu'à {{ ((points1n2 + pointsPerfect) * 48) + ((points1n2 + pointsPerfect + pointsKoWinner) * 16) + pointsFinalWinner }}
+                        points peuvent être attribués à chaque participant selon les modalités suivantes :</p>
+                    <dl class="row">
+                        <dt class="col-1"><h5>A.</h5></dt>
+                        <dd class="col-11">
+                            <h5>Vainqueur final du tournoi</h5>
+                            <p class="mb-1">Chaque participant qui a pronostiqué le <strong>bon vainqueur final du
+                                    tournoi</strong> se
+                                voit attribuer <strong>{{ pointsFinalWinner }} points</strong>.</p>
+                        </dd>
+                        <dt class="col-1"><h5>B.</h5></dt>
+                        <dd class="col-11">
+                            <h5>Durant la phase de poules (48 matchs)</h5>
+                            <p class="mb-1">Pour chaque rencontre concernée, chaque participant se voit
+                                attribuer <strong>{{ points1n2 }} points en cas de bon pronostic du vainqueur ou du
+                                    match
+                                    nul</strong>.</p>
+                            <p class="mb-1">Pour chaque rencontre concernée, chaque participant se voit
+                                attribuer <strong>{{ pointsPerfect }} points supplémentaires</strong> s'il pronostique
+                                le <strong>bon score final</strong>
+                                de la rencontre (il fait alors un "perfect").</p>
+                        </dd>
+                        <dt class="col-1"><h5>C.</h5></dt>
+                        <dd class="col-11">
+                            <h5>Durant les phases finales (16 matchs)</h5>
+                            <p class="mb-1">Pour chaque rencontre concernée, chaque participant se voit
+                                attribuer <strong>{{ points1n2 }} points en cas de bon pronostic du vainqueur ou du match
+                                    nul</strong> (à l'issue du temps réglementaire ou des prolongations le cas échéant).</p>
+                            <p class="mb-1">Pour chaque rencontre concernée, chaque participant se voit
+                                attribuer <strong>{{ pointsKoWinner }} points supplémentaires</strong> s'il pronostique <strong>la bonne équipe
+                                    qualifiée</strong>, que ce soit à l'issue du temps réglementaire, à l'issue des prolongations ou
+                                après la séance des tirs aux buts.</p>
+                            <p class="mb-1">Pour chaque rencontre concernée, chaque participant se voit
+                                attribuer <strong>{{ pointsPerfect }} points supplémentaires</strong> s'il pronostique le <strong>bon score
+                                    de la rencontre</strong> à l'issue du temps réglementaire ou des prolongations le cas échéant (il
+                                fait alors un "perfect").</p>
+                            <div class="mb-1 card card-body border-primary"><strong>Exemple :</strong> Je pronostique un
+                                match nul 1-1 entre l'Italie et le Vénézuela. La plateforme me demande de sélectionner
+                                l'équipe qui se qualifie au terme de la séance de tirs aux buts. Je choisis le Vénézuela
+                                (étrange, non ?). Finalement, c'est l'Italie qui se qualifie après un match nul 0-0. Je
+                                gagne les {{ points1n2 }} points parce que j'ai bien pronostiqué un nul. En revanche, je
+                                ne gagne pas les {{ pointsKoWinner }} points de la bonne équipe qualifiée (et pas non
+                                plus ceux du perfect, évidemment).
+                            </div>
+                        </dd>
+                    </dl>
+                </dd>
+                <dt class="col-1">
+                    <h4 class="ci-user mb-2">6.</h4>
+                </dt>
+                <dd class="col-11">
+                    <h4 class="ci-user mb-2">Désignation du vainqueur</h4>
+                    <p class="mb-1">Le vainqueur est celui qui, à l'issue de la coupe du Monde FIFA 2018, aura obtenu le
+                        plus grand score. En cas d'égalité, les candidats seront départagés par le nombre de "perfects"
+                        réalisés. Le classement final sera entériné à la fin de la compétition.</p>
+                </dd>
+                <dt class="col-1">
+                    <h4 class="ci-user mb-2">7.</h4>
+                </dt>
+                <dd class="col-11">
+                    <h4 class="ci-user mb-2">Dotations du concours</h4>
+                    <p class="mb-1">Comme précisé à l'article 1, la dotation globale du concours correspond à
+                        l'intégralité des sommes versées par les participants au concours. Le vainqueur percevra 70% de
+                        cette dotation, ainsi qu'une AppleTV 4. Le second percevra 20% de cette somme. Le troisième
+                        percevra 10% de cette somme.</p>
+                </dd>
+                <dt class="col-1">
+                    <h4 class="ci-user mb-2">8.</h4>
+                </dt>
+                <dd class="col-11">
+                    <h4 class="ci-user mb-2">Modalités de saisie des pronostics</h4>
+                    <p class="mb-1">Les participants sont seuls responsables de leurs pronostics, qu'ils doivent saisir
+                        en temps et en heure sur la plateforme de concours prévue à cet effet. </p>
+                    <p class="mb-1">Durant la période du concours, un panneau d'affichage sera installé dans les locaux
+                        de France Bleu Lorraine Nord. Il récapitulera les différents pronostics des candidats. Les
+                        pronostics n'y seront inscrits qu'à titre indicatif. En cas de litige, seuls les pronostics
+                        enregistrés dans la plateforme de concours feront foi.</p>
+                </dd>
+                <dt class="col-1">
+                    <h4 class="ci-user mb-2">9.</h4>
+                </dt>
+                <dd class="col-11">
+                    <h4 class="ci-user mb-2">Cas particulier</h4>
+                    <p class="mb-1">En cas de litige durant le concours qui ne serait pas prévu par les dispositions du
+                        présent règlement, les organisateurs sont seuls compétents pour trancher.</p>
+                </dd>
+            </dl>
+        </div>
+    </div>
+{% endblock %}
