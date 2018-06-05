@@ -19,7 +19,7 @@
                 {{ form_rest(form) }}
                 {{ form_end(form) }}
             </div>
-            <div class="col-8">
+            <div class="col-4">
                 <h3 class="text-primary mb-0">Ajouter un joueur<br/></h3>
                 <h6 class="text-secondary">Il ne faut ajouter le joueur que lorsqu'il a versé les {{ betValue }}€
                     de participation.
@@ -30,6 +30,15 @@
                         <li class="list-item"><a
                                     href="{{ path('servicejf_admin_cm18_addPlayer', { user : player.id }) }}">{{ player.surname }} {{ player.name }}</a>
                         </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="col-4">
+                <h3 class="text-primary mb-0">Les joueurs déjà enregistrés</h3>
+                <hr class="border-primary mt-0">
+                <ul class="list-unstyled">
+                    {% for player in enabledPlayers %}
+                        <li class="list-item">{{ player.identity.surname }} {{ player.identity.name }}</li>
                     {% endfor %}
                 </ul>
             </div>

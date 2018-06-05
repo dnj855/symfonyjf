@@ -105,6 +105,8 @@ class Cm18Controller extends Controller
             ), array(
                 'surname' => 'ASC'
             ));
+        $enabledPlayers = $this->getDoctrine()->getRepository('ServiceJF\ChallengeCM18Bundle\Entity\Player')
+            ->findAll();
         $userManager = $this->get('fos_user.user_manager');
         $user = $userManager->createUser();
         $form = $this->createForm(UserCM18GuestType::class, $user);
@@ -124,7 +126,8 @@ class Cm18Controller extends Controller
         return $this->render('ServiceJFAdminBundle:Cm18:addPlayers.html.twig', array(
             'players' => $players,
             'betValue' => $betValue,
-            'form' => $form->createView()
+            'form' => $form->createView(),
+            'enabledPlayers' => $enabledPlayers
         ));
     }
 
