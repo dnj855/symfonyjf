@@ -18,4 +18,14 @@ class PlayerRepository extends \Doctrine\ORM\EntityRepository
             ->getQuery()
             ->getResult();
     }
+
+    public function findForRankingMail()
+    {
+        return $this->createQueryBuilder('p')
+            ->leftJoin('p.identity', 'i')
+            ->addOrderBy('p.points', 'DESC')
+            ->addOrderBy('p.perfect', 'DESC')
+            ->getQuery()
+            ->getResult();
+    }
 }

@@ -1,30 +1,38 @@
 <div class="card border-primary">
-    <div class="card-header text-primary my-0 py-1">
+    <div class="card-header text-primary my-0 py-1 d-md-block d-none">
         <div class="d-flex justify-content-between">
             <span>{{ game.date|localizeddate('short', 'short') }}</span>
             <span>{{ game.gamePhase.name }}</span>
         </div>
     </div>
+    <div class="card-header text-primary my-0 py-1 d-block d-md-none">
+        <div class="d-flex justify-content-between">
+            <span class="small">{{ game.date|localizeddate('short', 'short') }}</span>
+            <span class="small">{{ game.gamePhase.name }}</span>
+        </div>
+    </div>
     <div class="card-body py-2 px-2">
         {{ form_start(form) }}
         <div class="row mb-2">
-            <div class="col-4 align-items-end pt-1" align="right">
-                <span class="flag-icon flag-icon-{{ game.teamHome.flag }}"></span>&nbsp;{{ game.teamHome.name }}
+            <div class="col-md-4 col-12 d-flex justify-content-center justify-content-md-end align-items-center py-1">
+                <span class="flag-icon flag-icon-{{ game.teamHome.flag }}"></span>
+                <span class="mx-1">{{ game.teamHome.name }}</span>
                 {% if betOdds.betsHome is not null %}
                     <span class="badge badge-primary badge-pill text-light">{{ betOdds.betsHome|round(1) }}</span>
                 {% endif %}
             </div>
-            <div class="col-2 align-items-end">
+            <div class="col-md-2 col-12 align-items-end mb-1 mb-md-0">
                 {{ form_widget(form.betHome) }}
             </div>
-            <div class="col-2 align-items-end">
+            <div class="col-md-2 col-12 align-items-end">
                 {{ form_widget(form.betAway) }}
             </div>
-            <div class="col-4 align-items-end pt-1">
+            <div class="col-md-4 col-12 d-flex justify-content-center justify-content-md-start align-items-center py-1">
                 {% if betOdds.betsAway is not null %}
-                    <span class="badge badge-primary badge-pill text-light">{{ betOdds.betsAway|round(1) }}</span>
+                    <span class="order-md-1 order-3 badge badge-primary badge-pill text-light">{{ betOdds.betsAway|round(1) }}</span>
                 {% endif %}
-                {{ game.teamAway.name }}&nbsp;<span class="flag-icon flag-icon-{{ game.teamAway.flag }}"></span>
+                <span class="order-2 mx-1">{{ game.teamAway.name }}</span>
+                <span class="order-md-3 order-1 flag-icon flag-icon-{{ game.teamAway.flag }}"></span>
             </div>
         </div>
         <div class="row">

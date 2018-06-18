@@ -42,52 +42,55 @@
        {% endblock %}
 
 {% block header_padding %}
-<div class="py-md-4">
-    {% endblock %}
+    <div class="py-md-4">
+{% endblock %}
 
     {% block body_title %}
         mondial 2018
     {% endblock %}
 
-    {% block body %}
-    {% block body_nav %}
-    {% if unregistered is not defined %}
-        {{ render(controller('ServiceJFChallengeCM18Bundle:Core:navigation')) }}
-        {% endif %}
-    {% endblock %}
-    <div class="container mt-4">
-        {% if dashboard is defined %}
-        <div class="row mb-4">
-            <div class="col">
-                <div class="card-deck">
-                    {{ render(controller('ServiceJFChallengeCM18Bundle:Bet:finalWinner')) }}
-                    <div class="card card-body pb-1 pt-2 border-primary">
-                        <div class="row d-flex justify-content-center align-items-center">
-                            <div class="col-12">
-                                <h5 class="text-primary" align="center">Récompenses :</h5>
-                            </div>
-                        </div>
-                        <div class="row d-flex justify-content-center align-items-center">
-                            <div class="col-md" align="center">
-                                1. <br/>
-                                <strong><span class="text-primary">{{ prizeMoney.first|round(2, 'ceil') }}€ + une AppleTV</span></strong>
-                            </div>
-                            <div class="col-md" align="center">
-                                2. <br/>
-                                <strong><span class="text-primary">{{ prizeMoney.second|round(2, 'ceil') }}€</span></strong>
-                            </div>
-                            <div class="col-md" align="center">
-                                3. <br/>
-                                <strong><span class="text-primary">{{ prizeMoney.third|round(2, 'ceil') }}€</span></strong>
-                            </div>
-                        </div>
+     {% block sub_nav %}
+            {% if unregistered is not defined %}
+                {{ render(controller('ServiceJFChallengeCM18Bundle:Core:navigation')) }}
+            {% endif %}
+        {% endblock %}
 
+    {% block body %}
+        <div class="container mt-2 mt-md-4">
+            {% if dashboard is defined %}
+                <div class="row">
+                    <div class="col">
+                        <div class="card-deck mb-2 mb-md-4">
+                            {{ render(controller('ServiceJFChallengeCM18Bundle:Bet:finalWinner')) }}
+                            <div class="card card-body pb-1 pt-2 border-primary">
+                                <div class="row d-flex justify-content-center align-items-center">
+                                    <div class="col-12">
+                                        <h5 class="text-primary" align="center">Récompenses :</h5>
+                                    </div>
+                                </div>
+                                <div class="row d-flex justify-content-center align-items-center">
+                                    <div class="col-md" align="center">
+                                        1. <br/>
+                                        <strong><span class="text-primary">{{ prizeMoney.first|round(2, 'ceil') }}€ + une AppleTV</span></strong>
+                                    </div>
+                                    <div class="col-md" align="center">
+                                        2. <br/>
+                                        <strong><span class="text-primary">{{ prizeMoney.second|round(2, 'ceil') }}
+                                                €</span></strong>
+                                    </div>
+                                    <div class="col-md" align="center">
+                                        3. <br/>
+                                        <strong><span class="text-primary">{{ prizeMoney.third|round(2, 'ceil') }}
+                                                €</span></strong>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
+            {% endif %}
+            {% block body_content %}
+            {% endblock %}
         </div>
-    </div>
-    {% endif %}
-    {% block body_content %}
     {% endblock %}
-</div>
-{% endblock %}

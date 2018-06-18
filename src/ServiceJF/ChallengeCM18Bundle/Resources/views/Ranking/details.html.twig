@@ -6,11 +6,11 @@
 
 {% block body_content %}
     <div class="row mb-4">
-        <div class="col-2">
+        <div class="col-md-2 col-12 mb-4 mb-md-0">
             <a class="btn btn-primary btn-block text-light" href={{ path('servicejf_cm18_ranking') }}><i
                         class="fas fa-chevron-left"></i> classement</a>
         </div>
-        <div class="col-10">
+        <div class="col-md-10 col-12">
             <div class="d-flex justify-content-between border border-primary border-top-0 border-right-0 border-left-0">
                 <h4 class="cm18-title">{% transchoice player.perfect %}{0} 0 perfect|{1} 1 perfect|]1,Inf] %count% perfects{% endtranschoice %}</h4>
                 <h4 class="cm18-title">{% transchoice player.points %}{0} 0 point|{1} 1 point|]1,Inf] %count% points{% endtranschoice %}</h4>

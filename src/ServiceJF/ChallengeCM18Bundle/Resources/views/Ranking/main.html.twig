@@ -9,9 +9,18 @@
         <div class="col-12 col-md-8 offset-md-2">
             <table class="table table-responsive-md table-sm mt-2">
                 <tbody>
+                {% set PreviousScore = null %}
+                {% set PreviousPerfect = null %}
                 {% for player in players %}
                     <tr class="bg-primary text-light">
-                        <td>{{ loop.index }}.</td>
+                        <td>{% if loop.index == 1 %}
+                                {{ loop.index }}.
+                            {% elseif PreviousScore == player.points and PreviousPerfect == player.perfect %}
+
+                            {% else %}
+                                {{ loop.index }}.
+                            {% endif %}
+                        </td>
                         <td>
                             {% if unregistered is defined %}
                                 {{ player.identity.surname }} {{ player.identity.name }}
@@ -25,12 +34,14 @@
                         <td>{% transchoice player.perfect %}{0} 0 perfect|{1} 1 perfect|]1,Inf] %count% perfects{% endtranschoice %}</td>
                         <td>{% transchoice player.points %}{0} 0 point|{1} 1 point|]1,Inf] %count% points{% endtranschoice %}</td>
                     </tr>
+                    {% set PreviousScore = player.points %}
+                    {% set PreviousPerfect = player.perfect %}
                 {% endfor %}
                 </tbody>
             </table>
             {% if unregistered is not defined %}
-            <p class="text-primary mt-2">En cas d'égalité, les candidats sont départagés par le nombre de perfects.
-                Cliquez sur les noms pour avoir les détails des paris.</p>
+                <p class="text-primary mt-2">En cas d'égalité, les candidats sont départagés par le nombre de perfects.
+                    Cliquez sur les noms pour avoir les détails des paris.</p>
             {% endif %}
         </div>
     </div>

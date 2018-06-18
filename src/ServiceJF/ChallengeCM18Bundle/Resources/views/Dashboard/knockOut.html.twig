@@ -6,16 +6,31 @@
 
 {% block body_content %}
     <div class="row">
-        <div class="col-2">
+        <div class="col-2 d-md-block d-none">
             {% for gamePhase in gamePhases %}
                 <a class="btn btn-primary btn-block text-light{% if gamePhase.id == phase.id %} active{% endif %}
 {% if not loop.last %} mb-3{% endif %}"
                    href={{ path('servicejf_cm18_knockoutDashboard', { 'gamePhase' : gamePhase.id }) }}>{{ gamePhase.name }}</a>
             {% endfor %}
         </div>
-        <div class="col-10">
+        <div class="col-md-10 col-12">
+            <div class="row my-0 d-md-none d-block">
+                <div class="col-12 d-flex justify-content-center mb-4 mx-1">
+                    <div class="dropdown">
+                        <button class="btn btn-primary text-light dropdown-toggle" type="button" id="gamePhaseMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Changer de phase de jeu
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="gamePhaseMenuButton">
+                            {% for gamePhase in gamePhases %}
+                                <a class="dropdown-item"
+                                   href={{ path('servicejf_cm18_knockoutDashboard', { 'gamePhase' : gamePhase.id }) }}>{{ gamePhase.name }}</a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="row">
-                <div class="col-7">
+                <div class="col-md-7 col-12 mb-2 mb-md-0">
                     {% for game in games %}
                         <div{% if loop.last == false %} class="mb-2"{% endif %}>
                             {{ render(controller('ServiceJFChallengeCM18Bundle:Bet:knockoutGame', { 'game' : game, 'player' : player })) }}
@@ -26,7 +41,7 @@
                         </h4>
                     {% endfor %}
                 </div>
-                <div class="col-5">
+                <div class="col-md-5 col-12">
                     <div class="card border-primary">
                         <div class="card-header text-primary py-1">
                             Les dernières infos du mondial

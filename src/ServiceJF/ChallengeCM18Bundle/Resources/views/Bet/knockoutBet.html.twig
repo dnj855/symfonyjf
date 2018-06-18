@@ -8,13 +8,14 @@
     <div class="card-body py-2 px-2">
         {{ form_start(form) }}
         <div class="row mb-2">
-            <div class="col-4 align-items-end pt-1" align="right">
-                <span class="flag-icon flag-icon-{{ game.teamHome.flag }}"></span>&nbsp;{{ game.teamHome.name }}
+            <div class="col-12 col-md-4 align-items-center pt-1 d-flex justify-content-md-end justify-content-center">
+                <span class="flag-icon flag-icon-{{ game.teamHome.flag }}"></span>
+                <span class="mx-1">{{ game.teamHome.name }}</span>
                 {% if betOdds.betsHome is not null %}
                     <span class="badge badge-primary badge-pill text-light">{{ betOdds.betsHome|round(1) }}</span>
                 {% endif %}
             </div>
-            <div class="col-4 d-flex justify-content-around align-items-center pt-1 cm18-game" align="center"
+            <div class="col-md-4 col-12 d-flex justify-content-around align-items-center pt-1 cm18-game" align="center"
                  id="{{ game.id }}">
                 <div class="px-1" id="widgetHome{{ game.id }}">
                     {{ form_widget(form.winner[0]) }}
@@ -29,11 +30,12 @@
                     {{ form_widget(form.winner[1]) }}
                 </div>
             </div>
-            <div class="col-4 align-items-end pt-1">
+            <div class="col-md-4 col-12 align-items-center pt-1 justify-content-center justify-content-md-start d-flex">
                 {% if betOdds.betsAway is not null %}
-                    <span class="badge badge-primary badge-pill text-light">{{ betOdds.betsAway|round(1) }}</span>
+                    <span class="badge badge-primary badge-pill text-light order-3 order-md-1">{{ betOdds.betsAway|round(1) }}</span>
                 {% endif %}
-                {{ game.teamAway.name }}&nbsp;<span class="flag-icon flag-icon-{{ game.teamAway.flag }}"></span>
+                <span class="mx-1 order-2">{{ game.teamAway.name }}</span>
+                <span class="flag-icon flag-icon-{{ game.teamAway.flag }} order-1 order-md-3"></span>
             </div>
         </div>
         <div class="row" id="alert{{ game.id }}" style="display: none">
