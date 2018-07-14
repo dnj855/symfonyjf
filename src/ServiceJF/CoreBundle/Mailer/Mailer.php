@@ -9,6 +9,7 @@ namespace ServiceJF\CoreBundle\Mailer;
 
 
 use ServiceJF\ChallengeCM18Bundle\Entity\Player;
+use ServiceJF\ChallengeCM18Bundle\Entity\RankingMail;
 use ServiceJF\ChallengeDLBundle\Entity\GamePhase;
 use ServiceJF\UserBundle\Entity\User;
 use Symfony\Component\DependencyInjection\ContainerInterface;
@@ -107,6 +108,23 @@ class Mailer
             )), 'text/html');
 
         $this->mailer->send($message);
+    }
+
+    public function sendCM18RankingMail(RankingMail $mail, $ranking)
+    {
+            $message = \Swift_Message::newInstance()
+                ->setSubject('[mondial 2018] ' . $mail->getSubject())
+                ->setFrom('contact@servicejf.com', 'Service J&F:')
+                ->setTo($mail->getEmail())
+                ->setBody($this->templating->render('Emails/cm18RankingMail.html.twig', array(
+                    'title' => $mail->getTitle(),
+                    'ranking' => $ranking,
+                    'beginningContent' => $mail->getBeginningContent(),
+                    'endingContent' => $mail->getEndingContent()
+                )), 'text/html');
+
+            $this->mailer->send($message);
+            return true;
     }
 
 }

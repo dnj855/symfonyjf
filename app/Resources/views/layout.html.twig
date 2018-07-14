@@ -8,12 +8,12 @@
         <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/css/design.css') }}">
     {% endblock %}
-    <script defer src="https://use.fontawesome.com/releases/v5.0.2/js/all.js"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/all.js" integrity="sha384-xymdQtn1n3lH2wcu0qhcdaOpQwyoarkgLVxC/wZ5q7h9gHtxICrpcaSUfygqZGOe" crossorigin="anonymous"></script>
 
 </head>
 <body>
 {% block top_nav %}
-{{ render(controller('ServiceJFCoreBundle:Core:navigation')) }}
+    {{ render(controller('ServiceJFCoreBundle:Core:navigation')) }}
 {% endblock %}
 <div id="header">
     <div class="container">
@@ -41,6 +41,16 @@
     </div>
 </div>
 <div id="body">
+    {% block sub_nav %}
+        <div class="sub-nav">
+            <div class="container">
+                <ul class="nav justify-content-end">
+                    {% block sub_nav_content %}
+                    {% endblock %}
+                </ul>
+            </div>
+        </div>
+    {% endblock %}
     {% block body %} {% endblock %}
 </div>
 <div id="footer">

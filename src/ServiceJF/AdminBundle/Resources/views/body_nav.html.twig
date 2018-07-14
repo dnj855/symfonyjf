@@ -1,56 +1,63 @@
-<div class="sub-nav">
-    <div class="container">
-        <ul class="nav justify-content-end">
-            <li class="nav-item dropdown">
-                <a class="dropdown-toggle nav-link" data-toggle="dropdown" href="#" role="button"
-                   aria-haspopup="true"
-                   aria-expanded="false">Gestion générale du site</a>
-                <div class="dropdown-menu sub-nav-dropdown">
-                    <a class="dropdown-item" href="{{ path('servicejf_admin_home') }}">Voir tous les participants</a>
-                    <a class="dropdown-item" href="{{ path('servicejf_admin_user_create') }}">Ajouter un participant</a>
-                    <a class="dropdown-item" href="{{ path('servicejf_admin_season_create') }}">Créer une saison</a>
-                </div>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="dropdown-toggle nav-link" data-toggle="dropdown" href="#" role="button"
-                   aria-haspopup="true"
-                   aria-expanded="false">Fichier gnou</a>
-                <div class="dropdown-menu sub-nav-dropdown">
-                    <a class="dropdown-item" href="{{ path('servicejf_admin_punchline_setBest') }}">Calculer les
-                        meilleures punchlines</a>
-                </div>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
-                   aria-haspopup="true"
-                   aria-expanded="false">Challenge invité</a>
-                <div class="dropdown-menu sub-nav-dropdown">
-                    {% for season in seasons %}
-                        <a class="dropdown-item"
-                           href="{{ path('servicejf_admin_ci_setpoints', { season : season.id }) }}">{{ season.dateBegin|date('Y') }}
-                            - {{ season.dateEnd|date('Y') }}</a>
-                    {% endfor %}
-                </div>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ path('servicejf_admin_dl_curateBets') }}">
-                    Dead list {% if waitingBets is not empty %}
-                        <i class="fas fa-exclamation-circle"></i>
-                    {% endif %}
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ path('servicejf_admin_ps') }}">Paris sûrs</a>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="dropdown-toggle nav-link" data-toggle="dropdown" href="#" role="button"
-                   aria-haspopup="true"
-                   aria-expanded="false">Mondial 2018</a>
-                <div class="dropdown-menu sub-nav-dropdown">
-                    <a class="dropdown-item" href="{{ path('servicejf_admin_cm18_addPlayers') }}">Ajouter un joueur</a>
-                    <a class="dropdown-item" href="{{ path('servicejf_admin_cm18_editGames') }}">Enregistrer un score</a>
-                </div>
-            </li>
-        </ul>
+<li class="nav-item dropdown">
+    <a class="dropdown-toggle nav-link" data-toggle="dropdown" href="#" role="button"
+       aria-haspopup="true"
+       aria-expanded="false">Gestion générale du site</a>
+    <div class="dropdown-menu sub-nav-dropdown">
+        <a class="dropdown-item" href="{{ path('servicejf_admin_home') }}">Voir tous les participants</a>
+        <a class="dropdown-item" href="{{ path('servicejf_admin_user_create') }}">Ajouter un participant</a>
+        <a class="dropdown-item" href="{{ path('servicejf_admin_season_create') }}">Créer une saison</a>
     </div>
-</div>
+</li>
+<li class="nav-item dropdown">
+    <a class="dropdown-toggle nav-link" data-toggle="dropdown" href="#" role="button"
+       aria-haspopup="true"
+       aria-expanded="false">Fichier gnou</a>
+    <div class="dropdown-menu sub-nav-dropdown">
+        <a class="dropdown-item" href="{{ path('servicejf_admin_punchline_setBest') }}">Calculer les
+            meilleures punchlines</a>
+    </div>
+</li>
+<li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+       aria-haspopup="true"
+       aria-expanded="false">Challenge invité</a>
+    <div class="dropdown-menu sub-nav-dropdown">
+        {% for season in seasons %}
+            <a class="dropdown-item"
+               href="{{ path('servicejf_admin_ci_setpoints', { season : season.id }) }}">{{ season.dateBegin|date('Y') }}
+                - {{ season.dateEnd|date('Y') }}</a>
+        {% endfor %}
+    </div>
+</li>
+<li class="nav-item">
+    <a class="nav-link" href="{{ path('servicejf_admin_dl_curateBets') }}">
+        Dead list {% if waitingBets is not empty %}
+            <i class="fas fa-exclamation-circle"></i>
+        {% endif %}
+    </a>
+</li>
+<li class="nav-item">
+    <a class="nav-link" href="{{ path('servicejf_admin_ps') }}">Paris sûrs</a>
+</li>
+<li class="nav-item dropdown">
+    <a class="dropdown-toggle nav-link" data-toggle="dropdown" href="#" role="button"
+       aria-haspopup="true"
+       aria-expanded="false">Soirées sport</a>
+    <div class="dropdown-menu sub-nav-dropdown">
+        <a class="dropdown-item" href="{{ path('servicejf_admin_css_teams') }}">Gérer les équipes</a>
+        <a class="dropdown-item" href="{{ path('servicejf_admin_css_games') }}">Gérer les matchs</a>
+    </div>
+</li>
+<li class="nav-item dropdown">
+    <a class="dropdown-toggle nav-link" data-toggle="dropdown" href="#" role="button"
+       aria-haspopup="true"
+       aria-expanded="false">Mondial 2018</a>
+    <div class="dropdown-menu sub-nav-dropdown">
+        <a class="dropdown-item" href="{{ path('servicejf_admin_cm18_addPlayers') }}">Ajouter un joueur</a>
+        <a class="dropdown-item" href="{{ path('servicejf_admin_cm18_editGames') }}">Enregistrer un
+            score</a>
+        <a class="dropdown-item" href="{{ path('servicejf_admin_cm18_email') }}">Faire un point
+            classement</a>
+        <a class="dropdown-item" href="{{ path('servicejf_admin_cm18_correct') }}">Corriger les scores</a>
+    </div>
+</li>

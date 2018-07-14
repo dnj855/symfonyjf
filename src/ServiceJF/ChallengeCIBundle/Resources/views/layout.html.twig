@@ -10,10 +10,11 @@
 
     {% block body_title %}challenge invité{% endblock %}
 
-    {% block body %}
-    {% block body_nav %}
+        {% block sub_nav_content %}
         {% include('ServiceJFChallengeCIBundle::body_nav.html.twig') %}
     {% endblock %}
+
+    {% block body %}
     <div class="container">
         <div class="row pt-4">
             <div class="col-12 col-md-4">

@@ -1,23 +1,10 @@
-@font-face {
-  font-family: "HK Grotesk";
-  src: url("../fonts/HKGrotesk-Regular.woff"); }
-@font-face {
-  font-family: "HK Grotesk";
-  src: url("../fonts/HKGrotesk-Bold.woff");
-  font-weight: bold; }
-@font-face {
-  font-family: "HK Grotesk";
-  src: url("../fonts/HKGrotesk-Italic.woff");
-  font-style: italic; }
-@font-face {
-  font-family: "Brela";
-  src: url("../fonts/brelaregular.otf"); }
+@import url("https://fonts.googleapis.com/css?family=Alegreya:400,500|Fredericka+the+Great");
 h1 {
-  font-family: 'Brela', serif !important;
+  font-family: "Fredericka the Great", cursive !important;
   font-size: 6rem !important; }
-  @media (max-width: 34em) {
+  @media (max-width: 720px) {
     h1 {
-      font-size: 3.6em;
+      font-size: 4em !important;
       letter-spacing: -1px; } }
 
 .btn {
@@ -25,7 +12,8 @@ h1 {
 
 body {
   background-color: #eac67a !important;
-  color: #18121e !important; }
+  color: #18121e !important;
+  font-family: "Alegreya", serif; }
 
 #top-navigation {
   background-color: #18121e; }
@@ -34,20 +22,20 @@ body {
   background-color: #80231f; }
   #header h1 {
     line-height: 4rem; }
-    @media (max-width: 34em) {
+    @media (max-width: 720px) {
       #header h1 {
         line-height: 3rem; } }
   #header h2 {
     font-size: 2em;
     line-height: 1rem;
     text-transform: uppercase; }
-    @media (max-width: 34em) {
+    @media (max-width: 720px) {
       #header h2 {
-        font-size: 1.9em;
-        line-height: 1.7rem; } }
+        font-size: 1.5em;
+        line-height: 2rem; } }
   #header .subtitle {
     font-size: 2em;
-    line-height: 1rem;
+    line-height: 1.5rem;
     text-transform: uppercase;
     background-color: #80231f !important;
     font-weight: bolder;
@@ -78,13 +66,13 @@ body {
     margin: 0.25em; }
 
 h3.sub-title {
-  font-family: 'Brela', serif;
+  font-family: "Fredericka the Great", cursive;
   font-size: 1.5em; }
 
 .index-panel {
   border-radius: 10px; }
   .index-panel h3 {
-    font-family: 'Brela', serif;
+    font-family: "Fredericka the Great", cursive;
     font-size: 1.5em; }
   .index-panel p {
     line-height: 1.2rem;
@@ -143,7 +131,7 @@ label {
   width: 90%; }
 
 .punchline-month {
-  font-family: "Brela", serif;
+  font-family: "Fredericka the Great", cursive;
   color: #80231f; }
 
 .guest-panel {
@@ -266,22 +254,22 @@ label {
   text-decoration: none !important; }
 
 .ci-user {
-  font-family: "Brela", serif;
+  font-family: "Fredericka the Great", cursive;
   color: #80231f; }
 
 .ci-ranking-first {
   height: 3em; }
 
 .dl-title {
-  font-family: "Brela", serif;
+  font-family: "Fredericka the Great", cursive;
   color: #80231f;
   font-size: 20px;
   line-height: 1em;
   font-style: italic; }
 
 .dl-joker {
-  font-family: "Brela", serif;
-  font-weight: bolder;
+  font-family: "Fredericka the Great", cursive;
+  font-weight: 500;
   color: #80231f; }
 
 .dl-dead {
@@ -295,7 +283,12 @@ label {
 
 .cm18-title {
   font-size: 20px;
-  font-family: "Brela", serif;
+  font-family: "Fredericka the Great", cursive;
+  color: #80231f; }
+
+.css-title {
+  font-size: 2rem;
+  font-family: "Fredericka the Great", cursive;
   color: #80231f; }
 
 .hidden {

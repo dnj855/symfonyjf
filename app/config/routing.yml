@@ -1,3 +1,11 @@
+service_jf_jeudi:
+    resource: "@ServiceJFJeudiBundle/Resources/config/routing.yml"
+    prefix:   /jeudi
+
+service_jf_challenge_css:
+    resource: "@ServiceJFChallengeCSSBundle/Resources/config/routing.yml"
+    prefix:   /ss
+
 rssatom:
     resource: "@DebrilRssAtomBundle/Resources/config/routing.yml"
 

@@ -92,6 +92,16 @@ class Points
     private $totalSet;
 
     /**
+     * @ORM\ManyToOne(targetEntity="ServiceJF\UserBundle\Entity\User")
+     */
+    private $user;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="ServiceJF\CoreBundle\Entity\Season")
+     */
+    private $season;
+
+    /**
      * @return int
      */
     public function getTotalSet()
@@ -177,17 +187,6 @@ class Points
     {
         $this->totalPoints = $totalPoints;
     }
-
-    /**
-     * @ORM\ManyToOne(targetEntity="ServiceJF\UserBundle\Entity\User")
-     */
-    private $user;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="ServiceJF\CoreBundle\Entity\Season")
-     */
-    private $season;
-
 
     /**
      * Get id

@@ -22,6 +22,17 @@
                                 </div>
                             </div>
                             <div class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Fichier gnou</a>
+                                <div class="dropdown-menu">
+                                    <a href="{{ path('servicejf_challengefg_best') }}" class="rounded dropdown-item">Les
+                                        meilleures punchlines</a>
+                                    <a href="{{ path('servicejf_challengefg_homepage') }}"
+                                       class="rounded dropdown-item">Toutes les punchlines</a>
+                                    <a href="{{ path('servicejf_challengefg_write') }}" class="rounded dropdown-item">Poster
+                                        une punchline</a>
+                                </div>
+                            </div>
+                            <div class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button"
                                    aria-haspopup="true" aria-expanded="false">Invité</a>
                                 <div class="dropdown-menu">
@@ -37,28 +48,6 @@
                                 </div>
                             </div>
                             <div class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" data-toggle="dropdown">Soirées sport</a>
-                                <div class="dropdown-menu">
-                                    {% if is_granted('ROLE_CSS') %}
-                                        <a href="#" class="disabled-link rounded dropdown-item">Saisir une soirée
-                                            sport</a>
-                                    {% endif %}
-                                    <a href="#" class="disabled-link rounded dropdown-item">Consulter les résultats
-                                        provisoires</a>
-                                </div>
-                            </div>
-                            <div class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown">Fichier gnou</a>
-                                <div class="dropdown-menu">
-                                    <a href="{{ path('servicejf_challengefg_best') }}" class="rounded dropdown-item">Les
-                                        meilleures punchlines</a>
-                                    <a href="{{ path('servicejf_challengefg_homepage') }}"
-                                       class="rounded dropdown-item">Toutes les punchlines</a>
-                                    <a href="{{ path('servicejf_challengefg_write') }}" class="rounded dropdown-item">Poster
-                                        une punchline</a>
-                                </div>
-                            </div>
-                            <div class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" data-toggle="dropdown">Dead list</a>
                                 <div class="dropdown-menu">
                                     <a href="{{ path('servicejf_challengedl_homepage') }}"
@@ -70,6 +59,22 @@
                             <div class="nav-item">
                                 <a class="nav-link" href="{{ path('servicejf_challengeps_homepage') }}">Paris sûrs</a>
                             </div>
+                            {% if is_granted('ROLE_CSS') %}
+                                <div class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle" data-toggle="dropdown">Soirées sport</a>
+                                    <div class="dropdown-menu">
+                                        <a href="{{ path('servicejf_challengecss_games') }}"
+                                           class=" rounded dropdown-item">Saisir une soirée sport</a>
+
+                                        <a href="{{ path('servicejf_challengecss_generalRanking') }}" class="rounded dropdown-item">Consulter les résultats
+                                            provisoires</a>
+                                    </div>
+                                </div>
+                            {% else %}
+                                <div class="nav-item">
+                                    <a class="nav-link" href="{{ path('servicejf_challengecss_generalRanking') }}">Soirées sport</a>
+                                </div>
+                            {% endif %}
                         </div>
                         <div class="navbar-nav">
                             <div class="nav-item dropdown">

@@ -2,3 +2,34 @@ services:
 #    service_jf_user.example:
 #        class: ServiceJF\UserBundle\Example
 #        arguments: ["@service_id", "plain_value", "%parameter%"]
+    twig.extension.intl:
+            class: Twig_Extensions_Extension_Intl
+            tags:
+                - { name: twig.extension }
+
+    servicejf_challengecm18.prizeMoneyCalculator:
+            class: ServiceJF\ChallengeCM18Bundle\Services\PrizeMoneyCalculator
+            arguments:
+                - '@doctrine.orm.entity_manager'
+
+    servicejf_challengecm18.gamesCalculator:
+        class: ServiceJF\ChallengeCM18Bundle\Services\GamesCalculator
+        arguments:
+            - '@doctrine.orm.entity_manager'
+
+    servicejf_challengecm18.knockOutCalculator:
+        class: ServiceJF\ChallengeCM18Bundle\Services\KnockOutGamePhaseCalculator
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - '@service_container'
+
+    servicejf_challengecm18.betOdds:
+        class: ServiceJF\ChallengeCM18Bundle\Services\BetOdds
+        arguments:
+            - '@doctrine.orm.entity_manager'
+
+    servicejf_challengecm18.betCalculator:
+        class: ServiceJF\ChallengeCM18Bundle\Services\BetCalculator
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - '@service_container'

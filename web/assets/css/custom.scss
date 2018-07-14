@@ -1,7 +1,5 @@
 @import "color-definition.scss";
 
-$font-family-sans-serif: "HK Grotesk", Roboto, "Helvetica Neue", Arial, sans-serif;
-
 $spacer: 1rem;
 $spacers: (
         0: 0,
@@ -43,5 +41,7 @@ $input-border-color: $primary !important;
 
 $modal-content-bg: $light !important;
 $list-group-bg: $light !important;
+
+$card-deck-margin: $spacer !important;
 
 @import "../../../vendor/twbs/bootstrap/scss/bootstrap.scss";

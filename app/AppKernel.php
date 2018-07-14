@@ -22,10 +22,12 @@ class AppKernel extends Kernel
             new ServiceJF\AdminBundle\ServiceJFAdminBundle(),
             new ServiceJF\ChallengeDLBundle\ServiceJFChallengeDLBundle(),
             new ServiceJF\ChallengePSBundle\ServiceJFChallengePSBundle(),
+            new ServiceJF\ChallengeCSSBundle\ServiceJFChallengeCSSBundle(),
             new ServiceJF\ChallengeCM18Bundle\ServiceJFChallengeCM18Bundle(),
             new Debril\RssAtomBundle\DebrilRssAtomBundle(),
             new ServiceJF\UserBundle\ServiceJFUserBundle(),
             new FOS\UserBundle\FOSUserBundle(),
+            new ServiceJF\JeudiBundle\ServiceJFJeudiBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

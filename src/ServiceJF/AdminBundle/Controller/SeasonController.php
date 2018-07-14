@@ -29,7 +29,7 @@ class SeasonController extends Controller
             $em->persist($season);
             $em->flush();
             $request->getSession()->getFlashBag()->add('success', 'Saison bien ajoutée.');
-            return $this->redirectToRoute('servicejf_admin.home');
+            return $this->redirectToRoute('servicejf_admin_home');
         }
         return $this->render('ServiceJFAdminBundle:season:create.html.twig', array(
             'form' => $form->createView()

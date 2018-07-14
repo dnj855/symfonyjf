@@ -10,6 +10,10 @@
 
     {% block body_title %}la dead list{% endblock %}
 
+    {% block sub_nav_content %}
+    {{ include('ServiceJFChallengeDLBundle::body_nav.html.twig') }}
+    {% endblock %}
+
     {% block body %}
         <div class="container">
             <div class="row pt-4">

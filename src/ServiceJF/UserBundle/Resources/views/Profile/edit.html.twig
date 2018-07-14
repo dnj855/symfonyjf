@@ -1,15 +1,14 @@
 {% extends 'ServiceJFUserBundle::layout.html.twig' %}
 
 {% block body_subtitle %}
-    modifier
+    informations personnelles
 {% endblock %}
-
 {% block fos_user_content %}
-                {{ form_start(form, { 'action': path('fos_user_profile_edit') }) }}
-                {{ form_widget(form) }}
-                <div class="d-flex flex-row-reverse">
-                    <input type="submit" value="Modifier" class="btn btn-primary text-light"/>
-                </div>
-                {{ form_end(form) }}
-
+    {% trans_default_domain 'FOSUserBundle' %}
+    {{ form_start(form, { 'action': path('fos_user_profile_edit'), 'attr': { 'class': 'fos_user_profile_edit' } }) }}
+    {{ form_widget(form) }}
+    <div align="right" class="mt-3">
+        <input type="submit" value="{{ 'profile.edit.submit'|trans }}" class="btn btn-primary text-light"/>
+    </div>
+    {{ form_end(form) }}
 {% endblock %}

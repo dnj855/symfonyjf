@@ -100,6 +100,42 @@ servicejf_admin_ps_disableBet:
     requirements:
         bet: \d*
 
+servicejf_admin_css_teams:
+    path:    /ss/teams
+    defaults: { _controller: ServiceJFAdminBundle:Css:teams }
+
+servicejf_admin_css_games:
+    path:    /ss/games
+    defaults: { _controller: ServiceJFAdminBundle:Css:games }
+
+servicejf_admin_css_teamEdit:
+    path:    /ss/team/{id}
+    defaults: { _controller: ServiceJFAdminBundle:Css:team }
+    requirements:
+        id: \d*
+
+servicejf_admin_css_teamDisable:
+    path:    /ss/team/disable/{id}
+    defaults: { _controller: ServiceJFAdminBundle:Css:teamDisable }
+    requirements:
+        id: \d*
+
+servicejf_admin_css_teamEnable:
+    path:    /ss/team/enable/{id}
+    defaults: { _controller: ServiceJFAdminBundle:Css:teamEnable }
+    requirements:
+        id: \d*
+
+servicejf_admin_css_gameCreate:
+    path:    /ss/game/create
+    defaults: { _controller: ServiceJFAdminBundle:Css:gameCreate }
+
+servicejf_admin_css_gameEdit:
+    path:    /ss/game/{game}
+    defaults: { _controller: ServiceJFAdminBundle:Css:gameEdit }
+    requirements:
+        game: \d*
+
 servicejf_admin_mailer_newMail:
     path:    /message/new
     defaults: { _controller: ServiceJFAdminBundle:Mailer:newMail }
@@ -139,3 +175,11 @@ servicejf_admin_cm18_editGame:
 servicejf_admin_cm18_editGames:
     path:    /cm18/games/edit
     defaults: { _controller: ServiceJFAdminBundle:Cm18:editGames }
+
+servicejf_admin_cm18_correct:
+    path:    /cm18/correct
+    defaults: { _controller: ServiceJFAdminBundle:Cm18:correct }
+
+servicejf_admin_cm18_email:
+    path:    /cm18/email
+    defaults: { _controller: ServiceJFAdminBundle:Cm18:email }

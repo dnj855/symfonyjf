@@ -25,7 +25,9 @@ class GamePhaseRepository extends \Doctrine\ORM\EntityRepository
 
     public function getRanking()
     {
-        return $this->createQueryBuilder('g')
+        $qb = $this->createQueryBuilder('g');
+        return $qb
+            ->where($qb->expr()->isNotNull('g.curatedBet'))
             ->orderBy('g.points', 'DESC')
             ->getQuery()
             ->getResult();

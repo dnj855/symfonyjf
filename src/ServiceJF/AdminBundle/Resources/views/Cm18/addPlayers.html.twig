@@ -8,39 +8,29 @@
     <div class="container mt-4">
         <div class="row">
             <div class="col-4">
-                <h3 class="text-primary mb-0">Créer un compte invité</h3>
-                <h6 class="text-secondary">Laisser la case "service" sur la valeur accueil.
-                </h6>
+                <h3 class="text-primary mb-0 cm18-h4">Les joueurs déjà inscrits<br/></h3>
+                <hr class="border-primary mt-0">
+                <ul class="list-unstyled">
+                    {% for player in players %}
+                        <li class="list-item">
+                            {{ player.surname }} {{ player.name }}
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="col-8">
+                <h3 class="cm18-h4 text-primary mb-0">Ajouter un joueur</h3>
                 <hr class="border-primary mt-0">
                 {{ form_start(form) }}
                 {{ form_row(form.surname) }}
                 {{ form_row(form.name) }}
                 {{ form_row(form.email) }}
-                {{ form_rest(form) }}
+                {{ form_row(form.username) }}
+                {{ form_row(form.plainPassword) }}
+                <div class="mt2" align="right">
+                    {{ form_rest(form) }}
+                </div>
                 {{ form_end(form) }}
-            </div>
-            <div class="col-4">
-                <h3 class="text-primary mb-0">Ajouter un joueur<br/></h3>
-                <h6 class="text-secondary">Il ne faut ajouter le joueur que lorsqu'il a versé les {{ betValue }}€
-                    de participation.
-                </h6>
-                <hr class="border-primary mt-0">
-                <ul class="list-unstyled">
-                    {% for player in players %}
-                        <li class="list-item"><a
-                                    href="{{ path('servicejf_admin_cm18_addPlayer', { user : player.id }) }}">{{ player.surname }} {{ player.name }}</a>
-                        </li>
-                    {% endfor %}
-                </ul>
-            </div>
-            <div class="col-4">
-                <h3 class="text-primary mb-0">Les joueurs déjà enregistrés</h3>
-                <hr class="border-primary mt-0">
-                <ul class="list-unstyled">
-                    {% for player in enabledPlayers %}
-                        <li class="list-item">{{ player.identity.surname }} {{ player.identity.name }}</li>
-                    {% endfor %}
-                </ul>
             </div>
         </div>
     </div>

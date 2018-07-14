@@ -43,11 +43,9 @@ class CoreController extends Controller
         $dlGamePhase = $this->get('servicejf_challengedl.gamePhase')->getGamePhase($this->getUser());
         $dlFrontEnd = $this->get('servicejf_challengedl.frontEnd')
             ->getHomeAndNavigation($dlGamePhase, $this->getParameter('dl_countdown'));
-        $gamePhase = $this->get('servicejf_challengecm18.knockOutCalculator')->getGamePhase(new \DateTime());
         return $this->render('::navigation.html.twig', array(
             'curateBets' => $waitingBets,
-            'dlFrontEnd' => $dlFrontEnd,
-            'knockOutGamePhase' => $gamePhase->getId()
+            'dlFrontEnd' => $dlFrontEnd
         ));
     }
 

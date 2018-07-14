@@ -22,46 +22,24 @@ class UserCreateType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('manager', CheckboxType::class, array(
-                'required' => false,
-                'label' => 'label.manager'
-            ))
             ->add('surname', TextType::class, array(
-                'label' => 'label.firstName'
+                'label' => 'Prénom'
             ))
             ->add('name', TextType::class, array(
-                'label' => 'label.lastName'
-            ))
-            ->add('service', EntityType::class, array(
-                'label' => 'label.service',
-                'class' => 'ServiceJFCoreBundle:Service',
-                'choice_label' => 'name'
+                'label' => 'Nom'
             ))
             ->add('plainPassword', PasswordType::class, array(
-                'label' => 'label.password'
+                'label' => 'Mot de passe'
             ))
             ->add('username', TextType::class, array(
-                'label' => 'label.id'
+                'label' => 'Identifiant'
             ))
             ->add('save', SubmitType::class, array(
-                'label' => 'submitButton.create'
+                'label' => 'Créer'
             ))
             ->add('email', EmailType::class, array(
-                'label' => 'label.email',
+                'label' => 'E-mail',
                 'required' => 'true'
-            ))
-            ->add('roles', CollectionType::class, array(
-                'required' => false,
-                'entry_type' => ChoiceType::class,
-                'entry_options' => array(
-                    'expanded' => true,
-                    'label' => false,
-                    'placeholder' => '--Choisir--',
-                    'choices' => array(
-                        ' Soirées sport' => 'ROLE_CSS',
-                        ' Administrateur' => 'ROLE_ADMIN'
-                    )
-                )
             ));
     }
 

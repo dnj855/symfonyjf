@@ -8,10 +8,11 @@
 
     {% block body_title %}fichier gnou{% endblock %}
 
-    {% block body %}
-{% block body_nav %}
-    {% include('ServiceJFChallengeFGBundle::body_nav.html.twig') %}
+    {% block sub_nav_content %}
+        {% include('ServiceJFChallengeFGBundle::body_nav.html.twig') %}
     {% endblock %}
+
+{% block body %}
     {% block body_content %}
-    {% endblock %}
 {% endblock %}
+    {% endblock %}

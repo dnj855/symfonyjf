@@ -12,10 +12,11 @@
         administration
     {% endblock %}
 
-    {% block body %}
-    {% block body_nav %}
+    {% block sub_nav_content %}
         {{ render(controller('ServiceJFAdminBundle:Admin:nav')) }}
     {% endblock %}
+
+    {% block body %}
     {% block body_content %}
     {% endblock %}
 
