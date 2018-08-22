@@ -8,6 +8,7 @@
 namespace ServiceJF\CoreBundle\Mailer;
 
 
+use Doctrine\ORM\EntityManager;
 use ServiceJF\ChallengeCM18Bundle\Entity\Player;
 use ServiceJF\ChallengeCM18Bundle\Entity\RankingMail;
 use ServiceJF\ChallengeDLBundle\Entity\GamePhase;
@@ -112,19 +113,33 @@ class Mailer
 
     public function sendCM18RankingMail(RankingMail $mail, $ranking)
     {
-            $message = \Swift_Message::newInstance()
-                ->setSubject('[mondial 2018] ' . $mail->getSubject())
-                ->setFrom('contact@servicejf.com', 'Service J&F:')
-                ->setTo($mail->getEmail())
-                ->setBody($this->templating->render('Emails/cm18RankingMail.html.twig', array(
-                    'title' => $mail->getTitle(),
-                    'ranking' => $ranking,
-                    'beginningContent' => $mail->getBeginningContent(),
-                    'endingContent' => $mail->getEndingContent()
-                )), 'text/html');
+        $message = \Swift_Message::newInstance()
+            ->setSubject('[mondial 2018] ' . $mail->getSubject())
+            ->setFrom('contact@servicejf.com', 'Service J&F:')
+            ->setTo($mail->getEmail())
+            ->setBody($this->templating->render('Emails/cm18RankingMail.html.twig', array(
+                'title' => $mail->getTitle(),
+                'ranking' => $ranking,
+                'beginningContent' => $mail->getBeginningContent(),
+                'endingContent' => $mail->getEndingContent()
+            )), 'text/html');
 
-            $this->mailer->send($message);
-            return true;
+        $this->mailer->send($message);
+        return true;
+    }
+
+    public function sendNewJeudiGuestMail(User $user)
+    {
+        $message = \Swift_Message::newInstance()
+            ->setSubject('Bienvenue à l\'apéro du jeudi !')
+            ->setFrom('aperodujeudi@servicejf.com', 'Service J&F:')
+            ->setTo($user->getEmail())
+            ->setBody($this->templating->render('Emails/Jeudi/newGuestMail.html.twig', array(
+                'name' => $user->getSurname(),
+                'login' => $user->getUsername()
+            )), 'text/html');
+
+        $this->mailer->send($message);
     }
 
 }

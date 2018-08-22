@@ -1,0 +1,4 @@
+services:
+#    service_jf_challenge_css.example:
+#        class: ServiceJF\ChallengeCSSBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

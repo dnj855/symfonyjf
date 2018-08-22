@@ -1,0 +1,64 @@
+{% extends 'ServiceJFAdminBundle::layout.html.twig' %}
+
+{% block body_subtitle %}
+    Soirées sport
+{% endblock %}
+
+{% block css %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('assets/css/jquery-ui.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/jquery-ui.structure.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/jquery-ui.theme.min.css') }}">
+{% endblock %}
+
+{% block body_content %}
+    <div class="container">
+        <div class="row mt-4">
+            <div class="col-12 col-md-6 offset-md-3">
+                {{ form_start(form) }}
+                {{ form_errors(form) }}
+                <div class="row justify-content-end mb-2">
+                    <div class="col-3">
+                        {{ form_row(form.gameNumber) }}
+                    </div>
+                    <div class="col-9">
+                        {{ form_row(form.opponent) }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        {{ form_row(form.home) }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        {{ form_row(form.date, { 'attr' : { 'class' : 'datepicker form-control' }}) }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col" align="right">
+                        {{ form_row(form.submit) }}
+                    </div>
+                </div>
+                {{ form_rest(form) }}
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('assets/js/external/jquery/jquery.js') }}"></script>
+    <script src="{{ asset('assets/js/jquery-ui.min.js') }}"></script>
+    <script src="{{ asset('assets/js/datepicker-fr.js') }}"></script>
+    <script>
+        $(document).ready(function () {
+            $('.datepicker').datepicker({
+                dateFormat: 'dd/m/yy',
+                firstDay: 1
+            });
+            $.datepicker($.datepicker.regional["fr"]);
+        });
+    </script>
+{% endblock %}

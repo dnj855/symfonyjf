@@ -29,6 +29,13 @@ servicejf_admin_user_disable:
     defaults:
         _controller: ServiceJFAdminBundle:User:disable
 
+servicejf_admin_user_setSuperAdmin:
+    path: /user/setSuperAdmin/{id}
+    requirements:
+        id: \d*
+    defaults:
+        _controller: ServiceJFAdminBundle:User:setSuperAdmin
+
 servicejf_admin_season_create:
     path:     /season
     defaults:
@@ -48,7 +55,7 @@ servicejf_admin_punchline_setBest:
 
 servicejf_admin_ci_modifyguests:
     path:    /ci/guest/{id}
-    defaults: { _controller: ServiceJFAdminBundle:Ci:modify}
+    defaults: { _controller: ServiceJFAdminBundle:Ci:modify }
     requirements:
         id: \d*
 

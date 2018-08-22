@@ -1,0 +1,52 @@
+{% extends '::layout.html.twig' %}
+
+{% block title %}
+    {{ parent() }}challenge des soirées sport
+{% endblock %}
+
+{% block body_title %}
+    soirées sport
+{% endblock %}
+
+{% block sub_nav_content %}
+    {% if is_granted('ROLE_CSS') %}
+        <li class="nav-item"><a class="nav-link" href="{{ path('servicejf_challengecss_games') }}">Saisir une soirée</a>
+        </li>
+    {% endif %}
+    <li class="nav-item"><a class="nav-link" href="{{ path('servicejf_challengecss_generalRanking') }}">Classement
+            général</a></li>
+    <li class="nav-item"><a class="nav-link" href="{{ path('servicejf_challengecss_pointsRanking') }}">Classement
+            aux points</a></li>
+    <li class="nav-item"><a class="nav-link" href="{{ path('servicejf_challengecss_goalAverageRanking') }}">Classement
+            au goal-average</a></li>
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="row mt-4">
+            {% block seasonChoose %}
+                <div class="col-12 col-md-4">
+                    <div class="card border-0 fg-panel py-2 px-2">
+                        <div class="d-flex justify-content-center">
+                            <span>
+                                Matchs de la saison {{ season.dateBegin|date('Y') }}-{{ season.dateEnd|date('Y') }}
+                            </span>
+                            <a href="#seasonChoice" data-toggle="collapse" class="text-light ml-2"><i
+                                        title="Modifier" class="far fa-edit"></i></a>
+                        </div>
+                    </div>
+                    <div class="collapse" id="seasonChoice">
+                        <div class="card card-body py-2 mb-0 mt-1 border-primary">
+                            {{ render(controller('ServiceJFChallengeCSSBundle:Core:chooseSeason')) }}
+                        </div>
+                    </div>
+                </div>
+            {% endblock %}
+            {% block body_content %}
+            {% endblock %}
+        </div>
+    </div>
+{% endblock %}
+
+        {% block header_padding %}
+            <div class="py-md-4">{% endblock %}

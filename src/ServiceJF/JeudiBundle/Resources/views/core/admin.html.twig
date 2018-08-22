@@ -1,0 +1,125 @@
+{% extends 'ServiceJFJeudiBundle::layout.html.twig' %}
+
+{% block body_content %}
+    <div class="row">
+        <div class="col-12 mb-2 mb-md-0">
+            <div class="card-deck">
+                <div class="card border-primary">
+                    <div class="card-header pb-0">
+                        <h4 class="card-title jeudi-title">Apéro à confirmer</h4>
+                    </div>
+                    <div class="card-body pb-0">
+                        {% if nextToConfirm is not null %}
+                            <div class="d-flex justify-content-between">
+                            <span>Apéro #{{ nextToConfirm.number }}
+                                du {{ nextToConfirm.date|localizeddate('long', 'none') }}.</span>
+                                <div>
+                                <span class="mr-1"><a
+                                            href="{{ path('servicejf_jeudi_admin_confirm', { 'apero' : nextToConfirm.id }) }}"><i
+                                                class="fas fa-check-circle"></i></a></span>
+                                    <a href="{{ path('servicejf_jeudi_admin_reject', { 'apero' : nextToConfirm.id }) }}"><i
+                                                class="fas fa-times-circle"></i></a>
+                                </div>
+                            </div>
+                            <hr class="border-primary border-1 my-2">
+                            <div class="d-flex justify-content-center">
+                                <p class="pr-2"><strong>Personnes intéressées</strong></p>
+                                <ul class="list-inline">
+                                    {% for user in interestedUsers %}
+                                        <li>{{ user.surname }} {{ user.name }}</li>
+                                    {% else %}
+                                        <li>Encore aucun pré-inscrit.</li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        {% else %}
+                            <div class="d-flex justify-content-center">
+                                Aucun apéro à confirmer.
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="card border-primary">
+                    <div class="card-header pb-0">
+                        <h4 class="card-title jeudi-title">
+                            {% if nextToEdit is not null %}
+                                {% if nextToEdit.placeSet == true %}
+                                    Modifier le lieu
+                                {% else %}Apéro à préciser
+                                {% endif %}
+                            {% else %}
+                                Apéro à préciser
+                            {% endif %}</h4>
+                    </div>
+                    <div class="card-body pb-0">
+                        {% if nextToEdit is not null %}
+                            <div class="d-flex justify-content-between">
+                                <span>Apéro #{{ nextToEdit.number }} du
+                                    {{ nextToEdit.date|localizeddate('long', 'none') }}.</span>
+                                <span><a role="button" data-toggle="collapse" href="#edit"
+                                         aria-expanded="false"
+                                         aria-controls="edit"><i class="far fa-edit"></i></a>
+                                <a data-toggle="tooltip"
+                                   href="{{ path('servicejf_jeudi_admin_reject', { apero : nextToEdit.id }) }}"
+                                   data-placement="auto" title="Annuler cet apéro."><i
+                                            class="fas fa-times-circle ml-2"></i></a></span>
+                            </div>
+                            <div class="collapse mt-2" id="edit">
+                                {{ form_start(form) }}
+                                <div class="row">
+                                    <div class="col-12">
+                                        {{ form_row(form.place) }}
+                                    </div>
+                                </div>
+                                <div class="form-row mb-0">
+                                    <div class="col-12">
+                                        <label>Heure du rendez-vous</label>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col-12 col-md-6">
+                                        {{ form_widget(form.displayDate.hour) }}
+                                        {{ form_errors(form.displayDate.hour) }}
+                                    </div>
+                                    <div class="col-12 col-md-6">
+                                        {{ form_widget(form.displayDate.minute) }}
+                                        {{ form_errors(form.displayDate.minute) }}
+                                    </div>
+                                </div>
+                                <div class="row mt-2">
+                                    <div class="col-12 d-flex justify-content-end">
+                                        {{ form_rest(form) }}
+                                        {{ form_end(form) }}
+                                    </div>
+                                </div>
+                            </div>
+                            <hr class="border-primary border-1 my-2">
+                            <div class="d-flex justify-content-center">
+                                <p class="pr-2"><strong>Personnes intéressées</strong></p>
+                                <ul class="list-inline">
+                                    {% for user in interestedUsers %}
+                                        <li>{{ user.surname }} {{ user.name }}</li>
+                                    {% else %}
+                                        <li>Encore aucun pré-inscrit.</li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        {% else %}
+                            <div class="d-flex justify-content-center">
+                                Aucun apéro à préciser.
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+  {% block javascripts %}
+      {{ parent() }}
+      <script>$(function () {
+              $('[data-toggle="tooltip"]').tooltip()
+          })
+      </script>
+  {% endblock %}

@@ -1,0 +1,31 @@
+servicejf_challengecss_seasonChange:
+    path: /seasonChange
+    defaults: { _controller: ServiceJFChallengeCSSBundle:Core:chooseSeason }
+
+servicejf_challengecss_games:
+    path: /games
+    defaults: { _controller: ServiceJFChallengeCSSBundle:Core:games }
+
+servicejf_challengecss_gameEdit:
+    path: /games/edit/{id}
+    defaults: { _controller: ServiceJFChallengeCSSBundle:Core:gameEdit }
+    requirements:
+        id: \d*
+
+servicejf_challengecss_generalRanking:
+    path: /
+    defaults: { _controller: ServiceJFChallengeCSSBundle:Core:generalRanking }
+
+servicejf_challengecss_detailRanking:
+    path: /{id}
+    defaults: { _controller: ServiceJFChallengeCSSBundle:Core:detailRanking }
+    requirements:
+        id: \d*
+
+servicejf_challengecss_pointsRanking:
+    path: /points
+    defaults: { _controller: ServiceJFChallengeCSSBundle:Core:pointsRanking }
+
+servicejf_challengecss_goalAverageRanking:
+    path: /goal-average
+    defaults: { _controller: ServiceJFChallengeCSSBundle:Core:goalAverageRanking }

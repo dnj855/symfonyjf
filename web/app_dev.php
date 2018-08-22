@@ -1,6 +1,7 @@
 <?php
 
 use Symfony\Component\Debug\Debug;
+use Symfony\Component\Debug\ErrorHandler;
 use Symfony\Component\HttpFoundation\Request;
 
 // If you don't want to setup permissions the proper way, just uncomment the following PHP line
@@ -20,6 +21,7 @@ if (isset($_SERVER['HTTP_CLIENT_IP'])
 
 require __DIR__.'/../vendor/autoload.php';
 Debug::enable();
+ErrorHandler::register();
 
 $kernel = new AppKernel('dev', true);
 if (PHP_VERSION_ID < 70000) {

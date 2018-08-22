@@ -18,7 +18,6 @@ class UserEditType extends AbstractType
     {
         $builder
             ->remove('plainPassword')
-            ->remove('roles')
         ->remove('save')
         ->add('save', SubmitType::class, array(
             'label' => 'submitButton.modify'

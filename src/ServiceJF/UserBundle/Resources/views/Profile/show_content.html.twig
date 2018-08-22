@@ -1,0 +1,24 @@
+{% trans_default_domain 'FOSUserBundle' %}
+
+<div class="card">
+    <div class="card-header text-primary pb-0">
+        <div class="d-flex justify-content-between align-items-top">
+            <h4 class="card-title">{{ user.surname }} {{ user.name }}</h4>
+            <a href="{{ path('fos_user_profile_edit') }}">
+                <div class="d-flex flex-column align-items-center">
+                    <i class="fas fa-user-edit"></i>
+                    <p class="my-0 small">Modifier</p>
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="card-body pb-0">
+        <ul class="list-unstyled">
+            <li><strong>{{ 'profile.show.username'|trans }}:</strong> {{ user.username }}</li>
+            <li><strong>{{ 'profile.show.email'|trans }}:</strong> {{ user.email }}</li>
+            <li><strong>Numéro de
+                    téléphone:</strong> {% if user.phoneNumber != null %}{{ user.phoneNumber }}{% else %}Non rempli{% endif %}
+            </li>
+        </ul>
+    </div>
+</div>

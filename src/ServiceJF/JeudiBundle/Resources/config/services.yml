@@ -1,0 +1,4 @@
+services:
+#    service_jf_jeudi.example:
+#        class: ServiceJF\JeudiBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

@@ -1,0 +1,9 @@
+{% extends ':Emails:JeudiLayout.html.twig' %}
+
+{% block subtitle %}
+    Chouette, l'apéro du {{ apero.date|localizeddate('long', 'none') }} est confirmé !
+{% endblock %}
+
+{% block content %}
+    Bonne nouvelle {{ user.surname }} ! L'apéro #{{ apero.number }} du {{ apero.date|localizeddate('long', 'none') }} vient tout juste d'être confirmé ! On reviendra bien vite vers toi pour le lieu et l'heure !
+{% endblock %}

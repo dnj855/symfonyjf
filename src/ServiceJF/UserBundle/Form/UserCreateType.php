@@ -22,25 +22,48 @@ class UserCreateType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
+            ->add('manager', CheckboxType::class, array(
+                'required' => false,
+                'label' => 'label.manager'
+            ))
             ->add('surname', TextType::class, array(
-                'label' => 'Prénom'
+                'label' => 'label.firstName'
             ))
             ->add('name', TextType::class, array(
-                'label' => 'Nom'
+                'label' => 'label.lastName'
+            ))
+            ->add('service', EntityType::class, array(
+                'label' => 'label.service',
+                'class' => 'ServiceJFCoreBundle:Service',
+                'choice_label' => 'name'
             ))
             ->add('plainPassword', PasswordType::class, array(
-                'label' => 'Mot de passe'
+                'label' => 'label.password'
             ))
             ->add('username', TextType::class, array(
-                'label' => 'Identifiant'
+                'label' => 'label.id'
             ))
             ->add('save', SubmitType::class, array(
-                'label' => 'Créer'
+                'label' => 'submitButton.create'
             ))
             ->add('email', EmailType::class, array(
-                'label' => 'E-mail',
+                'label' => 'label.email',
                 'required' => 'true'
-            ));
+            ))
+            ->add('roles', ChoiceType::class, array(
+                    'required' => false,
+                    'expanded' => true,
+                    'multiple' => true,
+                    'label' => false,
+                    'placeholder' => '--Choisir--',
+                    'choices' => array(
+                        ' Soirées sport' => 'ROLE_CSS',
+                        ' Administrateur' => 'ROLE_ADMIN',
+                        ' Admin du jeudi' => 'ROLE_JEUDI_ADMIN',
+                        ' Apéro du jeudi' => 'ROLE_JEUDI_GUEST'
+                    )
+                )
+            );
     }
 
     /**

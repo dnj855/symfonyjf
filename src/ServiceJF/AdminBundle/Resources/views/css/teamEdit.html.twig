@@ -1,0 +1,25 @@
+{% extends 'ServiceJFAdminBundle::layout.html.twig' %}
+
+{% block body_subtitle %}
+    Soirées sport
+{% endblock %}
+
+{% block body_content %}
+    <div class="container">
+        <div class="row mt-4">
+            <div class="col-12 col-md-8 offset-md-4">
+                <h3 class="text-primary mb-0">
+                    Modifier {{ team.name }}
+                </h3>
+                <hr class="border-primary mt-0">
+                {{ form_start(form) }}
+                {{ form_row(form.name) }}
+                <div align="right">
+                    {{ form_row(form.submit, { 'label' : 'Modifier'}) }}
+                </div>
+                {{ form_rest(form) }}
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

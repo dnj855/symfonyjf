@@ -15,6 +15,7 @@ use ServiceJF\UserBundle\Form\UserEditPasswordType;
 use ServiceJF\UserBundle\Form\UserEditType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Session\Session;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class UserController extends Controller
@@ -107,5 +108,20 @@ class UserController extends Controller
             'form' => $form->createView(),
             'user' => $user
         ));
+    }
+
+    public function setSuperAdminAction($id, Session $session)
+    {
+        $this->denyAccessUnlessGranted('ROLE_SUPER_ADMIN', null, 'Page réservée aux super-admins !');
+        $userManager = $this->get('fos_user.user_manager');
+        $user = $userManager->findUserBy(array(
+            'id' => $id));
+        if (!$user) {
+            throw new NotFoundHttpException('L\'utilisateur demandé n\'existe pas.');
+        }
+        $user->setRoles(array('ROLE_SUPER_ADMIN'));
+        $userManager->updateUser($user);
+        $session->getFlashBag('success', 'L\'utilisateur a été fait super-admin !');
+        return $this->redirectToRoute('servicejf_admin_home');
     }
 }

@@ -1,0 +1,53 @@
+{% extends 'ServiceJFChallengeCSSBundle::layout.html.twig' %}
+
+{% block seasonChoose %}
+{% endblock %}
+
+{% block body_subtitle %}
+    {{ player.user.surname }} {{ player.user.name }}
+{% endblock %}
+
+{% block body_content %}
+    <div class="col-md-2 col-12 mb-md-0 mb-2">
+        <a class="btn btn-primary btn-block text-light"
+        href="{{ path('servicejf_challengecss_generalRanking') }}"><i class="fas fa-angle-left"></i> classements</a>
+    </div>
+    <div class="col-12 offset-md-2 col-md-8">
+        <div class="d-flex justify-content-around">
+            <h4 class="css-title">{% transchoice player.points %}{0} 0 point|{1} 1 point|]1,Inf] %count% points{% endtranschoice %}</h4>
+            <h4 class="css-title">{{ player.season.dateBegin|date('Y') }}-{{ player.season.dateEnd|date('Y') }}</h4>
+        </div>
+        <table class="table table-responsive-md table-sm mt-2">
+            <tbody>
+            {% for game in games %}
+                <tr class="bg-primary text-light">
+                    <td>
+                        {% if game.scoreFCMetz > game.scoreOpponent %}
+                            <i class="fas fa-check"></i>
+                        {% else %}
+                            <i class="fas fa-times"></i>
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if game.home %}
+                            FC Metz - {{ game.opponent.name }}
+                        {% else %}
+                            {{ game.opponent.name }} - FC Metz
+                        {% endif %}
+                    </td>
+                    <td>
+                        {% if game.home %}
+                            {{ game.scoreFCMetz }} - {{ game.scoreOpponent }}
+                        {% else %}
+                            {{ game.scoreOpponent }} - {{ game.scoreFCMetz }}
+                        {% endif %}
+                    </td>
+                    <td>
+                        {{ game.date|localizeddate('short', 'none') }}
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

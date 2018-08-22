@@ -38,26 +38,31 @@
                 </div>
                 <div class="card border-0 index-panel">
                     <div class="ribbon-new"><span>A la une !</span></div>
+                    <div class="card-body px-3 d-flex justify-content-center">
+                        <a href="{{ path('servicejf_jeudi_homepage') }}"><img height=200px"
+                                                                              src="{{ asset('assets/img/logojeudi.png') }}"
+                                                                              alt="logojeudi"></a>
+                    </div>
+                </div>
+                <div class="card border-0 index-panel">
                     <div class="card-body px-3">
-                        <div class="text-center mb-2"><i class="fas fa-trophy fa-2x" aria-hidden="true"></i></div>
+                        <div class="text-center mb-2"><i class="far fa-futbol fa-2x" aria-hidden="true"></i></div>
                         <div class="text-center text-md-left">
-                            <h3>Challenge du mondial 2018</h3>
+                            <h3>Challenge des soirées sport</h3>
                             <p>
-                                Le foot, ça se joue à 11 contre 11 et à la fin, c'est l'Allemagne qui gagne. Vraiment ?
+                                Qui battra Elodie Gazzola pour cette nouvelle saison ?
                             </p>
                         </div>
                     </div>
                     <div class="card-footer">
                         <ul class="list-unstyled mb-0">
-                            <li><a href="{{ path('servicejf_cm18_homepage') }}">Jouer</a></li>
-                            <li><a href="{{ path('servicejf_cm18_faq') }}">Règlement</a></li>
+                            {% if is_granted('ROLE_CSS') %}
+                                <li><a href="{{ path('servicejf_challengecss_games') }}">Saisir les résultats</a></li>
+                            {% endif %}
+                            <li><a href="{{ path('servicejf_challengecss_generalRanking') }}">Consulter les
+                                    résultats</a>
+                            </li>
                         </ul>
-                    </div>
-                </div>
-                <div class="card border-0 index-panel">
-                    <div class="ribbon-warning"><span>A venir</span></div>
-                    <div class="card-body px-3 d-flex justify-content-center">
-                        <img height="300px" src="{{ asset('assets/img/logojeudi.png') }}" alt="logojeudi">
                     </div>
                 </div>
             </div>
@@ -121,22 +126,18 @@
                 </div>
                 <div class="card border-0 index-panel">
                     <div class="card-body px-3">
-                        <div class="text-center mb-2"><i class="far fa-futbol fa-2x" aria-hidden="true"></i></div>
+                        <div class="text-center mb-2"><i class="fas fa-trophy fa-2x" aria-hidden="true"></i></div>
                         <div class="text-center text-md-left">
-                            <h3>Challenge des soirées sport</h3>
+                            <h3>Challenge du mondial 2018</h3>
                             <p>
-                                Qui battra Elodie Gazzola pour cette nouvelle saison ?
+                                Le foot, ça se joue à 11 contre 11 et à la fin, c'est l'Allemagne qui gagne. Vraiment ?
                             </p>
                         </div>
                     </div>
                     <div class="card-footer">
                         <ul class="list-unstyled mb-0">
-                            {% if is_granted('ROLE_CSS') %}
-                                <li><a href="{{ path('servicejf_challengecss_games') }}">Saisir les résultats</a></li>
-                            {% endif %}
-                            <li><a href="{{ path('servicejf_challengecss_generalRanking') }}">Consulter les
-                                    résultats</a>
-                            </li>
+                            <li><a href="{{ path('servicejf_cm18_homepage') }}">Jouer</a></li>
+                            <li><a href="{{ path('servicejf_cm18_faq') }}">Règlement</a></li>
                         </ul>
                     </div>
                 </div>

@@ -1,0 +1,56 @@
+{% extends 'ServiceJFJeudiBundle::layout.html.twig' %}
+
+{% block body_content %}
+    <div class="row">
+        <div class="col-12 mb-2 mb-md-0">
+            <div class="card-deck">
+                <div class="card border-primary">
+                    <div class="card-header pb-0">
+                        <h4 class="card-title jeudi-title">
+                            {% if next.enabled is null %}
+                                Non confirmé
+                            {% elseif next.enabled == 1 %}
+                                Confirmé
+                            {% endif %}
+                        </h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-flex justify-content-md-between align-items-center py-0">
+                            <div>
+                                <p class="my-0">L'apéro #{{ next.number }} est prévu
+                                    le {{ next.date|localizeddate('long', 'none') }}{% if next.displayDate < date('1970-01-02')  %} à {{ next.displayDate|localizeddate('none', 'short') }}{% endif %}.</p>
+                                {% if next.place is not null %}
+                                    <div class="mt-2 text-primary"><strong>Lieu de l'apéro :</strong></div>
+                                    <div class="mt-0">{{ next.place|nl2br }}</div>
+                                {% endif %}
+                            </div>
+                            {% if interested != true %}
+                                <a href="{{ path('servicejf_jeudi_interested', { apero: next.id }) }}"
+                                   data-toggle="tooltip" data-placement="auto" title="Tu seras tenu au courant
+                                    par mail et par SMS de cet apéro.">
+                                    <div class="d-flex flex-column align-items-center">
+                                        <i class="far fa-thumbs-up fa-2x"></i>
+                                        <p class="my-0 small">Je m'inscris</p>
+                                    </div>
+                                </a>
+                            {% else %}
+                                <div class="d-flex flex-column align-items-center">
+                                    <i class="far fa-check-circle text-primary fa-2x"></i>
+                                    <p class="my-0 mx-0 small text-primary">Je suis intéressé</p>
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+  {% block javascripts %}
+      {{ parent() }}
+      <script>$(function () {
+              $('[data-toggle="tooltip"]').tooltip()
+          })
+      </script>
+  {% endblock %}

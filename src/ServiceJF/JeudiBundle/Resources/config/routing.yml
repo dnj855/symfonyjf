@@ -1,0 +1,35 @@
+servicejf_jeudi_homepage:
+    path:     /
+    defaults: { _controller: ServiceJFJeudiBundle:Core:index }
+
+servicejf_jeudi_interested:
+    path:     /interested/{apero}
+    defaults: { _controller: ServiceJFJeudiBundle:Appointment:interested }
+    requirements:
+        apero: \d*
+
+servicejf_jeudi_admin:
+    path:     /admin
+    defaults: { _controller: ServiceJFJeudiBundle:Core:admin }
+
+servicejf_jeudi_admin_confirm:
+    path:    /admin/confirm/{apero}
+    defaults: { _controller: ServiceJFJeudiBundle:Core:adminConfirm }
+    requirements:
+        apero: \d*
+
+servicejf_jeudi_admin_reject:
+    path:    /admin/reject/{apero}
+    defaults: { _controller: ServiceJFJeudiBundle:Core:adminReject }
+    requirements:
+        apero: \d*
+
+servicejf_jeudi_admin_edit:
+    path:    /admin/edit/{apero}
+    defaults: { _controller: ServiceJFJeudiBundle:Core:adminEdit }
+    requirements:
+        apero: \d*
+
+servicejf_jeudi_test:
+    path:    /admin/test
+    defaults: { _controller: ServiceJFJeudiBundle:Core:test }

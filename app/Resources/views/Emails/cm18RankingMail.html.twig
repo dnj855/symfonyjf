@@ -1,0 +1,35 @@
+{% extends ':Emails:layout.html.twig' %}
+
+{% block title %}
+    challenge mondial 18
+{% endblock %}
+
+{% block subtitle %}
+    {{ title }}
+{% endblock %}
+
+{% block content %}
+    {{ beginningContent|nl2br|raw }}
+    <ul style="list-style: none">
+        {% set PreviousScore = null %}
+        {% set PreviousPerfect = null %}
+        {% for player in ranking %}
+            <li>
+                {% if loop.index == 1 %}
+                    {{ loop.index }}.
+                {% elseif PreviousScore == player.points and PreviousPerfect == player.perfect %}
+                    -
+                {% else %}
+                    {{ loop.index }}.
+                {% endif %}
+                {{ player.identity.surname }} {{ player.identity.name }} / {{ player.points }} points
+            </li>
+            {% set PreviousScore = player.points %}
+            {% set PreviousPerfect = player.perfect %}
+        {% endfor %}
+    </ul>
+    {{ endingContent|nl2br }}
+    <p align="center"><a href="https://www.servicejf.com/cm18" target="_blank">https://www.servicejf.com/cm18</a></p>
+    <p><em>Et n'oublie pas, nous sommes là en cas de besoin et d'explications !</em></p>
+    <p align="right">Les joyeux organisateurs</p>
+{% endblock %}

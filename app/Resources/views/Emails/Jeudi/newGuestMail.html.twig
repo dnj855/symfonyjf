@@ -1,0 +1,18 @@
+{% extends ':Emails:jeudiLayout.html.twig' %}
+
+{% block subtitle %}
+    Bienvenue {{ name }}
+{% endblock %}
+
+{% block content %}
+    <p>Tu peux maintenant te tenir informé des prochains apéros du jeudi ! Sur le site, ou bien dans tes mails, voire
+        par texto si tu préfères !</p>
+    <p>Comment ça marche ? C'est très simple : chaque semaine, si tu penses venir à l'apéro, pré-inscris-toi. Et tu
+        auras ensuite toutes les infos en temps réel !</p>
+    <p>Tout cela accessible avec ton pseudo : <strong>{{ login }}</strong> et le mot de passe que tu viens de choisir.
+    </p>
+    <p><em>Si tu as renseigné un numéro de téléphone, tu vas recevoir bientôt un code de validation à entrer dans ton
+            compte personnel. Tant que tu ne l'as pas fait, tu ne pourras pas être prévenu par texto.</em></p>
+    <p>Et ensuite, à toi tous les services du site !</p>
+    <h5 align="center"><strong><a href="https://www.servicejf.com">www.servicejf.com</a></strong></h5>
+{% endblock %}

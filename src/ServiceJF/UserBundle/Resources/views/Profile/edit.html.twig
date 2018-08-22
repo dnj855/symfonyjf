@@ -3,12 +3,27 @@
 {% block body_subtitle %}
     informations personnelles
 {% endblock %}
+
 {% block fos_user_content %}
     {% trans_default_domain 'FOSUserBundle' %}
     {{ form_start(form, { 'action': path('fos_user_profile_edit'), 'attr': { 'class': 'fos_user_profile_edit' } }) }}
-    {{ form_widget(form) }}
+    {{ form_row(form.username) }}
+    {{ form_row(form.email) }}
+    <div class="form-group mb-2">
+        {{ form_label(form.phoneNumber) }}
+        {{ form_widget(form.phoneNumber) }}
+        <div id="phoneNumberErrors" class="small form-text text-muted">
+        </div>
+        {{ form_errors(form.phoneNumber) }}
+    </div>
+    {{ form_rest(form) }}
     <div align="right" class="mt-3">
         <input type="submit" value="{{ 'profile.edit.submit'|trans }}" class="btn btn-primary text-light"/>
     </div>
     {{ form_end(form) }}
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('assets/js/phoneNumberValidation.js') }}"></script>
 {% endblock %}

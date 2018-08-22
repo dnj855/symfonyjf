@@ -45,3 +45,17 @@ servicejf_ciRedirect4:
 servicejf_dlRedirect:
     path:    /dead-list
     defaults: { _controller: ServiceJFCoreBundle:Core:dlRedirect }
+
+servicejf_jeudi_register:
+    path:    /register
+    defaults: { _controller: ServiceJFJeudiBundle:Core:register }
+
+servicejf_SMS_confirm:
+    path:    /sms-confirm
+    defaults: { _controller: ServiceJFCoreBundle:SMS:Confirm }
+
+servicejf_SMS_confirm_token:
+    path:     /sms-confirm/{token}
+    defaults: { _controller: ServiceJFCoreBundle:SMS:ConfirmToken }
+    requirements:
+        token: '^[1-9][0-9]{5}$'

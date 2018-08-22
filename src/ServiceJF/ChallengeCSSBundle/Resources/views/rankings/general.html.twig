@@ -1,0 +1,49 @@
+{% extends 'ServiceJFChallengeCSSBundle::layout.html.twig' %}
+
+{% block body_subtitle %}
+    classement général
+{% endblock %}
+
+{% block body_content %}
+    <div class="col-12 col-md-8">
+        {% if ranking == null %}
+            <h3 class="ci-user" align="center">Aucun match réalisé cette saison. Reviens plus tard !</h3>
+        {% elseif ranking|length >= 3 %}
+            <table class="table table-responsive-md table-sm">
+                <thead>
+                <tr class="bg-secondary text-light">
+                    <th></th>
+                    <th></th>
+                    <th>Matchs réalisés</th>
+                    <th>Points</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for player in ranking %}
+                    <tr class="bg-primary text-light">
+                        <td>
+                            {% if loop.index == 1 %}
+                                {{ loop.index }}.
+                            {% elseif previousPoints == player.points %}
+
+                            {% else %}
+                                {{ loop.index }}.
+                            {% endif %}
+                        </td>
+                        <td>
+                            <a class="text-light"
+                               href="{{ path('servicejf_challengecss_detailRanking', { id : player.id }) }}">{{ player.user.surname }} {{ player.user.name }}</a>
+                        </td>
+                        <td>{{ player.directedGames }}</td>
+                        <td>{{ player.points }}</td>
+                    </tr>
+                    {% set previousPoints = player.points %}
+                {% endfor %}
+                </tbody>
+            </table>
+            <h6 class="text-primary d-flex justify-content-center">Clique sur les noms des techniciens pour avoir les détails.</h6>
+        {% else %}
+            <h3 class="ci-user" align="center">Trop peu de matchs joués cette saison.<br/>Reviens plus tard !</h3>
+        {% endif %}
+    </div>
+{% endblock %}

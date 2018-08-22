@@ -1,0 +1,10 @@
+{% extends ':Emails:JeudiLayout.html.twig' %}
+
+{% block subtitle %}
+    Mauvaise nouvelle, l'apéro du {{ apero.date|localizeddate('long', 'none') }} est annulé !
+{% endblock %}
+
+{% block content %}
+    Désolé {{ user.surname }} ! Malheureusement, l'apéro #{{ apero.number }} du {{ apero.date|localizeddate('long', 'none') }} ne pourra pas avoir lieu !
+    Mais rassure-toi, ce n'est que partie remise, et tu seras bienvenu.e dès le {{ nextApero.date|localizeddate('long', 'none') }} pour un nouvel apéro du jeudi.
+{% endblock %}

@@ -24,11 +24,10 @@ class AppKernel extends Kernel
             new ServiceJF\ChallengePSBundle\ServiceJFChallengePSBundle(),
             new ServiceJF\ChallengeCSSBundle\ServiceJFChallengeCSSBundle(),
             new ServiceJF\ChallengeCM18Bundle\ServiceJFChallengeCM18Bundle(),
+            new ServiceJF\JeudiBundle\ServiceJFJeudiBundle(),
             new Debril\RssAtomBundle\DebrilRssAtomBundle(),
             new ServiceJF\UserBundle\ServiceJFUserBundle(),
-            new FOS\UserBundle\FOSUserBundle(),
-            new ServiceJF\JeudiBundle\ServiceJFJeudiBundle(),
-        ];
+            new FOS\UserBundle\FOSUserBundle(),];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
             $bundles[] = new Symfony\Bundle\DebugBundle\DebugBundle();

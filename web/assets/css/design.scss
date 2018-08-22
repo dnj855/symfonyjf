@@ -1,9 +1,8 @@
 @import "color-definition.scss";
-
 @import url('https://fonts.googleapis.com/css?family=Alegreya:400,500|Fredericka+the+Great');
 
-$heading-font : 'Fredericka the Great', cursive;
-$serif-font : 'Alegreya', serif;
+$heading-font: 'Fredericka the Great', cursive;
+$serif-font: 'Alegreya', serif;
 
 h1 {
   font-family: $heading-font !important;
@@ -50,12 +49,11 @@ body {
       line-height: 2rem;
     }
   }
-  
+
   .subtitle {
     font-size: 2em;
     line-height: 1.5rem;
     text-transform: uppercase;
-    background-color: $primary !important;
     font-weight: bolder;
     font-size-adjust: none;
   }
@@ -370,4 +368,9 @@ label {
 
 .hidden {
   display: none;
+}
+
+.jeudi-title {
+  font-family: $heading-font;
+  color: $primary;
 }

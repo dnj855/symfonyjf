@@ -1,0 +1,52 @@
+{% extends 'ServiceJFAdminBundle::layout.html.twig' %}
+
+{% block body_subtitle %}
+    Soirées sport
+{% endblock %}
+
+{% block body_content %}
+    <div class="container">
+        <div class="row mt-4">
+            <div class="col-12 col-md-4 order-2 order-md-1">
+                <h3 class="text-primary mb-0">
+                    Equipes déjà existantes
+                </h3>
+                <hr class="border-primary mt-0">
+                <ul class="list-unstyled">
+                    {% for team in teams %}
+                        <li class="list-item">
+                            <a href="{{ path('servicejf_admin_css_teamEdit', { 'id' : team.id }) }}">
+                                <i class="fas fa-edit mr-1"></i>
+                            </a>
+                            {% if team.enabled %}
+                                <a href="{{ path('servicejf_admin_css_teamDisable', { 'id' : team.id }) }}">
+                                    <i class="fas fa-times mr-1"></i>
+                                </a>
+                            {% else %}
+                                <a href="{{ path('servicejf_admin_css_teamEnable', { 'id' : team.id }) }}">
+                                    <i class="fas fa-check mr-1"></i>
+                                </a>
+                            {% endif %}
+                            {{ team.name }}
+                        </li>
+                    {% else %}
+                        <li class="list-item">Aucune équipe enregistrée pour le moment.</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="col-12 col-md-8 order-1 order-md-2">
+                <h3 class="text-primary mb-0">
+                    Créer une équipe
+                </h3>
+                <hr class="border-primary mt-0">
+                {{ form_start(form) }}
+                {{ form_row(form.name) }}
+                <div align="right">
+                    {{ form_row(form.submit) }}
+                </div>
+                {{ form_rest(form) }}
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

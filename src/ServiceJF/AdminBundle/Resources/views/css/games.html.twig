@@ -1,0 +1,91 @@
+{% extends 'ServiceJFAdminBundle::layout.html.twig' %}
+
+{% block body_subtitle %}
+    Soirées sport
+{% endblock %}
+
+{% block css %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('assets/css/jquery-ui.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/jquery-ui.structure.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/jquery-ui.theme.min.css') }}">
+{% endblock %}
+
+{% block body_content %}
+    <div class="container">
+        <div class="row mt-4">
+            <div class="col-12 col-md-2">
+                <a class="btn btn-primary btn-block text-light" href={{ path('servicejf_admin_css_gameCreate') }}>Créer
+                    un
+                    match</a>
+            </div>
+            <div class="col-12 col-md-10">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card border-0 fg-panel py-2 px-2">
+                            <div class="d-flex justify-content-center">
+                            <span>
+                                Matchs de la saison {{ season.dateBegin|date('Y') }}-{{ season.dateEnd|date('Y') }}
+                            </span>
+                                <a href="#seasonChoice" data-toggle="collapse" class="text-light ml-2"><i
+                                            class="far fa-edit"></i></a>
+                            </div>
+                        </div>
+                        <div class="collapse" id="seasonChoice">
+                            <div class="py-2 mb-0 text-center">
+                                {{ render(controller('ServiceJFChallengeCSSBundle:Core:chooseSeason')) }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-12 mt-2">
+                        <ul class="list-unstyled">
+                            {% for game in games %}
+                                <li>
+                                    {% if game.home %}
+                                        <strong>J{{ game.gameNumber }} | {{ game.date|localizeddate('short', 'none') }}
+                                            <small><a href="#game{{ game.id }}Edit"
+                                                      data-toggle="collapse">(modifier)</a>
+                                            </small>
+                                            :</strong> FC
+                                        Metz {{ game.scoreFCMetz|default('') }}
+                                        -{{ game.scoreOpponent|default('') }} {{ game.opponent.name }}
+                                    {% else %}
+                                        <strong>J{{ game.gameNumber }} | {{ game.date|localizeddate('short', 'none') }}
+                                            <small><a href="#game{{ game.id }}Edit"
+                                                      data-toggle="collapse">(modifier)</a>
+                                            </small>
+                                            :</strong> {{ game.opponent.name }} {{ game.scoreOpponent|default('') }}
+                                        -{{ game.scoreFCMetz|default('') }} FC Metz
+                                    {% endif %}
+                                    <div class="collapse" id="game{{ game.id }}Edit">
+                                        <div class="py-2 mb-0 text-center">
+                                            {{ render(controller('ServiceJFAdminBundle:Css:gameEdit', { 'game' : game })) }}
+                                        </div>
+                                    </div>
+                                </li>
+                            {% else %}
+                                <li>Aucun match encore renseigné pour cette saison.</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('assets/js/external/jquery/jquery.js') }}"></script>
+    <script src="{{ asset('assets/js/jquery-ui.min.js') }}"></script>
+    <script src="{{ asset('assets/js/datepicker-fr.js') }}"></script>
+    <script>
+        $(document).ready(function () {
+            $('.datepicker').datepicker({
+                dateFormat: 'dd/m/yy',
+                firstDay: 1
+            });
+            $.datepicker($.datepicker.regional["fr"]);
+        });
+    </script>
+{% endblock %}

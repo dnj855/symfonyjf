@@ -1,0 +1,11 @@
+{% extends ':Emails:JeudiLayout.html.twig' %}
+
+{% block subtitle %}
+    Un nouvel invité pour l'apéro du jeudi
+{% endblock %}
+
+{% block content %}
+    <p>Voici un nouvel invité qui s'est inscrit à l'apéro du jeudi :</p>
+    <p><strong>{{ surname }} {{ name }}</strong></p>
+    <p>On le connaît ? Tout va bien, rien à faire. On ne le connaît pas ? Il faut supprimer son compte.</p>
+{% endblock %}

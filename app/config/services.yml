@@ -1,23 +1,46 @@
 # Learn more about services, parameters and containers at
 # https://symfony.com/doc/current/service_container.html
 parameters:
-    #parameter_name: value
+#parameter_name: value
 
 services:
-    # default configuration for services in *this* file
+  # default configuration for services in *this* file
     _defaults:
-        # automatically injects dependencies in your services
+    # automatically injects dependencies in your services
         autowire: true
-        # automatically registers your services as commands, event subscribers, etc.
+    # automatically registers your services as commands, event subscribers, etc.
         autoconfigure: true
-        # this means you cannot fetch services directly from the container via $container->get()
-        # if you need to do this, you can override this setting on individual services
+    # this means you cannot fetch services directly from the container via $container->get()
+    # if you need to do this, you can override this setting on individual services
         public: true
 
     twig.extension.intl:
         class: Twig_Extensions_Extension_Intl
         tags:
             - { name: twig.extension }
+
+    servicejf.form.profile_edit:
+        class: ServiceJF\UserBundle\Form\UserProfileEditType
+        tags:
+            - { name: form.type, alias: user_profile }
+
+    servicejf.mailer:
+        class: ServiceJF\CoreBundle\Mailer\Mailer
+        arguments:
+            - '@mailer'
+            - '@templating'
+            - '@service_container'
+
+    servicejf.smsinterface:
+        class: ServiceJF\CoreBundle\SMS\SMSInterface
+        arguments:
+            - '@service_container'
+
+    servicejf.smschecker:
+        class: ServiceJF\CoreBundle\SMS\SMSChecker
+        arguments:
+            - '@doctrine.orm.entity_manager'
+            - '@servicejf.smsinterface'
 
     servicejf_challengedl.gamePhase:
         class: ServiceJF\ChallengeDLBundle\GamePhase\GamePhase
@@ -37,17 +60,11 @@ services:
         arguments:
             - '@doctrine.orm.entity_manager'
 
-    servicejf.mailer:
-        class: ServiceJF\CoreBundle\Mailer\Mailer
-        arguments:
-            - '@mailer'
-            - '@templating'
-            - '@service_container'
-
     servicejf.doctrine_listener.new_user:
         class: ServiceJF\CoreBundle\DoctrineListener\NewUserListener
         arguments:
             - '@servicejf.mailer'
+            - '@service_container'
         tags:
             - { name: doctrine.event_listener, event: postPersist }
 
@@ -85,10 +102,17 @@ services:
             - '@doctrine.orm.entity_manager'
             - '@service_container'
 
-    servicejf_challengefg.cronMonthly:
-        class: ServiceJF\ChallengeFGBundle\Command\CronMonthlyCommand
+  #    servicejf_challengefg.cronMonthly:
+  #        class: ServiceJF\ChallengeFGBundle\Command\CronMonthlyCommand
+  #        arguments:
+  #            - '@doctrine.orm.entity_manager'
+  #            - '@servicejf.mailer'
+  #        tags:
+  #            - { name: 'console.command' }
+
+    servicejf_jeudi.mailer:
+        class: ServiceJF\JeudiBundle\Mailer\Mailer
         arguments:
-            - '@doctrine.orm.entity_manager'
-            - '@servicejf.mailer'
-        tags:
-            - { name: 'console.command' }
+            - '@mailer'
+            - '@templating'
+            - '@service_container'

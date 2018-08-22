@@ -1,0 +1,25 @@
+{% extends ':Emails:JeudiLayout.html.twig' %}
+
+{% block subtitle %}
+    {% if place == true and time == true %}
+        Le lieu et l'horaire du prochain apéro ont été modifiés&nbsp;!
+    {% elseif place == false and time == true %}
+        L'horaire du prochain apéro a été modifié&nbsp;!
+    {% elseif place == true and time == false %}
+        Le lieu du prochain apéro a été modifié&nbsp;!
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+    <p>Il y a eu un petit changement. Oh, rien de bien grave, rassure-toi {{ user.surname }}, l'apéro du {{ apero.date|localizeddate('long', 'none') }} va bien se tenir.</p>
+    {% if place == true and time == true %}
+        <p>Mais en fait, ce sera à <strong>{{ apero.displayDate|localizeddate('none', 'short') }}</strong> et ce sera à cet endroit&nbsp;:</p>
+        <p><strong>{{ apero.place|nl2br }}</strong></p>
+    {% elseif place == false and time == true %}
+        <p>Le lieu ne change pas, mais sache que notre table nous attend désormais dès <strong>{{ apero.displayDate|localizeddate('none', 'short') }}</strong>&nbsp;!</p>
+    {% elseif place == true and time == false %}
+        <p>On a trouvé un autre endroit. Finalement, le rendez-vous, c'est là&nbsp;:</p>
+        <p><strong>{{ apero.place|nl2br }}</strong></p>
+    {% endif %}
+    <p>On espère que tu as bien tout noté de ces modifications, et on s'attend à te voir en forme&nbsp;!</p>
+{% endblock %}

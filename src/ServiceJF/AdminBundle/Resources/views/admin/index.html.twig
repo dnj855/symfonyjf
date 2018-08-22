@@ -15,7 +15,13 @@
                             <div class="d-flex justify-content-auto align-content-end">
                                 <div class="d-flex flex-column mr-2 justify-content-center">
                                     <a href="{{ path('servicejf_admin_user_disable', { 'id' : user.id }) }}"><i
-                                                class="fas fa-user-times" aria-hidden="true" aria-label="delete"></i></a>
+                                                class="fas fa-user-times" aria-hidden="true"
+                                                aria-label="delete"></i></a>
+                                    {% if is_granted('ROLE_SUPER_ADMIN') %}
+                                        <a href="{{ path('servicejf_admin_user_setSuperAdmin', { 'id' : user.id}) }}">
+                                            <i class="far fa-star"></i>
+                                        </a>
+                                    {% endif %}
                                 </div>
                                 <div class="d-flex flex-column mr-2">
                                     <a href="{{ path('servicejf_admin_user_edit', { 'id' :  user.id }) }}"><i

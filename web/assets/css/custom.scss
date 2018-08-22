@@ -25,7 +25,7 @@ $black: #000 !default;
 
 $dropdown-bg: $dark !important;
 
-$alert-padding-x: 1rem !important;
+$alert-padding-x: 1rem;
 
 $dropdown-link-color: $gray-200 !default;
 $dropdown-link-hover-color: darken($gray-900, 5%) !default;
@@ -45,3 +45,5 @@ $list-group-bg: $light !important;
 $card-deck-margin: $spacer !important;
 
 @import "../../../vendor/twbs/bootstrap/scss/bootstrap.scss";
+
+//

@@ -1,0 +1,15 @@
+{% extends ':Emails:JeudiLayout.html.twig' %}
+
+{% block subtitle %}
+    Bonne nouvelle, nous avons trouvé un lieu pour le prochain apéro !
+{% endblock %}
+
+{% block content %}
+    <p>On ne sait pas si tu es toujours partant pour l'apéro du {{ apero.date|localizeddate('long', 'none') }} (mais en
+        vrai, on se doute que si) !<br/>
+        En tout cas, sache que ça se passera là :</p>
+    <p><strong>{{ apero.place|nl2br }}</strong></p>
+    <p>Et que notre table est réservée à partir de
+        <strong>{{ apero.displayDate|localizeddate('none', 'short') }}</strong>.<br/>
+        Alors, prends ta bonne humeur et ton robuste foie, on t'attend !</p>
+{% endblock %}
