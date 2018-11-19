@@ -17,28 +17,28 @@
             </div>
             <div class="col-12 col-md-6" id="viewBets">
                 {% if bets is empty %}
-                    <div class="card card-body">
-                        <h3 class="text-primary text-center my-2">Aucun pari encore saisi</h3>
-                    </div>
+                <div class="card card-body">
+                    <h3 class="text-primary text-center my-2">Aucun pari encore saisi</h3>
+                </div>
                 {% else %}
-                    {% for bet in bets %}
-                        <div class="row pb-4">
-                            <div class="col-12">
-                                <div class="d-flex justify-content-around align-items-end">
-                                    <div class="mr-auto panel-vote">
-                                        {{ bet.bet|nl2br }}
-                                    </div>
+                {% for bet in bets %}
+                    <div class="row pb-4">
+                        <div class="col-12">
+                            <div class="d-flex justify-content-around align-items-end">
+                                <div class="mr-auto panel-vote">
+                                    {{ bet.bet|nl2br }}
                                 </div>
-                                <hr class="border-primary my-0">
-                                <div class="text-right">
-                                    <small>
+                            </div>
+                            <hr class="border-primary my-0">
+                            <div class="text-right">
+                                <small>
                                         <span class="border border-top-0 border-right-0 border-bottom-0 border-primary pl-1">
                                 {{ bet.date|date('d/m/y') }}
                                         </span>
-                                        <span class="border border-top-0 border-right-0 border-bottom-0 border-primary pl-1">
+                                    <span class="border border-top-0 border-right-0 border-bottom-0 border-primary pl-1">
                             {{ bet.better.surname }} {{ bet.better.name }}
                                 </span>
-                                        <span class="border border-top-0 border-right-0 border-bottom-0 border-primary pl-1">
+                                    <span class="border border-top-0 border-right-0 border-bottom-0 border-primary pl-1">
                                             {% if bet.correct is null %}
                                                 Pas vérifié
                                             {% elseif bet.correct == 1 %}
@@ -47,11 +47,14 @@
                                                 Faux !
                                             {% endif %}
                                 </span>
-                                    </small>
-                                </div>
+                                </small>
                             </div>
                         </div>
-                    {% endfor %}
+                    </div>
+                {% endfor %}
+                    <div class="d-flex justify-content-center">
+                        {{ pagerfanta(my_pager, 'twitter_bootstrap4_translated') }}
+                    </div>
                 {% endif %}
             </div>
         </div>

@@ -8,6 +8,8 @@
 namespace ServiceJF\ChallengePSBundle\Controller;
 
 
+use Pagerfanta\Adapter\ArrayAdapter;
+use Pagerfanta\Pagerfanta;
 use ServiceJF\ChallengePSBundle\Entity\Bet;
 use ServiceJF\ChallengePSBundle\Form\BetType;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -15,7 +17,7 @@ use Symfony\Component\HttpFoundation\Request;
 
 class CoreController extends Controller
 {
-    public function betsAction(Request $request)
+    public function betsAction(Request $request, $page)
     {
         $bet = new Bet();
         $form = $this->createForm(BetType::class, $bet);
@@ -34,9 +36,22 @@ class CoreController extends Controller
             ), array(
                 'date' => 'desc'
             ));
-        return $this->render('ServiceJFChallengePSBundle:core:bets.html.twig', array(
-            'bets' => $bets,
-            'form' => $form->createView()
-        ));
+        $adapter = new ArrayAdapter($bets);
+        $pager = new Pagerfanta($adapter);
+        $pager->setMaxPerPage(10);
+        if ($pager->haveToPaginate()) {
+        $pager->setCurrentPage($page);
+        $current_bets = $pager->getCurrentPageResults();
+            return $this->render('ServiceJFChallengePSBundle:core:bets.html.twig', array(
+                'bets' => $current_bets,
+                'form' => $form->createView(),
+                'my_pager' => $pager
+            ));
+        } else {
+            return $this->render('ServiceJFChallengePSBundle:core:bets.html.twig', array(
+                'bets' => $bets,
+                'form' => $form->createView()
+            ));
+        }
     }
 }
