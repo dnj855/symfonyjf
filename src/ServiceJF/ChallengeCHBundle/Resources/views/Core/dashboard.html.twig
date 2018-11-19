@@ -1,0 +1,28 @@
+{% extends 'ServiceJFChallengeCHBundle::layout.html.twig' %}
+
+{% block body_subtitle %}
+    enregistrer ses paris
+{% endblock %}
+
+{% block body_content %}
+    <div class="container mt-3">
+        <div class="row">
+            <div class="col-12 col-md-8 offset-md-2">
+                {% for game in games %}
+                    <div{% if loop.last == false %} class="mb-2"{% endif %}>
+                        {% if game.gamePhase.eliminatory == false %}
+                            {{ render(controller('ServiceJFChallengeCHBundle:Bet:poolGame', { 'game' : game, 'player' : player })) }}
+                        {% else %}
+                            {{ render(controller('ServiceJFChallengeCHBundle:Bet:knockoutGame', { 'game' : game, 'player' : player })) }}
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('assets/js/cm18KnockoutGames.js') }}"></script>
+{% endblock %}

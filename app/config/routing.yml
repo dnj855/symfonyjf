@@ -1,3 +1,7 @@
+service_jf_challenge_ch:
+    resource: "@ServiceJFChallengeCHBundle/Resources/config/routing.yml"
+    prefix:   /ch
+
 service_jf_jeudi:
     resource: "@ServiceJFJeudiBundle/Resources/config/routing.yml"
     prefix:   /jeudi

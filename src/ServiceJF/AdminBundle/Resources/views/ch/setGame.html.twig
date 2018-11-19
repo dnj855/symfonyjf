@@ -1,0 +1,79 @@
+{% extends 'ServiceJFAdminBundle::layout.html.twig' %}
+
+{% block body_subtitle %}
+    ch. handballissime
+{% endblock %}
+
+{% block body_content %}
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-12 col-md-6">
+                <h3 class="text-primary mb-0">
+                    Les matchs déjà créés
+                </h3>
+                <hr class="border border-primary my-0">
+                {% for game in games %}
+                    <div class="row my-0">
+                        <div class="col-4"><strong>{{ game.date|localizeddate('medium', 'short') }}</strong></div>
+                        <div class="col-8">{{ game.gamePhase.name }} :
+                            {{ game.teamHome.name }} - {{ game.teamAway.name }}</div>
+                    </div>
+                {% else %}
+                    <p class="lead">Aucun match encore créé</p>
+                {% endfor %}
+            </div>
+            <div class="col-12 col-md-6">
+                <h3 class="text-primary mb-0">
+                    Créer un nouveau match
+                </h3>
+                <hr class="border border-primary my-0">
+                {{ form_start(form) }}
+                <div class="form-row mt-1">
+                    <div class="col-6">
+                        {{ form_row(form.teamHome) }}
+                    </div>
+                    <div class="col-6">
+                        {{ form_row(form.teamAway) }}
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-12 form-group">
+                        {{ form_label(form.date) }}
+                        <div class="row">
+                            <div class="col-2">
+                                {{ form_widget(form.date.date.day) }}
+                            </div>
+                            <div class="col-2">
+                                {{ form_widget(form.date.date.month) }}
+                            </div>
+                            <div class="col-2">
+                                {{ form_widget(form.date.date.year) }}
+                            </div>
+                            <div class="col-2">
+                            </div>
+                            <div class="col-2">
+                                {{ form_widget(form.date.time.hour) }}
+                            </div>
+                            <div class="col-2">
+                                {{ form_widget(form.date.time.minute) }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-12">
+                        {{ form_label(form.gamePhase) }}
+                    </div>
+                    <div class="col-9">
+                        {{ form_widget(form.gamePhase) }}
+                    </div>
+                    <div class="col-3">
+                        {{ form_row(form.submit, {'attr' : { 'class' : 'btn btn-primary btn-block text-light'}}) }}
+                    </div>
+                </div>
+                {{ form_rest(form) }}
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

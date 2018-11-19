@@ -3,8 +3,8 @@ security:
     ServiceJF\UserBundle\Entity\User: sha512
 
   role_hierarchy:
-    ROLE_ADMIN:       ROLE_USER, ROLE_CSS, ROLE_CI, ROLE_JEUDI_ADMIN
-    ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
+    ROLE_ADMIN:       ROLE_USER, ROLE_CSS, ROLE_CI
+    ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH, ROLE_JEUDI_ADMIN]
 
   providers:
     main:
@@ -49,3 +49,4 @@ security:
             - ROLE_USER
             - ROLE_JEUDI_GUEST
     - { path: ^/jeudi/admin, roles: ROLE_JEUDI_ADMIN }
+    - { path: ^/ch, roles: ROLE_USER }

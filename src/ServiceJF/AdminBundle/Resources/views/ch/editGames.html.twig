@@ -1,0 +1,21 @@
+{% extends 'ServiceJFAdminBundle::layout.html.twig' %}
+
+{% block body_subtitle %}
+    challenge handballissime
+{% endblock %}
+
+{% block body_content %}
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col-8 offset-4">
+                <ul class="list-unstyled">
+                    {% for game in games %}
+                        <li class="list-item"><a href="{{ path('servicejf_admin_ch_editGame', { game : game.id }) }}">{{ game.teamHome.name }} - {{ game.teamAway.name }}</a></li>
+                    {% else %}
+                        <li class="list-item dl-title">Aucun score à saisir pour le moment.</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endblock %}

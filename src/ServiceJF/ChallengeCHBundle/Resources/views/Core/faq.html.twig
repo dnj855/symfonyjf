@@ -1,0 +1,62 @@
+{% extends 'ServiceJFChallengeCHBundle::layout.html.twig' %}
+
+{% block body_subtitle %}
+Reglement
+{% endblock %}
+
+{% block body_content %}
+    <div class="row mt-3">
+        <div class="col-12 col-md-8 offset-md-2">
+            <ol>
+                <li class="h4">Durée et organisation du concours</li>
+                <p class="text-justify">Comme lors de chaque grande compétition sportive, le service jeux&festivités: organise un grand concours de pronostics durant le championnat d'Europe de handball féminin <em>handballissime</em>.
+                    Pour participer, il faut être membre du service jeux&festivités: et s'inscrire au concours avant le début de la compétition <strong>(soit le {{ competitionBegin|localizeddate('medium', 'short') }})</strong>.</p>
+                <p class="text-justify">Comme l'intégralité de la compétition se déroule sur le portail exclusif du service jeux&festivités: (<a href="https://www.servicejf.com/ch">https://www.servicejf.com</a>), c'est bien sur ce site qu'il faut se rendre pour valider son inscription.
+                    Et c'est également sur le portail que le participant devra valider ses pronostics pour les différents matches retenus.</p>
+                <li class="h4">Matches à pronostiquer</li>
+                <p class="text-justify">Pour cette compétition, les organisateurs ont fait le choix de ne pas soumettre tous les matches aux pronostics des participants.
+                    Seuls les matches de l'équipe de France et la finale seront proposés aux pronostics. Ainsi, il y aura au minimum 4 et au maximum 9 matches à pronostiquer durant toute la compétition.</p>
+                <p class="text-justify">Pour chaque match soumis à pronostic, chaque participant doit pronostiquer le score final <em>(à l'issue du temps réglementaire ou des prolongations s'il y en a)</em>.
+                    En phase finale, s'il pronostique un match nul, le participant doit également préciser quelle équipe, selon lui, se qualifie pour le tour suivant à l'issue de la séance de tirs aux buts.</p>
+                <li class="h4">Barème des points</li>
+                <p class="text-justify">En fonction des résultats de l'équipe de France, il peut y avoir jusqu'à <strong>{{ finalWinner + (6 * (p1n2 + p1gap + perfect)) + (3 * (p1n2 + p1gap + koWinner + perfect)) }} points</strong> mis en jeu dans ce challenge. Voici leur répartition :</p>
+                <dl class="dl-horizontal">
+                    <dt class="my-0">Règle générale</dt>
+                    <dd class="my-0">Chaque type de points peut être remporté indépendamment des autres. Pour le dire autrement, pas besoin d'avoir le bon 1N2 pour remporter les autres points.</dd>
+                </dl>
+                <dl class="dl-horizontal">
+                    <dt class="my-0">Vainqueur final</dt>
+                    <dd class="my-0">En cas de bon pronostic du vainqueur final, <em>{{ finalWinner }} points</em> seront attribués à la fin de la compétition.</dd>
+                </dl>
+                <dl class="dl-horizontal">
+                    <dt class="my-0">Lors des deux phases de poule</dt>
+                    <dd class="my-0">Pour chaque bon résultat (1N2) : <em>{{ p1n2 }} points</em>.</dd>
+                    <dd class="my-0">En fonction de l'écart pronostiqué (cf. exemple plus bas) : <em>de 0 à {{ p1gap }} points</em>.</dd>
+                    <dd class="my-0">Pour le score exact : <em>{{ perfect }} points bonus</em>.</dd>
+                </dl>
+                <dl class="dl-horizontal">
+                    <dt class="my-0">En phase finale</dt>
+                    <dd class="my-0">Pour chaque bon résultat (1N2) : <em>{{ p1n2 }} points</em>.</dd>
+                    <dd class="my-0">Pour chaque bon vainqueur : <em>{{ koWinner }} points</em>.</dd>
+                    <dd class="my-0">En fonction de l'écart pronostiqué (cf. exemple plus bas) : <em>de 0 à {{ p1gap }} points</em>.</dd>
+                    <dd class="my-0">Pour le score exact : <em>{{ perfect }} points bonus</em>.</dd>
+                </dl>
+                <dl class="dl-horizontal">
+                    <dt class="my-0">Règle des écarts</dt>
+                    <dd class="my-0">Pour un écart de 0 ou 1 : <em>{{ p1gap }} points</em>.</dd>
+                    <dd class="my-0">Pour un écart de 2 ou 3 : <em>{{ p3gap }} points</em>.</dd>
+                    <dd class="my-0">Pour un écart de 4 ou 5 : <em>{{ p5gap }} point</em>.</dd>
+                    <dd class="my-0">Pour tout écart supérieur : <em>0 point</em>.</dd>
+                    <dd class="bg-primary text-light py-1 px-2 border border-dark border-1 my-3 mx-5"><em>Prenons l'exemple suivant : la France bat la Slovénie sur le score de 23-20. L'écart entre les deux scores est donc de 3.
+                            Le participant, lui, a pronostiqué une victoire de la France sur le score de 21-20. Chez lui, l'écart est de 1.
+                            L'écart entre les deux écarts est de 2, cela lui permet de remporter {{ p3gap }} points.</em></dd>
+                </dl>
+                <li class="h4">Calendrier des pronostics</li>
+                <p class="text-justify">Le participant peut modifier son pronostic autant de fois qu'il le souhaite, jusqu'au début de chaque rencontre. Toutes les informations seront disponibles sur le portail de pronostics.
+                </p>
+                <li class="h4">Recours et litiges</li>
+                <p class="text-justify">En cas de litige non prévu par le présent règlement, les organisateurs sont seuls juges et statuent sur tout recours qui leur serait soumis.</p>
+            </ol>
+        </div>
+    </div>
+{% endblock %}

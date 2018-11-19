@@ -1,0 +1,22 @@
+{% extends 'ServiceJFChallengeCHBundle::layout.html.twig' %}
+
+{% block body_subtitle %}
+    vainqueur final
+{% endblock %}
+
+{% block body_content %}
+    <div class="container mt-3">
+        <div class="d-flex justify-content-center">
+            <p class="h3 text-primary">Avant toute chose, merci de pronostiquer le vainqueur final</p>
+        </div>
+            <div class="col-6 offset-3 mt-2">
+                {{ form_start(form) }}
+                {{ form_row(form.finalWinner) }}
+                <div class="d-flex justify-content-end">
+                    {{ form_row(form.submit) }}
+                </div>
+                {{ form_rest(form) }}
+                {{ form_end(form) }}
+            </div>
+    </div>
+{% endblock %}

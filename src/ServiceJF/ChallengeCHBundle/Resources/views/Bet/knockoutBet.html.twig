@@ -1,0 +1,48 @@
+<div class="card border-primary">
+    <div class="card-header text-primary my-0 py-1">
+        <div class="d-flex justify-content-between">
+            <span>{{ game.date|localizeddate('short', 'short') }}</span>
+            <span>{{ game.gamePhase.name }}</span>
+        </div>
+    </div>
+    <div class="card-body py-2 px-2">
+        {{ form_start(form) }}
+        <div class="row mb-2">
+            <div class="col-12 col-md-4 align-items-center pt-1 d-flex justify-content-md-end justify-content-center">
+                <span class="flag-icon flag-icon-{{ game.teamHome.flag }}"></span>
+                <span class="mx-1">{{ game.teamHome.name }}</span>
+            </div>
+            <div class="col-md-4 col-12 d-flex justify-content-around align-items-center pt-1 cm18-game" align="center"
+                 id="{{ game.id }}">
+                <div class="px-1" id="widgetHome{{ game.id }}">
+                    {{ form_widget(form.winner[0]) }}
+                </div>
+                <div class="px-1" id="betHome{{ game.id }}">
+                    {{ form_widget(form.betHome) }}
+                </div>
+                <div class="px-1" id="betAway{{ game.id }}">
+                    {{ form_widget(form.betAway) }}
+                </div>
+                <div class="px-1" id="widgetAway{{ game.id }}">
+                    {{ form_widget(form.winner[1]) }}
+                </div>
+            </div>
+            <div class="col-md-4 col-12 align-items-center pt-1 justify-content-center justify-content-md-start d-flex">
+                <span class="mx-1 order-2">{{ game.teamAway.name }}</span>
+                <span class="flag-icon flag-icon-{{ game.teamAway.flag }} order-1 order-md-3"></span>
+            </div>
+        </div>
+        <div class="row" id="alert{{ game.id }}" style="display: none">
+            <div class="col justify-content-center d-flex">
+                <p class="small mb-0 pb-1 text-primary">Il faut sélectionner un vainqueur final à l'aide des boutons ci-dessus.</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 d-flex justify-content-center cm18-submit" id="submit{{ game.id }}">
+                {{ form_widget(form.submit, { 'attr' : { 'class' : 'btn btn-sm btn-primary text-light' }}) }}
+            </div>
+        </div>
+        {{ form_rest(form) }}
+        {{ form_end(form) }}
+    </div>
+</div>

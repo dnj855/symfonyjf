@@ -1,0 +1,30 @@
+{% extends '::layout.html.twig' %}
+
+{% block title %}
+    {{ parent() }}challenge handballissime
+{% endblock %}
+
+{% block css %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('assets/css/flag-icon.min.css') }}">
+{% endblock %}
+
+{% block header_padding %}
+<div class="py-4">
+    {% endblock %}
+
+    {% block body_title %}
+        ch. handballissime
+    {% endblock %}
+
+    {% block sub_nav_content %}
+        {% if registeredPlayer == true %}
+            {% include('ServiceJFChallengeCHBundle::body_nav.html.twig') %}
+        {% endif %}
+    {% endblock %}
+
+    {% block body %}
+    {% block body_content %}
+    {% endblock %}
+
+{% endblock %}

@@ -15,6 +15,7 @@ class AppKernel extends Kernel
             new Symfony\Bundle\SwiftmailerBundle\SwiftmailerBundle(),
             new Doctrine\Bundle\DoctrineBundle\DoctrineBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
+            new WhiteOctober\PagerfantaBundle\WhiteOctoberPagerfantaBundle(),
             new ServiceJF\CoreBundle\ServiceJFCoreBundle(),
             new ServiceJF\ChallengeCIBundle\ServiceJFChallengeCIBundle(),
             new ServiceJF\ChallengeFGBundle\ServiceJFChallengeFGBundle(),
@@ -26,8 +27,10 @@ class AppKernel extends Kernel
             new ServiceJF\ChallengeCM18Bundle\ServiceJFChallengeCM18Bundle(),
             new ServiceJF\JeudiBundle\ServiceJFJeudiBundle(),
             new Debril\RssAtomBundle\DebrilRssAtomBundle(),
+            new ServiceJF\ChallengeCHBundle\ServiceJFChallengeCHBundle(),
             new ServiceJF\UserBundle\ServiceJFUserBundle(),
-            new FOS\UserBundle\FOSUserBundle(),];
+            new FOS\UserBundle\FOSUserBundle(),
+        ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
             $bundles[] = new Symfony\Bundle\DebugBundle\DebugBundle();

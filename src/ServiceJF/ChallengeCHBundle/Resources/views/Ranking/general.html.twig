@@ -1,0 +1,56 @@
+{% extends 'ServiceJFChallengeCHBundle::layout.html.twig' %}
+
+{% block body_subtitle %}
+    Classement général
+{% endblock %}
+
+{% block body_content %}
+    <div class="container mt-3">
+        <div class="row">
+            <div class="col-12 col-md-8 offset-md-2">
+                {% if begin == true %}
+                    <table class="table table-responsive-md table-sm mt-2">
+                        <tbody>
+                        {% set PreviousScore = null %}
+                        {% set PreviousPerfect = null %}
+                        {% for player in players %}
+                            <tr class="bg-primary text-light">
+                                <td>{% if loop.index == 1 %}
+                                        {{ loop.index }}.
+                                    {% elseif PreviousScore == player.points and PreviousPerfect == player.perfect %}
+
+                                    {% else %}
+                                        {{ loop.index }}.
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    <a class="text-light"
+                                       href="{{ path('servicejf_challengech_rankingDetails', { 'player' : player.id }) }}">
+                                        {{ player.user.surname }} {{ player.user.name }}</a>{% if player.finalWinner is not null %}
+                                    <small>
+                                        ({{ player.finalWinner.name }})
+                                        {% else %} (pas de vainqueur final)
+                                        {% endif %}
+                                    </small>
+                                </td>
+                                <td>{% transchoice player.perfects %}{0} 0 perfect|{1} 1 perfect|]1,Inf] %count% perfects{% endtranschoice %}</td>
+                                <td>{% transchoice player.points %}{0} 0 point|{1} 1 point|]1,Inf] %count% points{% endtranschoice %}</td>
+                            </tr>
+                            {% set PreviousScore = player.points %}
+                            {% set PreviousPerfect = player.perfects %}
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                    <p class="text-primary mt-2">En cas d'égalité, les candidats sont départagés par le nombre de
+                        perfects.
+                        Cliquez sur les noms pour avoir les détails des paris.</p>
+                {% else %}
+                    <div class="d-flex justify-content-center text-center">
+                        <h3 class="text-primary">La compétition n'a pas encore débuté.<br/>
+                            Merci de revenir plus tard pour voir le classement.</h3>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

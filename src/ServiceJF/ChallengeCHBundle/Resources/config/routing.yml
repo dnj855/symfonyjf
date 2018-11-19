@@ -1,0 +1,37 @@
+servicejf_challengech_homePage:
+    path:     /
+    defaults: { _controller: ServiceJFChallengeCHBundle:Core:homePage }
+
+servicejf_challengech_finalWinner:
+    path:    /finalwinner
+    defaults: { _controller: ServiceJFChallengeCHBundle:Core:finalWinner }
+
+servicejf_challengech_faq:
+    path:    /faq
+    defaults: { _controller: ServiceJFChallengeCHBundle:Core:faq }
+
+servicejf_challengech_generalRanking:
+    path:    /ranking
+    defaults: { _controller: ServiceJFChallengeCHBundle:Ranking:general }
+
+servicejf_challengech_setPoolBet:
+    path:   /setPBet/{player}/{game}
+    defaults: { _controller: ServiceJFChallengeCHBundle:Bet:PoolGame }
+    requirements:
+        game: \d*
+        player: \d*
+    methods: [POST]
+
+servicejf_challengech_setKnockoutBet:
+    path:   /setKoBet/{player}/{game}
+    defaults: { _controller: ServiceJFChallengeCHBundle:Bet:KnockoutGame }
+    requirements:
+        game: \d*
+        player: \d*
+    methods: [POST]
+
+servicejf_challengech_rankingDetails:
+    path:    /ranking/{player}
+    defaults: { _controller: ServiceJFChallengeCHBundle:Ranking:detail }
+    requirements:
+        player: \d*

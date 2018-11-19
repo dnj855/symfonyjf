@@ -190,3 +190,17 @@ servicejf_admin_cm18_correct:
 servicejf_admin_cm18_email:
     path:    /cm18/email
     defaults: { _controller: ServiceJFAdminBundle:Cm18:email }
+
+servicejf_admin_ch_setGame:
+    path:    /ch/game/set
+    defaults: { _controller: ServiceJFAdminBundle:Ch:setGame }
+
+servicejf_admin_ch_editGames:
+    path:    /ch
+    defaults: { _controller: ServiceJFAdminBundle:Ch:editGames }
+
+servicejf_admin_ch_editGame:
+    path:    /ch/game/edit/{game}
+    defaults: { _controller: ServiceJFAdminBundle:Ch:editGame }
+    requirements:
+        user: \d*

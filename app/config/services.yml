@@ -102,6 +102,12 @@ services:
             - '@doctrine.orm.entity_manager'
             - '@service_container'
 
+    servicejf_challengech.betCalculator:
+        class: ServiceJF\ChallengeCHBundle\Services\BetCalculator
+        arguments:
+        - '@doctrine.orm.entity_manager'
+        - '@service_container'
+
   #    servicejf_challengefg.cronMonthly:
   #        class: ServiceJF\ChallengeFGBundle\Command\CronMonthlyCommand
   #        arguments:

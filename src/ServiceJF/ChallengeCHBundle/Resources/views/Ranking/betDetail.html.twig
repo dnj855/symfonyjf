@@ -1,0 +1,24 @@
+{% if bet is not null %}
+    <td class="text-center">{{ bet.betHome }} - {{ bet.betAway }}</td>
+    <td class="text-center">
+        {% if bet.points > 0 %}
+            <i class="fas fa-check"></i>
+        {% else %}
+            <i class="fas fa-times"></i>
+        {% endif %}
+    </td>
+    <td class="text-center">
+        {{ bet.pGap }}
+    </td>
+    <td class="text-center">
+        {% if bet.game.scoreHome == bet.betHome and bet.game.scoreAway == bet.betAway %}
+            <i class="fas fa-thumbs-up"></i>
+        {% endif %}
+    </td>
+    <td class="text-center">
+        {{ bet.points }}
+    </td>
+{% else %}
+    <td colspan="4" align="center"><small><em>Aucun pronostic enregistré pour ce match.</em></small></td>
+    <td class="text-center">0</td>
+{% endif %}
