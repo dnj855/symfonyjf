@@ -77,7 +77,7 @@ class BetCalculator
             } else {
                 $finalWinner = $game->getTeamAway();
             }
-            if ($finalWinner == $player->getFinalBet()) {
+            if ($finalWinner == $player->getFinalWinner()) {
                 $player->setPoints($player->getPoints() + $this->container->getParameter('ch_points_finalWinner'));
                 $bet->setPoints($bet->getPoints() + $this->container->getParameter('ch_points_finalWinner'));
             }

@@ -1,0 +1,83 @@
+@import "color-definition.scss";
+@import url('https://fonts.googleapis.com/css?family=Lobster|ZCOOL+XiaoWei');
+
+$heading-font: 'Lobster', cursive;
+$serif-font: 'ZCOOL XiaoWei', serif;
+
+h1 {
+  font-family: $heading-font !important;
+  font-size: 6rem !important;
+
+  @media (max-width: 720px) {
+    font-size: 4em !important;
+    letter-spacing: -1px;
+  }
+}
+
+body {
+  background-color: $light !important;
+  color: $dark !important;
+  font-family: $serif-font;
+}
+
+h2 {
+  font-family: $heading-font !important;
+}
+
+#header {
+  background-color: $primary;
+
+  h1 {
+    line-height: 4rem;
+
+    @media (max-width: 720px) {
+      line-height: 3rem;
+    }
+  }
+
+  h2 {
+    font-size: 2em;
+    line-height: 1rem;
+    text-transform: uppercase;
+
+    @media (max-width: 720px) {
+      font-size: 1.5em;
+      line-height: 2rem;
+    }
+  }
+
+  .subtitle {
+    font-size: 2em;
+    line-height: 1.5rem;
+    text-transform: uppercase;
+    font-weight: bolder;
+    font-size-adjust: none;
+  }
+}
+
+#footer {
+  background-color: lighten($primary, 6%);
+}
+
+.sub-nav {
+  background-color: lighten($primary, 9%);
+  border-top: solid 1px $secondary;
+  .nav-link {
+    color: darken($secondary, 15%);
+  }
+}
+
+#progress-bar {
+  animation-name: progressFill;
+  animation-duration: 5s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes progressFill {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}

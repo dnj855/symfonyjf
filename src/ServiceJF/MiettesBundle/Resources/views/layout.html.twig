@@ -1,0 +1,66 @@
+{% extends '::layout.html.twig' %}
+
+{% block miettes_title %}
+Opération haro sur les miettes
+{% endblock %}
+
+ {% block css %}
+     <link rel="stylesheet" href="{{ asset('assets/css/miettes/custom.css') }}">
+     <link rel="stylesheet" href="{{ asset('assets/css/miettes/design.css') }}">
+ {% endblock %}
+
+{% block body_title %}
+    haro sur les miettes
+{% endblock %}
+
+{% block body %}
+    {% block body_content %}
+    {% endblock %}
+{% endblock %}
+
+{% block top_nav %}
+{% endblock %}
+
+{% block sub_nav_content %}
+    <li class="nav-item">
+        <a class="nav-link text-light" href="{{ path('servicejf_miettes_homepage') }}">
+            Procéder à un tirage au sort
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link text-light" href="{{ path('servicejf_miettes_manage') }}">
+            Ajouter/retirer des volontaires
+        </a>
+    </li>
+{% endblock %}
+
+{% block header %}
+    <div class="row">
+        <div class="col-12">
+            <div class="d-flex justify-content-center">
+                <h1 class="text-light">haro sur les miettes</h1>
+            </div>
+            {% for key, messages in app.session.flashbag.all() %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ key }} alert-dismissible fade show mt-3">
+                        {{ message|trans({}, 'FOSUserBundle') }}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true" class="ml-auto">&times;</span>
+                        </button>
+                    </div>
+                {% endfor %}
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
+
+{% block footer_content %}
+    <div class="col-12">
+        <div class="text-footer">Ce module est sponsorisé par l'esprit de solidarité des salariés de FBLN.
+        </div>
+    </div>
+{% endblock %}
+
+{% block header_padding %}
+<div class="py-md-6 py-3">
+    {% endblock %}

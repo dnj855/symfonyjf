@@ -65,8 +65,14 @@ class AperoRepository extends \Doctrine\ORM\EntityRepository
     public function findNextToEdit()
     {
         $qb = $this->createQueryBuilder('a');
+        $now = new \DateTime();
+        $now->setTime(0, 0, 0);
         return $qb
             ->where($qb->expr()->eq('a.enabled', 1))
+            ->andWhere('a.date >= :now')
+            ->setParameters(array(
+                'now' => $now
+            ))
             ->orderBy('a.date', 'ASC')
             ->setMaxResults(1)
             ->getQuery()

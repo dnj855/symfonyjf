@@ -4,7 +4,7 @@ security:
 
   role_hierarchy:
     ROLE_ADMIN:       ROLE_USER, ROLE_CSS, ROLE_CI
-    ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH, ROLE_JEUDI_ADMIN]
+    ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH, ROLE_JEUDI_ADMIN, ROLE_MIETTES]
 
   providers:
     main:
@@ -38,6 +38,7 @@ security:
     - { path: ^/ps, roles: ROLE_USER }
     - { path: ^/ss/games, roles: ROLE_CSS }
     - { path: ^/ss, roles: ROLE_USER }
+    - { path: ^/miettes, roles: ROLE_MIETTES }
     -
         path: ^/cm18
         roles:

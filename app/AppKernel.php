@@ -25,6 +25,7 @@ class AppKernel extends Kernel
             new ServiceJF\ChallengePSBundle\ServiceJFChallengePSBundle(),
             new ServiceJF\ChallengeCSSBundle\ServiceJFChallengeCSSBundle(),
             new ServiceJF\ChallengeCM18Bundle\ServiceJFChallengeCM18Bundle(),
+            new ServiceJF\MiettesBundle\ServiceJFMiettesBundle(),
             new ServiceJF\JeudiBundle\ServiceJFJeudiBundle(),
             new Debril\RssAtomBundle\DebrilRssAtomBundle(),
             new ServiceJF\ChallengeCHBundle\ServiceJFChallengeCHBundle(),

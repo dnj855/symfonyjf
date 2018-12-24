@@ -1,0 +1,29 @@
+servicejf_miettes_homepage:
+    path:     /
+    defaults: { _controller: ServiceJFMiettesBundle:Cleanup:waiting }
+
+servicejf_miettes_random:
+    path:     /{attempt}
+    defaults:
+        _controller: ServiceJFMiettesBundle:Cleanup:random
+    requirements:
+        attempt: \d*
+
+servicejf_miettes_cleanup:
+    path:    /volunteer/{volunteer}
+    defaults: { _controller: ServiceJFMiettesBundle:Cleanup:ok }
+    requirements: { volunteer: \d* }
+
+servicejf_miettes_manage:
+    path:    /volunteers
+    defaults: { _controller: ServiceJFMiettesBundle:Volunteer:manage }
+
+servicejf_miettes_add:
+    path:    /volunteers/add
+    defaults: { _controller: ServiceJFMiettesBundle:Volunteer:add }
+    methods: [POST]
+
+servicejf_miettes_remove:
+    path:    /volunteers/remove
+    defaults: { _controller: ServiceJFMiettesBundle:Volunteer:remove }
+    methods: [POST]

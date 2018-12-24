@@ -50,11 +50,6 @@ class UserController extends Controller
         $form = $this->createForm(UserEditType::class, $user);
 
         if ($request->isMethod('POST') && $form->handleRequest($request)->isValid()) {
-            if ($request->request->get('ROLE_CSS')) {
-                $user->addRole('ROLE_CSS');
-            } elseif ($request->request->get('UNSET_ROLE_CSS')) {
-                $user->removeRole('ROLE_CSS');
-            }
             $userManager->updateUser($user);
             $request->getSession()->getFlashBag()->add('success', 'L\'utilisateur a bien été modifié.');
             return $this->redirectToRoute('servicejf_admin_home');

@@ -60,7 +60,8 @@ class UserCreateType extends AbstractType
                         ' Soirées sport' => 'ROLE_CSS',
                         ' Administrateur' => 'ROLE_ADMIN',
                         ' Admin du jeudi' => 'ROLE_JEUDI_ADMIN',
-                        ' Apéro du jeudi' => 'ROLE_JEUDI_GUEST'
+                        ' Apéro du jeudi' => 'ROLE_JEUDI_GUEST',
+                        ' Miettes' => 'ROLE_MIETTES'
                     )
                 )
             );

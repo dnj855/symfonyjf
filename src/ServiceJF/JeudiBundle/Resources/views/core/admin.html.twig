@@ -25,7 +25,7 @@
                             <div class="d-flex justify-content-center">
                                 <p class="pr-2"><strong>Personnes intéressées</strong></p>
                                 <ul class="list-inline">
-                                    {% for user in interestedUsers %}
+                                    {% for user in confirmInterestedUsers %}
                                         <li>{{ user.surname }} {{ user.name }}</li>
                                     {% else %}
                                         <li>Encore aucun pré-inscrit.</li>

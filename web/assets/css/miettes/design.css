@@ -1,0 +1,60 @@
+@import url("https://fonts.googleapis.com/css?family=Lobster|ZCOOL+XiaoWei");
+h1 {
+  font-family: "Lobster", cursive !important;
+  font-size: 6rem !important; }
+  @media (max-width: 720px) {
+    h1 {
+      font-size: 4em !important;
+      letter-spacing: -1px; } }
+
+body {
+  background-color: #CFCFEA !important;
+  color: #433E3F !important;
+  font-family: "ZCOOL XiaoWei", serif; }
+
+h2 {
+  font-family: "Lobster", cursive !important; }
+
+#header {
+  background-color: #3E5C76; }
+  #header h1 {
+    line-height: 4rem; }
+    @media (max-width: 720px) {
+      #header h1 {
+        line-height: 3rem; } }
+  #header h2 {
+    font-size: 2em;
+    line-height: 1rem;
+    text-transform: uppercase; }
+    @media (max-width: 720px) {
+      #header h2 {
+        font-size: 1.5em;
+        line-height: 2rem; } }
+  #header .subtitle {
+    font-size: 2em;
+    line-height: 1.5rem;
+    text-transform: uppercase;
+    font-weight: bolder;
+    font-size-adjust: none; }
+
+#footer {
+  background-color: #496c8a; }
+
+.sub-nav {
+  background-color: #4e7394;
+  border-top: solid 1px #A89B9D; }
+  .sub-nav .nav-link {
+    color: #847375; }
+
+#progress-bar {
+  animation-name: progressFill;
+  animation-duration: 5s;
+  animation-fill-mode: forwards; }
+
+@keyframes progressFill {
+  from {
+    width: 0%; }
+  to {
+    width: 100%; } }
+
+/*# sourceMappingURL=design.css.map */

@@ -65,6 +65,11 @@ class CoreController extends Controller
             $mailer = $this->get('servicejf_jeudi.mailer');
             $smsInterface = $this->get('servicejf.smsinterface');
             $interestedUsers = $nextToEdit->getInterestedUsers();
+            if ($nextToConfirm) {
+                $confirmInterestedUsers = $nextToConfirm->getInterestedUsers();
+            } else {
+                $confirmInterestedUsers = null;
+            }
             $form = $this->createForm(AperoType::class, $nextToEdit);
             $form->handleRequest($request);
             if ($form->isSubmitted() && $form->isValid()) {
@@ -96,7 +101,8 @@ class CoreController extends Controller
                 'nextToConfirm' => $nextToConfirm,
                 'nextToEdit' => $nextToEdit,
                 'form' => $form->createView(),
-                'interestedUsers' => $interestedUsers
+                'interestedUsers' => $interestedUsers,
+                'confirmInterestedUsers' => $confirmInterestedUsers
             ));
         }
     }

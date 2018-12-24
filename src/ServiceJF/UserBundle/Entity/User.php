@@ -74,6 +74,32 @@ class User extends BaseUser
     private $phoneNumberCopy;
 
     /**
+     * @ORM\Column(name="miettes", type="boolean", options={"default":false})
+     */
+    private $miettes;
+
+    public function __toString()
+    {
+        return $this->getSurname() . ' ' . $this->getName();
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMiettes()
+    {
+        return $this->miettes;
+    }
+
+    /**
+     * @param mixed $miettes
+     */
+    public function setMiettes($miettes)
+    {
+        $this->miettes = $miettes;
+    }
+
+    /**
      * @return mixed
      */
     public function getPhoneNumberCopy()
